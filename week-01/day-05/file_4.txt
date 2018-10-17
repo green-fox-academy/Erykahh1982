@@ -1,0 +1,4 @@
+Content of File_4
+apple
+orange
+strawberry

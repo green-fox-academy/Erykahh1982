@@ -1,0 +1,5 @@
+Content of File_3
+water
+beer
+wine
+juice

@@ -1,0 +1,72 @@
+body {
+    background-image: url(kép.png);
+    font-family: 'Merriweather', serif;
+ }
+ 
+ #main-text{
+    padding: 10% 10% 0;
+ }
+ 
+ span{
+    width: 400px;
+ }
+ 
+ .black-box {
+    background-color:#333333 ;
+    width: 100%;
+    height: 50px;
+ }
+ 
+ .links {
+    float: right;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 15px 10% 15px 0;
+ }
+ 
+ .links, .links a, h3 {
+    color: #ff0099 ;
+ }
+ 
+ .black-box img {
+    padding: 0 10%;
+    padding-top: 10px;
+ }
+ 
+ h1 {
+    size: 30px;
+    padding-bottom: 16px;
+ }
+ 
+ h2 {
+    color: black;
+    text-transform: capitalize;
+ }
+ 
+ .center {
+    text-align: center;
+    padding: 10px 0px;
+ }
+ 
+ a {
+    padding: 0px 16px;
+ }
+ 
+ .definition {
+    font-family: Consolas, monaco, monospace;
+ }
+ 
+ dt {
+    font-weight: bold;
+    padding: 10px 0px;
+    font-size: 18px;
+ }
+ 
+ dd {
+    padding:0px 0px;
+    width: 622px;
+    margin: 0px;
+ }
+ p{
+     font-family: Consolas, monaco, monospace;
+ }
