@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class AverageOfInput {
     public static void main(String[] args) {
 
@@ -28,6 +27,5 @@ public class AverageOfInput {
 
         System.out.println("The sum of your family age is : " + sumOfFamilyAge);
         System.out.println("The average age of your family is : " + averageOfFamilyAge);
-
     }
 }

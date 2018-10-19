@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class CountFromTo {
     public static void main(String[] args) {
         Scanner scannerInput = new Scanner(System.in);
@@ -17,8 +16,5 @@ public class CountFromTo {
                 System.out.println(userInput1 + a);
             }
         }
-
-
-
     }
 }

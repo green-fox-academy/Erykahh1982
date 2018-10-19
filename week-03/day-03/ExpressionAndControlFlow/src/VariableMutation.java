@@ -1,6 +1,5 @@
 public class VariableMutation {
     public static void main(String[] args) {
-
         int a = 3;
         a += 10;
         System.out.println("3 + 10 = " + a);
@@ -49,9 +48,5 @@ public class VariableMutation {
         String k = "Apple";
         k= k + k + k + k;
         System.out.println(k);
-
-
-
-
     }
 }
