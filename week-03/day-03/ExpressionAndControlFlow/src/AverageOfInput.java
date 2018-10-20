@@ -1,26 +1,24 @@
 import java.util.Scanner;
+
 public class AverageOfInput {
+
     public static void main(String[] args) {
 
-        Scanner userInput1 = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
         System.out.println("How old are you ? ");
-        int myAge = userInput1.nextInt();
+        int myAge = userInput.nextInt();
 
-        Scanner userInput2 = new Scanner(System.in);
         System.out.println("How old is your mother ? ");
-        int motherAge = userInput2.nextInt();
+        int motherAge = userInput.nextInt();
 
-        Scanner userInput3 = new Scanner(System.in);
         System.out.println("How old is your father ? ");
-        int fatherAge = userInput3.nextInt();
+        int fatherAge = userInput.nextInt();
 
-        Scanner userInput4 = new Scanner(System.in);
         System.out.println("How old is your grandmother ? ");
-        int grandmotherAge = userInput4.nextInt();
+        int grandmotherAge = userInput.nextInt();
 
-        Scanner userInput5 = new Scanner(System.in);
         System.out.println("How old is your grandfather ? ");
-        int grandfatherAge = userInput5.nextInt();
+        int grandfatherAge = userInput.nextInt();
 
         int sumOfFamilyAge = (grandfatherAge + grandmotherAge + myAge + motherAge + fatherAge);
         int averageOfFamilyAge = (sumOfFamilyAge / 5 );

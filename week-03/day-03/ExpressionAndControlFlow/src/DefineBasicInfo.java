@@ -1,5 +1,7 @@
-public class DefineBasicInfo {
+public class DefineBasicInfo{
+
     public static void main(String[] args) {
+
         String myName = "Erika Kovács-Posta";
         System.out.println("My Name is : " + myName);
         int age = 35;

@@ -1,7 +1,9 @@
 import java.util.Scanner;
+
 public class CountFromTo {
+
     public static void main(String[] args) {
-        Scanner scannerInput = new Scanner(System.in);
+            Scanner scannerInput = new Scanner(System.in);
 
         System.out.println("Please enter a number : ");
         int userInput1 = scannerInput.nextInt();

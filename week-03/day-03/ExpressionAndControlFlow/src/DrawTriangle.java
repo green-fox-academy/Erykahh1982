@@ -1,7 +1,11 @@
 import java.util.Scanner;
+
+import static java.lang.System.*;
+
 public class DrawTriangle {
+
     public static void main(String[] args) {
-        Scanner scannerInput = new Scanner(System.in);
+            Scanner scannerInput = new Scanner(in);
         System.out.println("Please enter a number : ");
         int input = scannerInput.nextInt();
         String star = "";

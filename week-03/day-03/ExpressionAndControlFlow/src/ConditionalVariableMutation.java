@@ -1,4 +1,5 @@
 public class ConditionalVariableMutation {
+
     public static void main(String[] args) {
         //if "a" is even, increment "out" by one
         double a = 24;
@@ -53,5 +54,5 @@ public class ConditionalVariableMutation {
             System.out.println(out3);
         }
     }
-    }
+}
 
