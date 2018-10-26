@@ -6,18 +6,18 @@ public class Summing {
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
         }
-        System.out.println("The sum of the given numbers is : " + sum);
+        System.out.println("The sum of the entered numbers is : " + sum);
     }
 
     public static void main(String[] args) {
         int num;
-        Scanner input = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
         System.out.print("How many numbers you want to add together: ");
-        num = input.nextInt();
+        num = userInput.nextInt();
         int[] arr2 = new int[num];
         for (int i = 0; i < arr2.length; i++) {
             System.out.print("Enter Num" + (i + 1) + ": ");
-            arr2[i] = input.nextInt();
+            arr2[i] = userInput.nextInt();
         }
         sumAll(arr2);
     }

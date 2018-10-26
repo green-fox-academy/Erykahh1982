@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
-public class Factorio {
+public class Factorio_2{
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Please enter a number for which I will calculate its factorial : ");
         int number = userInput.nextInt();
-       System.out.println("The factorial value of the given number is : " + factNum(number));
+        display(factNum(number));
     }
 
     public static int factNum(int x) {
@@ -15,4 +15,10 @@ public class Factorio {
         }
         return factorial;
     }
-}
+
+    public static void  display(int y){
+        System.out.println("Result is: " + y);
+        }
+    }
+
+
