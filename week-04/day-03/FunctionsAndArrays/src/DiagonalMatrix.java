@@ -5,7 +5,7 @@ public class DiagonalMatrix {
         System.out.println("My first diagonal matrix");
         display (firstarray);
     }
-    
+
     public static void display (int x [][]){
         for (int row = 0; row <x.length ; row++) {
             for (int column = 0; column <x[row].length ; column++) {
