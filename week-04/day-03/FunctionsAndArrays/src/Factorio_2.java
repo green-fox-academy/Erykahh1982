@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Factorio_2{
+
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Please enter a number for which I will calculate its factorial : ");

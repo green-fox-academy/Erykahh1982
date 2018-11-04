@@ -1,5 +1,6 @@
 public class PrintArguments {
     public static void main(String[] args) {
+
         printParams ("bird", "fish", "mammal", "reptile", "insect");
     }
 

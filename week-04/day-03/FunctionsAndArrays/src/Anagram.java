@@ -2,7 +2,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Anagram {
+
     public static void main(String[] args) {
+
         Scanner userInput = new Scanner(System.in);
         System.out.println("I am gonna check if 2 words are anagrams or not");
         System.out.println("Please enter the firs word: ");

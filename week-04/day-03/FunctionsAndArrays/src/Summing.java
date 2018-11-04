@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Summing {
+
     public static void sumAll(int arr[]) {
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {

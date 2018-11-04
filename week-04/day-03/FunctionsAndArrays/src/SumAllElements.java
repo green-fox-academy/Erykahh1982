@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class SumAllElements {
+
     public static void main(String[] args) {
         int[] ai = {3, 4, 5, 6, 7};
         System.out.println("My array is : " + Arrays.toString(ai));
