@@ -52,7 +52,7 @@ public class StudentCalculator {
         }
 
         System.out.println();
-        
+
         double sumAge = 0;
 
         for (int i = 0; i < arrayListOfMaps.size() ; i++) {
