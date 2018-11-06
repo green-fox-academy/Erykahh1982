@@ -17,7 +17,7 @@ public class SquarePositioning {
     }
 
     public static int randomCoordinate(){
-        return (1 + (int)(Math.random()*320));
+        return (1 + (int)(Math.random()*320 - 50));
     }
 
     public static void drawSquare(int x, int y, Graphics graphics){
