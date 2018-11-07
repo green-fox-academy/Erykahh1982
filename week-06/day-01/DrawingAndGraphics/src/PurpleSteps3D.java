@@ -5,12 +5,12 @@ import java.awt.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class PurpleSteps3D {
-    public static void mainDraw(Graphics graphics) {
+    public static void mainDraw(Graphics g) {
         int position = 10;
-        for (int i = 0; i < 20; i++) {
-            int side = 10;
+        for (int i = 0; i < 8; i++) {
+            int side = i * 10;
             drawSquare(g, side, position);
-            position = side + position;
+            position = (side + position);
         }
     }
 
@@ -19,11 +19,6 @@ public class PurpleSteps3D {
         square.drawRect(position,position, side, side);
         square.setColor(Color.magenta);
         square.fillRect(position+1,position+1,side-1,side-1);
-    }
-
-    public static void position (Graphics square3D, )
-
-
     }
 
     // Don't touch the code below
