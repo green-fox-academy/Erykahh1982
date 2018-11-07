@@ -14,9 +14,11 @@ public class CenterBoxFunction {
 
     private static void drawRandomSquare(int randomCoordinate, int randomCoordinate1, Graphics g) {
         int size = randomWidthHeight();
+        int x = (WIDTH / 2) - (size / 2);
+        int y = (HEIGHT / 2) - (size  / 2);
 
         g.setColor(new Color(randomColor(), randomColor(), randomColor(), randomColor()));
-        g.drawRect(randomCoordinate(), randomCoordinate(), size, size);
+        g.drawRect(x ,y , size, size);
     }
 
     public static int randomColor(){
