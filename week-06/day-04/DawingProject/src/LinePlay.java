@@ -14,7 +14,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
                 graphics.drawLine(0, j * 20, j * 20, 320);
             }
         }
-        
+
         // Don't touch the code below
         static int WIDTH = 320;
         static int HEIGHT = 320;
