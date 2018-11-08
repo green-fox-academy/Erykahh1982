@@ -5,13 +5,15 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
     public class LinePlay {
         public static void mainDraw(Graphics graphics) {
 
+            int lineStep = 20;
+
             graphics.setColor(Color.MAGENTA);
-            for (int i = 0; i < 15; i++) {
-                graphics.drawLine( i * 20 ,0, 320,i * 20);
+            for (int i = 0; i < 16; i++) {
+                graphics.drawLine( i * lineStep ,0, WIDTH,i * lineStep);
             }
             graphics.setColor(Color.GREEN);
-            for (int j = 0; j < 15 ; j++) {
-                graphics.drawLine(0, j * 20, j * 20, 320);
+            for (int j = 0; j < 16 ; j++) {
+                graphics.drawLine(0, j * lineStep, j * lineStep, HEIGHT);
             }
         }
 
