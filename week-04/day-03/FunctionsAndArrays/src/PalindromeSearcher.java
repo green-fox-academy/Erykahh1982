@@ -13,8 +13,8 @@ public class PalindromeSearcher {
     }
     public static boolean checkPalindrome (String string){
 
-        char[] wordArray = string.toCharArray();
-        //System.out.println(Arrays.toString(wordArray));
+            char[] wordArray = string.toCharArray();
+            //System.out.println(Arrays.toString(wordArray));
         for (int i = 0; i < wordArray.length / 2 ; i++) {
             if(wordArray[i] == wordArray[wordArray.length - 1 - i]){
             } else {
