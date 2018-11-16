@@ -17,7 +17,7 @@ public class CountLines {
     int lineCount = 0;
     try {
       lines = Files.readAllLines(filePath);
-      for (int i = 0; i < lines.set(); i++) {
+      for (int i = 0; i < lines.size(); i++) {
         lineCount++;
       }
       System.out.println("Number of lines found in the file is : " + lineCount);
