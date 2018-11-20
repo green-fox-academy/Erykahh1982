@@ -17,6 +17,12 @@ public class Lottery {
     for (Integer lotteryNumber : resultMap.keySet()) {
       System.out.println(lotteryNumber + " | " + resultMap.get(lotteryNumber));
     }
+    System.out.println();
+    System.out.println("Top lottery numbers are :");
+    HashMap<Integer, Integer> topFive = sortMap(resultMap);
+    for (Integer item: topFive.keySet()){
+      System.out.println(item + " | " + topFive.get(item));
+    }
   }
 
   public static ArrayList<String> readFile(String file) {
@@ -62,13 +68,16 @@ public class Lottery {
     HashMap<Integer, Integer> topFive = new HashMap<>();
     int maxValue = frequencies.get(1);
 
-    for (int i = 0; i < frequencies.size(); i++) {
+    for (int i = 2; i < frequencies.size(); i++) {
       if (frequencies.get(i) > maxValue) {
         maxValue = frequencies.get(i);
       }
     }
-
-
+    for (Map.Entry<Integer, Integer> frequency :  frequencies.entrySet()) {
+      if(frequency.getValue() == maxValue){
+        topFive.put(frequency.getKey(), maxValue);
+      }
+    }
     return topFive;
   }
 }
