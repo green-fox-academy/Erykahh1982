@@ -1,15 +1,17 @@
 import java.io.IOException;
-    import java.nio.file.Files;
-    import java.nio.file.Path;
-    import java.nio.file.Paths;
-    import java.util.ArrayList;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EncodedLines {
   public static void main(String[] args) {
     String originalFile = "encoded-lines.txt";
     String correctedFile = "decoded-lines.txt";
-    System.out.println("Original file content has been decoded : " + copyContent(originalFile, correctedFile));
 
+    System.out.println("Original file content has been decoded : " + copyContent(originalFile, correctedFile));
   }
 
   public static ArrayList<String> readFile(String fileName) {

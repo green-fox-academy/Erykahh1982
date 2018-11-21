@@ -20,7 +20,7 @@ public class Lottery {
     System.out.println();
     System.out.println("Top lottery numbers are :");
     HashMap<Integer, Integer> topFive = sortMap(resultMap);
-    for (Integer item: topFive.keySet()){
+    for (Integer item : topFive.keySet()) {
       System.out.println(item + " | " + topFive.get(item));
     }
   }
@@ -66,16 +66,39 @@ public class Lottery {
 
   public static HashMap<Integer, Integer> sortMap(HashMap<Integer, Integer> frequencies) {
     HashMap<Integer, Integer> topFive = new HashMap<>();
-    int maxValue = frequencies.get(1);
+    int maxValue01 = 1;
+    int maxValue02 = 1;
+    int maxValue03 = 1;
+    int maxValue04 = 1;
+    int maxValue05 = 1;
 
-    for (int i = 2; i < frequencies.size(); i++) {
-      if (frequencies.get(i) > maxValue) {
-        maxValue = frequencies.get(i);
+    for (int i = 1; i < frequencies.size(); i++) {
+      if (frequencies.get(i) > maxValue01) {
+        maxValue01 = frequencies.get(i);
+      } else if (frequencies.get(i) > maxValue02) {
+        maxValue02 = frequencies.get(i);
+      } else if (frequencies.get(i) > maxValue03) {
+        maxValue03 = frequencies.get(i);
+      } else if (frequencies.get(i) > maxValue04) {
+        maxValue04 = frequencies.get(i);
+      } else if (frequencies.get(i) > maxValue05) {
+        maxValue05 = frequencies.get(i);
       }
     }
-    for (Map.Entry<Integer, Integer> frequency :  frequencies.entrySet()) {
-      if(frequency.getValue() == maxValue){
-        topFive.put(frequency.getKey(), maxValue);
+    System.out.println(maxValue01 + ", " + maxValue02 + ", " + maxValue03 + ", " + maxValue04 + ", " + maxValue05);
+
+
+    for (Map.Entry<Integer, Integer> frequency : frequencies.entrySet()) {
+      if (frequency.getValue() == maxValue01) {
+        topFive.put(frequency.getKey(), maxValue01);
+      } else if (frequency.getValue() == maxValue02) {
+        topFive.put(frequency.getKey(), maxValue02);
+      } else if (frequency.getValue() == maxValue03) {
+        topFive.put(frequency.getKey(), maxValue03);
+      } else if (frequency.getValue() == maxValue04) {
+        topFive.put(frequency.getKey(), maxValue04);
+      } else if (frequency.getValue() == maxValue05) {
+        topFive.put(frequency.getKey(), maxValue05);
       }
     }
     return topFive;
