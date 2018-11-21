@@ -30,9 +30,9 @@ public class PokemonMain {
   }
 
   public static String selectingPokemon(List<Pokemon> listOfPokemons, Pokemon wildPokemon) {
-    for (int i = 0; i < listOfPokemons.size(); i++) {
-      if (listOfPokemons.get(i).isEffectiveAgainst("leaf")) {
-        return listOfPokemons.get(i).name;
+    for (Pokemon listOfPokemon : listOfPokemons) {
+      if (listOfPokemon.isEffectiveAgainst("leaf")) {
+        return listOfPokemon.name;
       }
     }
     return null;
