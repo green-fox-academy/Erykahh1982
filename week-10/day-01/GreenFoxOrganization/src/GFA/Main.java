@@ -1,3 +1,5 @@
+package GFA;
+
 import java.util.ArrayList;
 
 public class Main {

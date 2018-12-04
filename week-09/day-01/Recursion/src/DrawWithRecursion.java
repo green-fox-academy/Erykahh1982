@@ -5,7 +5,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class DrawWithRecursion {
   public static void mainDraw(Graphics graphics) {
-    drawShapeRecursively(0, 0, 600, 5, graphics);
+    drawShapeRecursively(0, 0, 600, 3, graphics);
   }
 
   public static void drawShape(int x, int y, int size, int n, Graphics graphics) {
