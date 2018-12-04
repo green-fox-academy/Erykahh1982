@@ -13,47 +13,29 @@ public class Garden {
     treesAndFlowers.add(plants);
   }
 
-  public int countThirstyPlants(){
+  public int countThirstyPlants() {
     int counter = 0;
-    for(Plants plant : treesAndFlowers){
+    for (Plants plant : treesAndFlowers) {
       plant.checkWaterDemand();
-      if(plant.doesItNeedWater()){
+      if (plant.doesItNeedWater()) {
         counter++;
       }
     }
     return counter;
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public void wateringWith40() {
-
-  }
-
-  public void wateringWith70() {
-
-  }
-
-  public void displayGarden(){
-    for (int i = 0; i <treesAndFlowers.size() ; i++) {
-      System.out.println();
-
+  public void wateringTheGarden(int litersOfWater) {
+    for (Plants plant : treesAndFlowers) {
+      plant.waterPlants(litersOfWater / countThirstyPlants());
     }
   }
 
   @Override
   public String toString() {
     String allPlants = "";
-    for (Plants plant : treesAndFlowers){
+    for (Plants plant : treesAndFlowers) {
       allPlants = allPlants + plant.toString() + "\n";
     }
     return allPlants;
   }
 }
-

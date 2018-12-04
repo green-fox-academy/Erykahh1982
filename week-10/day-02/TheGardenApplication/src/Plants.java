@@ -25,7 +25,7 @@ public class Plants {
     return needsWater;
   }
 
-  public void waterPlants(int liters){
+  public void waterPlants(int liters) {
     currentWater += liters * absorbPercentage / 100;
   }
 
@@ -33,28 +33,8 @@ public class Plants {
     return type;
   }
 
-  public void setType(Type type) {
-    this.type = type;
-  }
-
   public String getColor() {
     return color;
-  }
-
-  public void setColor(String color) {
-    this.color = color;
-  }
-
-  public int getCurrentWater() {
-    return currentWater;
-  }
-
-  public void setCurrentWater(int currentWater) {
-    this.currentWater = currentWater;
-  }
-
-  public void setNeedsWater(boolean needsWater) {
-    this.needsWater = needsWater;
   }
 
   @Override
