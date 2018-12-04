@@ -1,34 +1,59 @@
 import java.util.ArrayList;
 
 public class Garden {
-  private ArrayList<Flower> flowers;
-  private ArrayList<Tree> trees;
-  private int waterDemandLevel;
-  private String color;
+  private String name;
+  private ArrayList<Plants> treesAndFlowers;
 
-
-  public Garden(){
-    this.flowers = new ArrayList<>();
-    this.trees = new ArrayList<>();
+  public Garden(String name) {
+    this.treesAndFlowers = new ArrayList<>();
+    this.name = name;
   }
 
-  public void water(){
+  public void addPlantsToGarden(Plants plants) {
+    treesAndFlowers.add(plants);
+  }
+
+  public int countThirstyPlants(){
+    int counter = 0;
+    for(Plants plant : treesAndFlowers){
+      plant.checkWaterDemand();
+      if(plant.doesItNeedWater()){
+        counter++;
+      }
+    }
+    return counter;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void wateringWith40() {
 
   }
 
-  public int getWaterDemandLevel() {
-    return waterDemandLevel;
+  public void wateringWith70() {
+
   }
 
-  public void setWaterDemandLevel(int waterDemandLevel) {
-    this.waterDemandLevel = waterDemandLevel;
+  public void displayGarden(){
+    for (int i = 0; i <treesAndFlowers.size() ; i++) {
+      System.out.println();
+
+    }
   }
 
-  public String getColor() {
-    return color;
-  }
-
-  public void setColor(String color) {
-    this.color = color;
+  @Override
+  public String toString() {
+    String allPlants = "";
+    for (Plants plant : treesAndFlowers){
+      allPlants = allPlants + plant.toString() + "\n";
+    }
+    return allPlants;
   }
 }
+

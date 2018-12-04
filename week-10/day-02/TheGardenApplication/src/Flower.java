@@ -1,16 +1,6 @@
-public class Flower extends Garden{
-  private int numberOfTrees;
+public class Flower extends Plants{
 
   public Flower(String color){
-    super();
-    this.numberOfTrees = 2;
-  }
-
-  @Override
-  public String toString() {
-    return "Flower{" +
-        "color='" + getColor() + '\'' +
-        ", numberOfTrees=" + numberOfTrees +
-        '}';
+    super(color, Type.flower,75, 5);
   }
 }
