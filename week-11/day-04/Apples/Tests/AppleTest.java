@@ -14,7 +14,6 @@ public class AppleTest {
 
   @Test
   public void getApple() {
-    Apple myObject = new Apple("apple");
     String expectedApple = "pear";
     String result = apple.getApple();
 
