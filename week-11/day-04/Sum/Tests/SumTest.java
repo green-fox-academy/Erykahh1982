@@ -24,4 +24,14 @@ public class SumTest {
 
     assertEquals(expectedSumResult,calculatedSumResult);
   }
+
+  @Test
+  public void sumNumbersWithEmptyList() {
+    ArrayList<Integer> listOfNumbers = new ArrayList<>();
+
+    int expectedSumResult = 0;
+    int calculatedSumResult = sum.sumNumbers(listOfNumbers);
+
+    assertEquals(expectedSumResult,calculatedSumResult);
+  }
 }
