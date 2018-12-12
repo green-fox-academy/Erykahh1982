@@ -34,4 +34,14 @@ public class SumTest {
 
     assertEquals(expectedSumResult,calculatedSumResult);
   }
+
+  @Test
+  public void sumNumbersWithOneElement() {
+    ArrayList<Integer> listOfNumbers = new ArrayList<>(Arrays.asList(1));
+
+    int expectedSumResult = 1;
+    int calculatedSumResult = sum.sumNumbers(listOfNumbers);
+
+    assertEquals(expectedSumResult,calculatedSumResult);
+  }
 }
