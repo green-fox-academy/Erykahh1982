@@ -9,7 +9,7 @@ public class AppleTest {
 
   @BeforeClass
   public static void init(){
-    apple = new Apple("apple");
+    apple = new Apple("pear");
   }
 
   @Test
