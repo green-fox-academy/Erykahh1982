@@ -13,7 +13,7 @@ public class AppleTest {
   }
 
   @Test
-  public void getApple() {
+  public void getApple1() {
     String expectedApple = "pear";
     String result = apple.getApple();
 
