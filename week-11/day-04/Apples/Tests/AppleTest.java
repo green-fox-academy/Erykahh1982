@@ -14,7 +14,7 @@ public class AppleTest {
 
   @Test
   public void getApple() {
-    String expectedApple = "apple";
+    String expectedApple = "pear";
     String result = apple.getApple();
 
     assertEquals(expectedApple,result);
