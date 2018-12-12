@@ -9,12 +9,12 @@ public class AppleTest {
 
   @BeforeClass
   public static void init(){
-    apple = new Apple("pear");
+    apple = new Apple("apple");
   }
 
   @Test
   public void getApple() {
-    String expectedApple = "pear";
+    String expectedApple = "apple";
     String result = apple.getApple();
 
     assertEquals(expectedApple,result);
