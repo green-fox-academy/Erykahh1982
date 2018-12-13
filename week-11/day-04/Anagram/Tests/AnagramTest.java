@@ -34,4 +34,26 @@ public class AnagramTest {
 
     assertTrue(calculatedResult);
   }
+  @Test
+  public void checkAnagramWithDifferentLengthStringInput() {
+
+    String s1 = "lead";
+    String s2 = "dog";
+
+    boolean calculatedResult = anagram.checkAnagram(s1, s2);
+
+    assertFalse(calculatedResult);
+  }
+
+  @Test
+  public void checkAnagramWithNullStringInput() {
+
+    String s1 = null;
+    String s2 = null;
+
+    boolean calculatedResult = anagram.checkAnagram(s1, s2);
+
+    assertFalse(calculatedResult);
+  }
+
 }

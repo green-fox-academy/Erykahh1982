@@ -2,7 +2,11 @@ import java.util.Arrays;
 
 public class Anagram {
 
-    public boolean checkAnagram(String s1, String s2) {
+  public boolean checkAnagram(String s1, String s2) {
+
+    if((s1 == null) && (s2 == null)){
+      return false;
+    }
 
     char[] s1Array = s1.toCharArray();
     char[] s2Array = s2.toCharArray();
