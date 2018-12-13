@@ -8,6 +8,10 @@ public class Anagram {
       return false;
     }
 
+    if ((s1 == "") && (s2 == "")){
+      return false;
+    }
+
     char[] s1Array = s1.toCharArray();
     char[] s2Array = s2.toCharArray();
 
