@@ -22,6 +22,17 @@ public class AnagramTest {
     boolean calculatedResult = anagram.checkAnagram(s1, s2);
 
     assertEquals(expectedResult, calculatedResult);
+  }
 
+  @Test
+  public void checkAnagramWithDifferentStringInput() {
+
+    String s1 = "one";
+    String s2 = "dog";
+
+    boolean expectedResult = true;
+    boolean calculatedResult = anagram.checkAnagram(s1, s2);
+
+    assertEquals(expectedResult, calculatedResult);
   }
 }
