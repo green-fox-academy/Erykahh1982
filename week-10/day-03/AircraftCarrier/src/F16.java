@@ -1,9 +1,12 @@
 public class F16 extends Aircraft {
 
+  public static final String type = "F16";
+  public static final int maxAmmo = 8;
+  public static final int baseDamage = 30;
+  public static final boolean priority = false;
+
   public F16() {
-    super("F16");
-    setBaseDamage(30);
-    setMaxAmmo(8);
-    setPriority(false);
+    super(type, maxAmmo, baseDamage, priority);
   }
+
 }
