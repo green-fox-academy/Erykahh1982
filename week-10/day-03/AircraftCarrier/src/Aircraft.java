@@ -16,7 +16,7 @@ public class Aircraft {
     this.allDamage = 0;
   }
 
-  public int fight(int ammoToRefill) {
+  public int fight() {
     int damageThroughFight = this.baseDamage * this.ammoActual;
     allDamage += damageThroughFight;
     ammoActual = 0;

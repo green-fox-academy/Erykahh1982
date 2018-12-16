@@ -89,7 +89,7 @@ public class Carrier {
       System.out.println("The " + enemy.name + " is already dead, therefore cannot fight anymore");
     } else {
       for (Aircraft aircraft : carrier) {
-        allDamageAcrossFight += aircraft.fight(allDamageAcrossFight);
+        allDamageAcrossFight += (int) aircraft.fight();
         aircraft.setAmmo(0);
         enemy.decreaseHealthPoints(allDamageAcrossFight);
       }
