@@ -19,9 +19,9 @@ public class TodoList {
   }
 
   public void list() {
-    if(listOfTasks.isEmpty()) {
+    if (listOfTasks.isEmpty()) {
       System.out.println("Hooray, no tasks for today! :-)");
-    }else {
+    } else {
       listOfTasks = FileIOManipulation.readFile();
     }
   }
@@ -31,6 +31,8 @@ public class TodoList {
     try {
       int indexToRemove = Integer.parseInt(index);
       listOfTasks.remove(indexToRemove - 1);
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println("Unable to remove: index is out of bound");
     } catch (NumberFormatException e) {
       System.out.println("The entered index to complete a task is not in the expected format, please enter a number within quotes");
     }
@@ -48,8 +50,12 @@ public class TodoList {
           listOfTasks.get(indexToComplete - 1).setCompleted(true);
         }
       }
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println("Unable to complete: index is out of bound");
     } catch (NumberFormatException e) {
       System.out.println("The entered index to complete a task is not in the expected format, please enter a number within quotes");
+    } catch (Exception e) {
+      System.out.println("Unable to check: no index provided");
     }
     FileIOManipulation.writeFile(listOfTasks);
   }
