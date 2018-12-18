@@ -1,6 +1,3 @@
+0;Buy milk
 0;Feed the dog
-0;Buy food
-1;Walk the dog
-1;Do the homework
-0;Eat an apple
-0;Fill the car with fuel
+0;Do the homework

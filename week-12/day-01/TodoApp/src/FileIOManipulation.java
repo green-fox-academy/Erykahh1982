@@ -13,7 +13,7 @@ public class FileIOManipulation {
     try {
       content = (ArrayList<String>) Files.readAllLines(filePath);
     } catch (IOException e) {
-      System.out.println("File is not found");
+      System.out.println("An error happened, unfortunately, the file is not found");
     }
     ArrayList<Todo> actualTodoList = new ArrayList<>();
 
@@ -40,9 +40,9 @@ public class FileIOManipulation {
       try {
         Files.write(filePath, updatedList);
       } catch (IOException e) {
-        e.printStackTrace();
+        System.out.println("An error happened, unfortunately, the file is not found");
       }
     }
-
   }
+
 }

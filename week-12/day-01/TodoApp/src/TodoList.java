@@ -19,7 +19,39 @@ public class TodoList {
   }
 
   public void list() {
+    if(listOfTasks.isEmpty()) {
+      System.out.println("Hooray, no tasks for today! :-)");
+    }else {
+      listOfTasks = FileIOManipulation.readFile();
+    }
+  }
+
+  public void remove(String index) {
     listOfTasks = FileIOManipulation.readFile();
+    try {
+      int indexToRemove = Integer.parseInt(index);
+      listOfTasks.remove(indexToRemove - 1);
+    } catch (NumberFormatException e) {
+      System.out.println("The entered index to complete a task is not in the expected format, please enter a number within quotes");
+    }
+    FileIOManipulation.writeFile(listOfTasks);
+  }
+
+  public void toComplete(String index) {
+    listOfTasks = FileIOManipulation.readFile();
+    try {
+      int indexToComplete = Integer.parseInt(index);
+      for (int i = 0; i < listOfTasks.size(); i++) {
+        if (listOfTasks.get(indexToComplete - 1).isCompleted()) {
+          listOfTasks.get(indexToComplete).isCompleted();
+        } else {
+          listOfTasks.get(indexToComplete - 1).setCompleted(true);
+        }
+      }
+    } catch (NumberFormatException e) {
+      System.out.println("The entered index to complete a task is not in the expected format, please enter a number within quotes");
+    }
+    FileIOManipulation.writeFile(listOfTasks);
   }
 
   public String usage() {
@@ -31,12 +63,6 @@ public class TodoList {
         "  -r   Removes a task \n " +
         "  -c   Completes a task \n ";
   }
-
-  /*public remove(Todo todo){}
-
-  public complete(Todo todo) {
-
-  }*/
 
   public ArrayList<Todo> getListOfTasks() {
     return listOfTasks;

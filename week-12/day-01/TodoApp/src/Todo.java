@@ -7,7 +7,7 @@ public class Todo {
   public Todo() {
   }
 
-  public Todo(String task){
+  public Todo(String task) {
     this.task = task;
   }
 
@@ -31,4 +31,5 @@ public class Todo {
   public String toString() {
     return (isCompleted ? "[x] " : "[ ] ") + task;
   }
+
 }
