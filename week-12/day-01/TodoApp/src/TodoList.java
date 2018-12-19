@@ -1,6 +1,3 @@
-import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class TodoList {
@@ -42,12 +39,10 @@ public class TodoList {
     listOfTasks = FileIOManipulation.readFile();
     try {
       int indexToComplete = Integer.parseInt(index);
-      for (int i = 0; i < listOfTasks.size(); i++) {
-        if (listOfTasks.get(indexToComplete - 1).isCompleted()) {
-          listOfTasks.get(indexToComplete - 1).isCompleted();
-        } else {
-          listOfTasks.get(indexToComplete - 1).setCompleted(true);
-        }
+      if (!listOfTasks.get(indexToComplete - 1).isCompleted()) {
+        listOfTasks.get(indexToComplete - 1).setCompleted(true);
+      } else {
+        System.out.println(listOfTasks.get(indexToComplete - 1).getTask() + ": is already completed, no need to redo that");
       }
     } catch (IndexOutOfBoundsException e) {
       System.out.println("Unable to complete: index is out of bound");
@@ -81,5 +76,5 @@ public class TodoList {
     }
     return output;
   }
-}
 
+}

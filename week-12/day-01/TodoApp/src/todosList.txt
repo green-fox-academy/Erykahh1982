@@ -1,5 +1,6 @@
-1;Do the homework
-0;Make a cup of caffee
-1;Take out the garbage
 1;Watch a movie
 1;Send a message to the grandmother
+1;Clean the windows
+1;Read a book
+1;Drink water
+1;Buy bread

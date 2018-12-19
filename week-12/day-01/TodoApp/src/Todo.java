@@ -1,5 +1,3 @@
-import javafx.concurrent.Task;
-
 public class Todo {
   private String task;
   private boolean isCompleted;
