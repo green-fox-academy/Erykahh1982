@@ -33,7 +33,7 @@ public class TodoList {
     } catch (IndexOutOfBoundsException e) {
       System.out.println("Unable to remove: index is out of bound");
     } catch (NumberFormatException e) {
-      System.out.println("The entered index to complete a task is not in the expected format, please enter a number within quotes");
+      System.out.println("The entered index to complete a task is not in the expected format, please enter a number");
     }
     FileIOManipulation.writeFile(listOfTasks);
   }

@@ -9,6 +9,9 @@ public class TodoApp implements Serializable {
 
     if (args.length == 0) {
       System.out.println(todoList.usage());
+    } else if (args[0] == null || args[0] != "-l" || args[0] != "-a" || args[0] != "-c" || args[0] != "-r") {
+      System.out.println("Unsupported argument");
+      System.out.println(todoList.usage());
 
     } else if (args[0].equals("-l")) {
       todoList.list();

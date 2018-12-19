@@ -1,5 +1,5 @@
-1;Feed the monkey
 1;Do the homework
 0;Make a cup of caffee
 1;Take out the garbage
 1;Watch a movie
+1;Send a message to the grandmother
