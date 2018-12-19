@@ -19,10 +19,9 @@ public class TodoList {
   }
 
   public void list() {
+    listOfTasks = FileIOManipulation.readFile();
     if (listOfTasks.isEmpty()) {
       System.out.println("Hooray, no tasks for today! :-)");
-    } else {
-      listOfTasks = FileIOManipulation.readFile();
     }
   }
 
@@ -45,7 +44,7 @@ public class TodoList {
       int indexToComplete = Integer.parseInt(index);
       for (int i = 0; i < listOfTasks.size(); i++) {
         if (listOfTasks.get(indexToComplete - 1).isCompleted()) {
-          listOfTasks.get(indexToComplete).isCompleted();
+          listOfTasks.get(indexToComplete - 1).isCompleted();
         } else {
           listOfTasks.get(indexToComplete - 1).setCompleted(true);
         }
@@ -53,7 +52,7 @@ public class TodoList {
     } catch (IndexOutOfBoundsException e) {
       System.out.println("Unable to complete: index is out of bound");
     } catch (NumberFormatException e) {
-      System.out.println("The entered index to complete a task is not in the expected format, please enter a number within quotes");
+      System.out.println("The entered index to complete a task is not in the expected format");
     } catch (Exception e) {
       System.out.println("Unable to check: no index provided");
     }

@@ -21,8 +21,10 @@ public class FileIOManipulation {
       String[] lineParts = content.get(i).split(";");
       Todo todo = new Todo();
       todo.setCompleted(lineParts[0].equals("1"));
-      todo.setTask(lineParts[1]);
-      actualTodoList.add(todo);
+      if (lineParts.length > 1) {
+        todo.setTask(lineParts[1]);
+        actualTodoList.add(todo);
+      }
     }
     return actualTodoList;
   }

@@ -1,3 +1,5 @@
-0;Buy milk
-0;Feed the dog
-0;Do the homework
+1;Feed the monkey
+1;Do the homework
+0;Make a cup of caffee
+1;Take out the garbage
+1;Watch a movie
