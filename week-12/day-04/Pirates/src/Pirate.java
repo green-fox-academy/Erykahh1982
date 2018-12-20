@@ -7,14 +7,11 @@ public class Pirate {
   private boolean isPassedOut;
   private boolean isDead;
 
-  public Pirate(String name) {
-    this.name = name;
-    this.rumLevel = 0;
-    this.isDead = false;
-    this.isPassedOut = false;
+  public Pirate() {
+
   }
 
-  public int drinkSomeRum() {
+  public void drinkSomeRum() {
     if (this.isDead) {
       System.out.println("He cannot drink rum, as he is dead");
     } else if (this.isPassedOut) {
@@ -22,7 +19,6 @@ public class Pirate {
     } else {
       rumLevel += 1;
     }
-    return rumLevel;
   }
 
   public void howItGoingMate() {
@@ -33,6 +29,7 @@ public class Pirate {
     } else {
       if (rumLevel <= 4) {
         System.out.println("Pour me anudder!");
+        this.drinkSomeRum();
       } else {
         System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
         setPassedOut(true);
@@ -55,7 +52,22 @@ public class Pirate {
   }
 
   public void die() {
-    setDead(true);
+    this.setDead(true);
+  }
+
+  public String getStatus() {
+    String pirateStatus = "";
+    pirateStatus += "The name of the pirate is: " + this.getName() + " ,his rum level is: " + this.getRumLevel();
+    if (this.isDead()){
+      pirateStatus += " He is dead";
+    } else {
+      pirateStatus += " He is alive";
+    } if(this.isPassedOut()){
+        pirateStatus += " He is passed out";
+      } else {
+      pirateStatus += " He is awake";
+    }
+    return pirateStatus;
   }
 
   public String getName() {
