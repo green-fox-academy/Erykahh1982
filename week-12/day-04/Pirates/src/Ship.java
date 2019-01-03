@@ -3,19 +3,23 @@ import java.util.ArrayList;
 public class Ship {
 
   private String shipName;
-
-  private ArrayList<Pirate> crew = new ArrayList();
+  private ArrayList<Pirate> crew;
+  private int crewSize;
+  private int nrOfAwakes;
+  private int nrOfAlives;
 
   public Ship() {
-
+    this.crew = new ArrayList<>();
   }
 
-  public void fillShip(Pirate pirate) {
-    int numberOfPirates = (int) (Math.random() * 10);
-    for (int i = numberOfPirates; i < crew.size(); i++) {
+  public void fillShip() {
+    crewSize = (int) (Math.random() * 20);
+    for (int i = 0; i < crewSize; i++) {
       crew.add(new Pirate());
     }
-    crew.add(new Captain());
+    this.crew.add(new Captain());
+    this.nrOfAlives = crew.size();
+    this.nrOfAwakes = crew.size();
   }
 
   public String getStatus() {
@@ -32,4 +36,15 @@ public class Ship {
     return statusToPrint;
   }
 
+  public void setShipName(String shipName) {
+    this.shipName = shipName;
+  }
+
+  public int getNrOfAwakes() {
+    return nrOfAwakes;
+  }
+
+  public int getNrOfAlives() {
+    return nrOfAlives;
+  }
 }

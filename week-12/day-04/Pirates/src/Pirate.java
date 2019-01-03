@@ -59,13 +59,13 @@ public class Pirate {
     String pirateStatus = "";
     pirateStatus += "The name of the pirate is: " + this.getName() + " ,his rum level is: " + this.getRumLevel();
     if (this.isDead()){
-      pirateStatus += " He is dead";
+      pirateStatus += " | He is dead";
     } else {
-      pirateStatus += " He is alive";
+      pirateStatus += " | He is alive";
     } if(this.isPassedOut()){
-        pirateStatus += " He is passed out";
+        pirateStatus += " | He is passed out";
       } else {
-      pirateStatus += " He is awake";
+      pirateStatus += " | He is awake";
     }
     return pirateStatus;
   }
