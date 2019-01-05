@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Main {
+public class BattleApp {
   public static void main(String[] args) {
 
     Pirate pirate1 = new Pirate();
@@ -44,9 +44,19 @@ public class Main {
     ship1.fillShip();
     System.out.println(ship1.getStatus());
     System.out.println();
-    System.out.println(ship1.getNrOfAlives());
-    System.out.println(ship1.getNrOfAwakes());
+    System.out.println("The number of awaken pirates is: " + ship1.getNrOfAwakes());
+    System.out.println("The number of alive pirates is :" + ship1.getNrOfAlives());
 
+    System.out.println();
+    Ship enemyShip = new Ship();
+    enemyShip.setShipName("Black Snakes");
+    enemyShip.fillShip();
+    System.out.println(enemyShip.getStatus());
+    System.out.println();
 
+    ship1.battle(enemyShip);
+    System.out.println(ship1.getStatus());
+    System.out.println(enemyShip.getStatus());
   }
+
 }

@@ -58,13 +58,14 @@ public class Pirate {
   public String getStatus() {
     String pirateStatus = "";
     pirateStatus += "The name of the pirate is: " + this.getName() + " ,his rum level is: " + this.getRumLevel();
-    if (this.isDead()){
+    if (this.isDead()) {
       pirateStatus += " | He is dead";
     } else {
       pirateStatus += " | He is alive";
-    } if(this.isPassedOut()){
-        pirateStatus += " | He is passed out";
-      } else {
+    }
+    if (this.isPassedOut()) {
+      pirateStatus += " | He is passed out";
+    } else {
       pirateStatus += " | He is awake";
     }
     return pirateStatus;
@@ -101,4 +102,5 @@ public class Pirate {
   public void setDead(boolean dead) {
     isDead = dead;
   }
+
 }
