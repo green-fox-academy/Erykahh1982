@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class BattleApp {
@@ -54,7 +55,7 @@ public class BattleApp {
     System.out.println(enemyShip.getStatus());
     System.out.println();
 
-    ship1.battle(enemyShip);
+    System.out.println(ship1.battle(enemyShip));
     System.out.println(ship1.getStatus());
     System.out.println(enemyShip.getStatus());
   }
