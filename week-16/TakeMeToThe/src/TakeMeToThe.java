@@ -1,7 +1,7 @@
 public class TakeMeToThe {
   public static void main(String[] args) {
 
-    candyShop = new CandyShop(300);
+    CandyShop candyShop = new CandyShop(300);
     candyShop.createSweets(CandyShop.CANDY);
     candyShop.createSweets(CandyShop.CANDY);
     candyShop.createSweets(CandyShop.LOLLIPOP);
