@@ -7,10 +7,4 @@ public class Candy extends Sweet {
     super(type, sugarAmount);
   }
 
-  @Override
-  public int calculateSellingPrice() {
-    return this.getSugarAmount() * getUnitPriceSugar();
-  }
-
-
 }

@@ -3,44 +3,35 @@ import java.util.ArrayList;
 public class CandyShop {
 
   private int sugarInventory;
-  private int moneyIncome;
-  private int sugarIncomePrice;
+  private double moneyIncome;
+  private double sugarIncomePrice;
   private ArrayList<Sweet> candyShop;
 
   public static final String CANDY = "CANDY";
   public static final String LOLLIPOP = "LOLLIPOP";
 
   public CandyShop(int sugarInventory) {
-    this.moneyIncome = moneyIncome;
+    this.moneyIncome = 0;
     this.candyShop = new ArrayList<>();
     this.sugarInventory = sugarInventory;
-    this.sugarIncomePrice = 1000 / 100;
+    this.sugarIncomePrice = 100 / 1000;
   }
 
   public void sell(String type, int amount) {
     int counter = 0;
     Sweet sweet = candyShop.get(0);
-
+    
     do {
       if (sweet.getType().equals(type)) {
         removeFromStorage(sweet);
-        this.moneyIncome += amount * sweet.getUnitSellingPriceSweet();
+        this.moneyIncome += (amount * sweet.getUnitSellingPriceSweet());
       }
       counter++;
       sweet = candyShop.get(counter);
     } while (counter < amount);
 
-//    for (Sweet sweet : candyShop) {
-//      if (sweet.getType().equals(type)) {
-//        counter++;
-//        this.moneyIncome += amount * sweet.getUnitSellingPriceSweet();
-//        removeFromStorage(sweet);
-//        if (counter == amount) {
-//          return;
-//        }
-//      }
-//    }
   }
+
 
   public void removeFromStorage(Sweet sweet) {
     candyShop.remove(sweet);
@@ -73,13 +64,11 @@ public class CandyShop {
   public String toString() {
     int nrOfCandies = findNumberOfCandies();
     return "Inventory: "
-        + candyShop.size()
-        + " sweets,"
         + nrOfCandies
         + " candies, "
         + (candyShop.size() - nrOfCandies) + " lollipops, Income: "
         + moneyIncome
-        + "$ Sugar: "
+        + "$, Sugar: "
         + sugarInventory
         + " gr.";
   }

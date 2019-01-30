@@ -1,4 +1,4 @@
-public abstract class Sweet {
+public class Sweet {
 
   private String type;
   private int sugarAmount;
@@ -6,12 +6,15 @@ public abstract class Sweet {
   private int unitPriceSugar;
 
   public Sweet(String type, int sugarAmount) {
-    this.unitSellingPriceSweet = calculateSellingPrice();
     this.unitPriceSugar = 2;
     this.sugarAmount = sugarAmount;
     this.type = type;
+    this.unitSellingPriceSweet = calculateUnitPrice();
   }
 
+  public int calculateUnitPrice() {
+    return this.sugarAmount * unitPriceSugar;
+  }
 
   public String getType() {
     return type;
@@ -20,8 +23,6 @@ public abstract class Sweet {
   public void setType(String type) {
     this.type = type;
   }
-
-  public abstract int calculateSellingPrice();
 
   public int getUnitSellingPriceSweet() {
     return unitSellingPriceSweet;
