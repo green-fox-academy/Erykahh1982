@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>NewsLetterSubscription</title>
+    <link rel="stylesheet" type="text/css" href="NewsLetter_stylesheet.css" />
+  </head>
+    <body>
+      <header class='form-form'>
+        <h1>Newsletter Subscription Form</h1>
+      </header>
+        <form action='https://newsletter-ws.herokuapp.com/signup' method='POST' class='login-form'>
+            <div class='form-row'>
+                <label for='name'>NAME</label>
+                <input id='name' name='name' type='text' autofocus required minlength="3"/>
+            </div>
+            <div class='form-row'>
+                <label for='email'>E-MAIL</label>
+                <input id='email' name='email' type='email' required/>
+            </div> 
+            <div class='form-row'>
+                <button type="Submit">SignUp</button>
+            </div>
+        </form>
+    </body>
+</html>

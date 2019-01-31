@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    color:rgb(104, 104, 223);
+    background-color: rgb(238, 239, 240);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    line-height: 1.3;
+    display: block;
+  }
+  
+  header {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:white;
+    border: 1px solid #D6D9DC;
+    border-radius: 3px 3px 0 0;
+    border-bottom: none;
+    width: 40%;
+    margin: 50px auto 0;
+    padding: 50px 50px 0;
+  }
+  
+  h1 {
+    font-size: 30px;
+  }
+  
+  form {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 0 0 3px 3px;
+    border-top: none;
+    width: 40%;
+    padding: 50px;
+    margin: 0 auto;
+  }
+
+  input:focus{
+    outline:1px solid rgb(163, 68, 104);  
+  }
+
+  .form-row {
+    margin-bottom: 40px;
+    display: block;
+  }
+  
+  .form-row input[type='text'] {
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    width: 100%;
+    padding: 7px;
+    font-size: 14px;
+  }
+  .form-row input[type='email'] {
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    width: 100%;
+    padding: 7px;
+    font-size: 14px;
+  }
+  
+  .form-row label {
+    margin-bottom: 15px;
+  }
+
+  .form-row button {
+    font-size: 16px;  
+    color: #FFFFFF;
+    background-color: rgb(104, 104, 223);
+    border: none;
+    border-radius: 50px;
+    padding: 8px 15px;
+    margin: auto;
+    cursor: pointer;
+  }
+  
+  .form-row button:hover {
+    background-color:grey;
+  }
+  
+  .form-row button:active {
+    background-color:grey;
+  }
