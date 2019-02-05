@@ -11,12 +11,13 @@ import java.util.concurrent.atomic.AtomicLong;
 @Controller
 public class HelloWebController {
 
-  private AtomicLong countWebsiteLoad = new AtomicLong();
+  private AtomicLong countWebsiteLoad = new AtomicLong(1);
 
   @RequestMapping("/web/greeting")  // http://localhost:8080/web/greeting will show "Hello, Erika!"
   public String greeting(Model model) {
     model.addAttribute("username", " Erika");
-    return "greeting";   //I write "greeting" here, as my html template name is greeting.html , the program looks for the nem of the html file
+    model.addAttribute("counter",countWebsiteLoad.incrementAndGet());  //I again create an AtomicLong variable countWebsiteLoad which I connect with the html page via the attributeName, this is how they are linked. We have to use the method .incrementAndGet() of the AtomicLong type variable where the  attributeValue will use the countWebsiteLoad field
+    return "greeting";   //I write "greeting" here, as my html template name is greeting.html , the program looks for the name of the html file
   }
 
 //  @RequestMapping("/web/greeting")
