@@ -25,5 +25,4 @@ public class HelloWebController {
 //    model.addAttribute("username", " Erika");
 //    return "greeting";
 //  }
-
 }

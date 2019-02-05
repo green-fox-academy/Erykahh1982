@@ -17,7 +17,7 @@ public class HelloToAllTheWorldController {
       "Salve", "Ciao", "Kon-nichiwa", "An-nyong Ha-se-yo", "Salvëte", "Ni hao", "Dzien' dobry", "Olá", "Bunã ziua", "Zdravstvuyte", "Hola", "Jambo", "Hujambo", "Hej",
       "Sa-wat-dee", "Merhaba", "Selam", "Vitayu", "Xin chào", "Hylo", "Sut Mae", "Sholem Aleychem", "Sawubona"};
 
-  public String concatHellos(String[] strarray) {
+  public String concatHellos(String[] strarray) {     //with this method I display the String[] elements as a concatenated stand alone String aka newString
     StringBuilder stringBuilder = new StringBuilder();
     for (int i = 0; i < strarray.length; i++) {
       stringBuilder.append(strarray[i] + "  ");
@@ -26,11 +26,10 @@ public class HelloToAllTheWorldController {
     return newString;
   }
 
-  @RequestMapping("/web/greetings")  // http://localhost:8080/web/greeting will show "Hello, Erika!"
+  @RequestMapping("/web/greetings")  // http://localhost:8080/web/greetings will print String[]hellos on the page
   public String greeting(Model model) {
     model.addAttribute("concat", concatHellos(hellos));
     return "severalGreetings";
   }
-
 
 }
