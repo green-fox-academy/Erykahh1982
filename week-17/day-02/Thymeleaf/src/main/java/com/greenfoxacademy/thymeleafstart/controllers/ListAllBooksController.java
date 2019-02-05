@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class BookController {
+public class ListAllBooksController {
 
   private List<Book> books = new ArrayList<>();
 
-  public BookController() {
+  public ListAllBooksController() {
     books.add(new Book("Cat's Cradle", "Kurt Vonnegut", 1963));
     books.add(new Book("Do Androids Dream of Electric Sheep?", "Philip K. Dick", 1968));
   }
@@ -26,7 +26,7 @@ public class BookController {
     return "index";
   }
 
-  @GetMapping("/books")                                           //showBooks() with GetMapping annotation
+  @GetMapping("/books2")                                           //showBooks() with GetMapping annotation
   public String showBooks2(Model model) {
     model.addAttribute("books", books);
     return "index";
