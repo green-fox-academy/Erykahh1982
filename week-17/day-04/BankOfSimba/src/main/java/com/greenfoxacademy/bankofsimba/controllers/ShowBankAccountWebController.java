@@ -21,8 +21,4 @@ public class ShowBankAccountWebController {
     return "show";
   }
 
-  @RequestMapping(value = "/web/displaysentence", method = RequestMethod.GET)
-  public String displaysentence(){
-    return "displaysentence";
-  }
 }

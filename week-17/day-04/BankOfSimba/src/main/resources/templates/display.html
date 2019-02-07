@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Display a sentence with style</title>
+    </head>
+        <body>
+            <div>
+              <p th:utext="${sentence}"></p>
+                <p th:text="'example displayed with th:utext'" th:style="'color:blue'"></p>
+                <!--With th:utext attribute, the HTML tags are escaped, and the original sentence will be shown with style -->
+              <p th:text="${sentence}"></p>
+                <p th:text="'example displayed with th:text'" th:style="'color:red'"></p>
+                <!--With th:text attribute, the HTML tags are NOT be escaped, therefore the content will appear as if they were normal characters-->
+            </div>
+        </body>
+</html>
