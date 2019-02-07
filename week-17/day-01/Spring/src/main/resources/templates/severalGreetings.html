@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Hello to the WORLD!</title>
   </head>
     <body>
-        <p th:text="${concat}"><p/>
-    <!--this dynamic variable "concat" is the attributeName of my Model called in HelloToAllTheWorldController class, this is linking the 2 together, the HTML and the controller class -->
+    <p th:text="${hellos} + ' ' + ${name} + '!'" th:style="'color:' + ${color} +';font-size:' +${fontSize} + 'px'"></p>
+    <p th:text="'This website was loaded ' + ${counter} + ' times today ...'" th:style="'color:' + ${color}"></p>
+    <img src="http://www.stickpng.com/assets/images/58e8ff10eb97430e819064cc.png">
     </body>
 </html>
