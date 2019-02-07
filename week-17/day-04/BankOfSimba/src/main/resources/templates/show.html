@@ -5,10 +5,9 @@
     <link rel="stylesheet" th:href="@{/style.css}" />
     <meta charset="utf-8" />
 </head>
-<body>
-<div>
-    <p th:text="'The owner of this bank account is a ' + ${animalType} + ', whose name is '+ ${name} + ', whose actual balance is: ' + ${balance}"></p><p/>
-</div>
-
-</body>
+  <body>
+    <div>
+        <p th:text="'The owner of this bank account is a ' + ${animalType} + ', whose name is '+ ${name} + ', whose actual balance is: ' + ${#numbers.formatDecimal(balance,1,2,'POINT')} + ' Zebra'" th:style="'color:pink'"></p>
+    </div>
+  </body>
 </html>
