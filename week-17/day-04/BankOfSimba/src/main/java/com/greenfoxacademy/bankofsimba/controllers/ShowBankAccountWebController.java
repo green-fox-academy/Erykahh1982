@@ -37,4 +37,18 @@ public class ShowBankAccountWebController {
     return "showaccounts";
   }
 
+  @RequestMapping(value = "/web/showtable", method = RequestMethod.GET)
+  public String showtable(Model model) {
+    model.addAttribute("listOfAccounts", listOfAccountsInTheJungle);
+
+//    BankAccount selected = new BankAccount();
+//    for (int i = 0; i < listOfAccountsInTheJungle.size(); i++) {
+//      selected = listOfAccountsInTheJungle.get(i);
+//    }
+//    model.addAttribute("name", selected.getName());
+//    model.addAttribute("animalType", selected.getAnimalType());
+//    model.addAttribute("balance", selected.getBalance());
+    return "accountstable";
+  }
+
 }
