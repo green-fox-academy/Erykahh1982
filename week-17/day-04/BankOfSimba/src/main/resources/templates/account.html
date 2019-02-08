@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Show Bank of Simba</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8" />
+</head>
+<body>
+<div>
+    <p th:utext="'The <i>actual</i> status of the <b>selected account</b> in the jungle is'" th:style="'color:grey'"></p>
+
+    <div th:object="${account}">
+        <span th:text="'The account owner is a '"th:style="'color:grey'"></span>
+        <span th:text="*{animalType}" th:style="'color:lightblue'"></span>
+        <span th:text="' ,whose name is '"th:style="'color:grey'"></span>
+        <span th:text="*{name}" th:style="'color:lightblue'"></span>
+        <span th:text="' ,the actual balance shows: '" th:style="'color:grey'"></span>
+        <span th:text="*{#numbers.formatDecimal(balance,1,2,'POINT')}" th:style="'color:lightblue'"></span>
+        <span th:text="' Zebras'" th:style="'color:lightblue'"></span>
+    </div>
+
+</body>
+</html>

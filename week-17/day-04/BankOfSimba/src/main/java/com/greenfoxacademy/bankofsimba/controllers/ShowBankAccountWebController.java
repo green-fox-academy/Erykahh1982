@@ -13,26 +13,26 @@ import java.util.ArrayList;
 public class ShowBankAccountWebController {
 
   private BankAccount simba = new BankAccount("Simba", 2000, "lion");
-  private ArrayList<BankAccount>listOfAccountsInTheJungle = new ArrayList<>();
+  private ArrayList<BankAccount> listOfAccountsInTheJungle = new ArrayList<>();
 
-  ShowBankAccountWebController(){
-    listOfAccountsInTheJungle.add(new BankAccount("Zordon",1500,"lion"));
-    listOfAccountsInTheJungle.add(new BankAccount("Timon",500,"meerkat"));
-    listOfAccountsInTheJungle.add(new BankAccount("Zazu",750,"hornbill"));
-    listOfAccountsInTheJungle.add(new BankAccount("Pumba",1800,"warthog"));
-    listOfAccountsInTheJungle.add(new BankAccount("Rafiki",200,"mandrill"));
+  ShowBankAccountWebController() {
+    listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion"));
+    listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat"));
+    listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill"));
+    listOfAccountsInTheJungle.add(new BankAccount("Pumba", 1800, "warthog"));
+    listOfAccountsInTheJungle.add(new BankAccount("Rafiki", 200, "mandrill"));
   }
 
   @RequestMapping(value = "/web/show", method = RequestMethod.GET)
-  public String show(Model model){
-    model.addAttribute("name",simba.getName());
-    model.addAttribute("animalType",simba.getAnimalType());
+  public String show(Model model) {
+    model.addAttribute("name", simba.getName());
+    model.addAttribute("animalType", simba.getAnimalType());
     model.addAttribute("balance", simba.getBalance());
     return "show";
   }
 
   @GetMapping("/web/showaccounts")
-public String showaccounts(Model model){
+  public String showaccounts(Model model) {
     model.addAttribute("allAccounts", listOfAccountsInTheJungle);
     return "showaccounts";
   }

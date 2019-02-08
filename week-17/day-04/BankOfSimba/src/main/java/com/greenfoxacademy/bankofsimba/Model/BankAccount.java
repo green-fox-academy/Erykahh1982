@@ -6,6 +6,9 @@ public class BankAccount {
   private float balance;
   private String animalType;
 
+  public BankAccount() {
+  }
+
   public BankAccount(String name, float balance, String animalType) {
     this.name = name;
     this.balance = balance;
