@@ -11,6 +11,7 @@
                 <caption th:text="'The actual status of the accounts in the jungle is'" th:style="'color:cornflowerblue'" ></caption>
                 <thead th:style="'font-family:verdana'">
                     <tr>
+                        <th th:text="'Id'" th:style="'color:grey'" th:align="'left'" ></th>
                         <th th:text="'Name'" th:style="'color:grey'" th:align="'left'" ></th>
                         <th th:text="'Animal Type'" th:style="'color:grey'" th:align="'left'"></th>
                         <th th:text="'Balance'" th:style="'color:grey'" th:align="'left'"> </th>
@@ -18,6 +19,7 @@
                 </thead>
                 <tbody th:each="account: ${allAccounts}">
                     <tr>
+                        <td th:text="${accountStat.index} + 1" th:style="'color:darkgrey'" th:align="'left'"></td>
                         <td th:text="${account.name}" th:style="'color:darkgrey'" th:align="'left'"></td>
                         <td th:text="${account.animalType}" th:style="'color:darkgrey'" th:align="'left'"></td>
                         <td th:text="${#numbers.formatDecimal(account.balance,1,2,'POINT')}" th:style="'color:darkgrey'" th:align="'left'"></td>
