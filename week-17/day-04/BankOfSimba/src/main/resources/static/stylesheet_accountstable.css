@@ -1,47 +1,5 @@
-div {
-    background-color: rgb(62, 103, 238);
-    padding: 25px;
-    width: 500px;
-    margin: auto;
-}
-
-table{
-    border-radius: 5px;
-    border-collapse: separate;
-    background-color: rgb(104, 104, 107);
-}
-
-th, caption{
-    text-align: left;
-}
-caption{
-    color: rgb(239, 240, 245);
-    padding: 10px;
-}
-
-table, th, td{
-    font-family: Arial;
-    font-size: 18px;
-    color: rgb(95, 94, 94);
-}
-
-th, td{
-    padding: 15px;
-    width: 250px;
-    text-align: left;
-    border: none;
-    border-collapse: collapse;
-}
-
-th {
-    background-color: black;
-    color: rgb(164, 164, 167);
-}
-
-tr:nth-child(even){
-    background-color: lightgrey;
-}
-
-tr:nth-child(odd){
-    background-color:white;
+.caption{
+    background-color: aqua;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 15px;
 }

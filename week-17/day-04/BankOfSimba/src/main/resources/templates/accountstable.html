@@ -2,31 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Show Bank Accounts Of The Jungle</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name ="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="static/stylesheet_accountstable.css" />
+    <!--link rel="stylesheet" type="text/css" href="static/stylesheet_accountstable.css" />-->
     <meta charset="utf-8" />
 </head>
     <body>
         <div>
             <table>
-                <caption>The actual status of the selected account in the jungle is</caption>
-                <tr>
-                    <th>Name</th>
-                    <th>Animal Type</th>
-                    <th>Balance</th>
-                </tr>
-                <tr>
-                    <div th:each="bankaccount : ${listOfAccounts}">
-                        <div th:object="${bankaccount}">
-                            <div>
-                                <td th:text="*{name}"></td>
-                                <td th:text="*{animalType}"></td>
-                                <td th:text="*{#numbers.formatDecimal(balance,1,2,'POINT')}"></td>
-                            </div>
-                        </div>
-                    </div>
-                </tr>
+                <caption th:text="'The actual status of the accounts in the jungle is'" th:style="'color:cornflowerblue'" ></caption>
+                <thead th:style="'font-family:verdana'">
+                    <tr>
+                        <th th:text="'Name'" th:style="'color:grey'" th:align="'left'" ></th>
+                        <th th:text="'Animal Type'" th:style="'color:grey'" th:align="'left'"></th>
+                        <th th:text="'Balance'" th:style="'color:grey'" th:align="'left'"> </th>
+                    </tr>
+                </thead>
+                <tbody th:each="account: ${allAccounts}">
+                    <tr>
+                        <td th:text="${account.name}" th:style="'color:darkgrey'" th:align="'left'"></td>
+                        <td th:text="${account.animalType}" th:style="'color:darkgrey'" th:align="'left'"></td>
+                        <td th:text="${#numbers.formatDecimal(account.balance,1,2,'POINT')}" th:style="'color:darkgrey'" th:align="'left'"></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </body>

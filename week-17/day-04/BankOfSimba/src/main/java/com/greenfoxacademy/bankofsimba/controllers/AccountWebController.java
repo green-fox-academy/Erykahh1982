@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.ArrayList;
 
 @Controller
-public class ShowBankAccountWebController {
+public class AccountWebController {
 
   private BankAccount simba = new BankAccount("Simba", 2000, "lion");
   private ArrayList<BankAccount> listOfAccountsInTheJungle = new ArrayList<>();
 
-  ShowBankAccountWebController() {
+  AccountWebController() {
     listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion"));
     listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat"));
     listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill"));
@@ -37,17 +37,9 @@ public class ShowBankAccountWebController {
     return "showaccounts";
   }
 
-  @RequestMapping(value = "/web/showtable", method = RequestMethod.GET)
+  @GetMapping("/web/showtable")
   public String showtable(Model model) {
-    model.addAttribute("listOfAccounts", listOfAccountsInTheJungle);
-
-//    BankAccount selected = new BankAccount();
-//    for (int i = 0; i < listOfAccountsInTheJungle.size(); i++) {
-//      selected = listOfAccountsInTheJungle.get(i);
-//    }
-//    model.addAttribute("name", selected.getName());
-//    model.addAttribute("animalType", selected.getAnimalType());
-//    model.addAttribute("balance", selected.getBalance());
+    model.addAttribute("allAccounts", listOfAccountsInTheJungle);
     return "accountstable";
   }
 

@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 
 @RestController
-public class RESTShowBankAccountController {
+public class RESTAccountController {
 
   private ArrayList<BankAccount> listOfAccountsInTheJungle = new ArrayList<>();
 
-  public RESTShowBankAccountController() {
+  public RESTAccountController() {
     listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion"));
     listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat"));
     listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill"));
