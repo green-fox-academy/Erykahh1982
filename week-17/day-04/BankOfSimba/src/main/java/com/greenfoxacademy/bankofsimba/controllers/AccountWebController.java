@@ -12,18 +12,18 @@ import java.util.ArrayList;
 @Controller
 public class AccountWebController {
 
-  private BankAccount simba = new BankAccount("Simba", 2000, "lion",true, false);
+  private BankAccount simba = new BankAccount("Simba", 2000, "lion", true, false);
   private ArrayList<BankAccount> listOfAccountsInTheJungle = new ArrayList<>();
 
   AccountWebController() {
     listOfAccountsInTheJungle.add(simba);
-    listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion",false, true));
-    listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat",false, false));
-    listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill",false, false));
-    listOfAccountsInTheJungle.add(new BankAccount("Pumba", 1800, "warthog",false, false));
-    listOfAccountsInTheJungle.add(new BankAccount("Rafiki", 200, "mandrill",false, false));
-    listOfAccountsInTheJungle.add(new BankAccount("Shenzi", 350, "hyena",false, true));
-    listOfAccountsInTheJungle.add(new BankAccount("Ed", 450, "hyena",false, true));
+    listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion", false, true));
+    listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat", false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill", false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Pumba", 1800, "warthog", false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Rafiki", 200, "mandrill", false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Shenzi", 350, "hyena", false, true));
+    listOfAccountsInTheJungle.add(new BankAccount("Ed", 450, "hyena", false, true));
   }
 
   @RequestMapping(value = "/web/show", method = RequestMethod.GET)
@@ -48,7 +48,7 @@ public class AccountWebController {
   }
 
   @GetMapping("web/showtablebadguy")
-  public String showtableGadguy(Model model){
+  public String showtableGadguy(Model model) {
     model.addAttribute("allAccounts", listOfAccountsInTheJungle);
     return "accountstablebadguy";
   }
@@ -59,11 +59,25 @@ public class AccountWebController {
   }
 
   @RequestMapping(value = "web/add", method = RequestMethod.POST)
-  public String addBankAccount(BankAccount bankAccount){
+  public String addBankAccount(BankAccount bankAccount) {
     listOfAccountsInTheJungle.add(bankAccount);
     return "redirect:/web/showtablebadguy";
   }
 
+  @RequestMapping(value = "/web/donateanimal", method = RequestMethod.GET)
+  public String renderDonateFormPage() {
+    return "donateanimal";
+  }
 
+  @RequestMapping(value = "web/donateanimal", method = RequestMethod.POST)
+  public String donateAnimal(BankAccount bankAccount) {
+
+    for (int i = 0; i <listOfAccountsInTheJungle.size() ; i++) {
+      bankAccount.getName();
+    }
+
+    bankAccount.raiseBalance();
+    return "redirect:/web/showtablebadguy";
+  }
 
 }
