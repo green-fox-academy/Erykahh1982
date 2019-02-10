@@ -18,6 +18,8 @@
         <span th:text="' ,the actual balance shows: '" th:style="'color:grey'"></span>
         <span th:text="*{#numbers.formatDecimal(balance,1,2,'POINT')}" th:style="'color:lightblue'"></span>
         <span th:text="' Zebras'" th:style="'color:lightblue'"></span>
+        <span th:text="' , and is King of The Jungle: '" th:style="'color:grey'"></span>
+        <span th:text="*{kingOfJungle}" th:style="'color:lightblue'"></span>
     </div>
 </div>
 </body>

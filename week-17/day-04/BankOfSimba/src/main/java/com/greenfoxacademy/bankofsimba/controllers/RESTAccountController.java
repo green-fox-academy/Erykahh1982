@@ -13,16 +13,17 @@ public class RESTAccountController {
   private ArrayList<BankAccount> listOfAccountsInTheJungle = new ArrayList<>();
 
   public RESTAccountController() {
-    listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion"));
-    listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat"));
-    listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill"));
-    listOfAccountsInTheJungle.add(new BankAccount("Pumba", 1800, "warthog"));
-    listOfAccountsInTheJungle.add(new BankAccount("Rafiki", 200, "mandrill"));
+    listOfAccountsInTheJungle.add(new BankAccount("Simba", 2000, "lion",true));
+    listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion", false));
+    listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat", false));
+    listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill",false));
+    listOfAccountsInTheJungle.add(new BankAccount("Pumba", 1800, "warthog",false));
+    listOfAccountsInTheJungle.add(new BankAccount("Rafiki", 200, "mandrill",false));
   }
 
   @RequestMapping(value = "/show")
   public BankAccount show() {
-    BankAccount bankAccount = new BankAccount("Simba", 2000, "lion");
+    BankAccount bankAccount = new BankAccount("Simba", 2000, "lion", false);
     return bankAccount;
   }
 

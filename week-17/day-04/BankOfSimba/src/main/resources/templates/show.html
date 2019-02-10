@@ -7,7 +7,7 @@
 </head>
   <body>
     <div>
-        <p th:text="'The owner of this bank account is a ' + ${animalType} + ', whose name is '+ ${name} + ', whose actual balance is: ' + ${#numbers.formatDecimal(balance,1,2,'POINT')} + ' Zebra'" th:style="'color:pink'"></p>
+        <p th:text="'The owner of this bank account is a ' + ${animalType} + ', whose name is '+ ${name} + ', whose actual balance is: ' + ${#numbers.formatDecimal(balance,1,2,'POINT')} + ' Zebra' + ' ,and he is a kingOfJungle: ' + ${kingOfJungle}" th:style="'color:pink'"></p>
     </div>
   </body>
 </html>

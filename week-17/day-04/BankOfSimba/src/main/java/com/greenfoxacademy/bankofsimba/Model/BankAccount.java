@@ -5,14 +5,16 @@ public class BankAccount {
   private String name;
   private float balance;
   private String animalType;
+  private boolean kingOfJungle;
 
   public BankAccount() {
   }
 
-  public BankAccount(String name, float balance, String animalType) {
+  public BankAccount(String name, float balance, String animalType, boolean kingOfJungle) {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
+    this.kingOfJungle = kingOfJungle;
   }
 
   public String getName() {
@@ -37,5 +39,13 @@ public class BankAccount {
 
   public void setAnimalType(String animalType) {
     this.animalType = animalType;
+  }
+
+  public boolean isKingOfJungle() {
+    return kingOfJungle;
+  }
+
+  public void setKingOfJungle(boolean kingOfJungle) {
+    this.kingOfJungle = kingOfJungle;
   }
 }

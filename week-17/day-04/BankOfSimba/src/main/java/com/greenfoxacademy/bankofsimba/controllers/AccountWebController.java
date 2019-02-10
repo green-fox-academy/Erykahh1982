@@ -12,15 +12,16 @@ import java.util.ArrayList;
 @Controller
 public class AccountWebController {
 
-  private BankAccount simba = new BankAccount("Simba", 2000, "lion");
+  private BankAccount simba = new BankAccount("Simba", 2000, "lion",true);
   private ArrayList<BankAccount> listOfAccountsInTheJungle = new ArrayList<>();
 
   AccountWebController() {
-    listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion"));
-    listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat"));
-    listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill"));
-    listOfAccountsInTheJungle.add(new BankAccount("Pumba", 1800, "warthog"));
-    listOfAccountsInTheJungle.add(new BankAccount("Rafiki", 200, "mandrill"));
+    listOfAccountsInTheJungle.add(simba);
+    listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion",false));
+    listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat",false));
+    listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill",false));
+    listOfAccountsInTheJungle.add(new BankAccount("Pumba", 1800, "warthog",false));
+    listOfAccountsInTheJungle.add(new BankAccount("Rafiki", 200, "mandrill",false));
   }
 
   @RequestMapping(value = "/web/show", method = RequestMethod.GET)
@@ -28,6 +29,7 @@ public class AccountWebController {
     model.addAttribute("name", simba.getName());
     model.addAttribute("animalType", simba.getAnimalType());
     model.addAttribute("balance", simba.getBalance());
+    model.addAttribute("isKing", simba.isKingOfJungle());
     return "show";
   }
 
