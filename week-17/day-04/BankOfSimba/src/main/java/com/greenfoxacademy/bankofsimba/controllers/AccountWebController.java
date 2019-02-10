@@ -53,10 +53,17 @@ public class AccountWebController {
     return "accountstablebadguy";
   }
 
-  @RequestMapping("/web/add")
-  public String renderFormPage(){
+  @RequestMapping(value = "/web/add", method = RequestMethod.GET)
+  public String renderFormPage() {
     return "addbankaccount";
   }
+
+  @RequestMapping(value = "web/add", method = RequestMethod.POST)
+  public String addBankAccount(BankAccount bankAccount){
+    listOfAccountsInTheJungle.add(bankAccount);
+    return "redirect:/web/showtablebadguy";
+  }
+
 
 
 }
