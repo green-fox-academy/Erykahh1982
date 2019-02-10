@@ -6,15 +6,17 @@ public class BankAccount {
   private float balance;
   private String animalType;
   private boolean kingOfJungle;
+  private boolean badGuy;
 
   public BankAccount() {
   }
 
-  public BankAccount(String name, float balance, String animalType, boolean kingOfJungle) {
+  public BankAccount(String name, float balance, String animalType, boolean kingOfJungle, boolean badGuy) {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
     this.kingOfJungle = kingOfJungle;
+    this.badGuy = badGuy;
   }
 
   public String getName() {
@@ -47,5 +49,13 @@ public class BankAccount {
 
   public void setKingOfJungle(boolean kingOfJungle) {
     this.kingOfJungle = kingOfJungle;
+  }
+
+  public boolean isBadGuy() {
+    return badGuy;
+  }
+
+  public void setBadGuy(boolean badGuy) {
+    this.badGuy = badGuy;
   }
 }

@@ -13,17 +13,19 @@ public class RESTAccountController {
   private ArrayList<BankAccount> listOfAccountsInTheJungle = new ArrayList<>();
 
   public RESTAccountController() {
-    listOfAccountsInTheJungle.add(new BankAccount("Simba", 2000, "lion",true));
-    listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion", false));
-    listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat", false));
-    listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill",false));
-    listOfAccountsInTheJungle.add(new BankAccount("Pumba", 1800, "warthog",false));
-    listOfAccountsInTheJungle.add(new BankAccount("Rafiki", 200, "mandrill",false));
+    listOfAccountsInTheJungle.add(new BankAccount("Simba", 2000, "lion",true, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion",false, true));
+    listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat",false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill",false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Pumba", 1800, "warthog",false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Rafiki", 200, "mandrill",false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Shenzi", 350, "hyena",false, true));
+    listOfAccountsInTheJungle.add(new BankAccount("Ed", 450, "hyena",false, true));
   }
 
   @RequestMapping(value = "/show")
   public BankAccount show() {
-    BankAccount bankAccount = new BankAccount("Simba", 2000, "lion", false);
+    BankAccount bankAccount = new BankAccount("Simba", 2000, "lion", false, false);
     return bankAccount;
   }
 

@@ -12,16 +12,18 @@ import java.util.ArrayList;
 @Controller
 public class AccountWebController {
 
-  private BankAccount simba = new BankAccount("Simba", 2000, "lion",true);
+  private BankAccount simba = new BankAccount("Simba", 2000, "lion",true, false);
   private ArrayList<BankAccount> listOfAccountsInTheJungle = new ArrayList<>();
 
   AccountWebController() {
     listOfAccountsInTheJungle.add(simba);
-    listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion",false));
-    listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat",false));
-    listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill",false));
-    listOfAccountsInTheJungle.add(new BankAccount("Pumba", 1800, "warthog",false));
-    listOfAccountsInTheJungle.add(new BankAccount("Rafiki", 200, "mandrill",false));
+    listOfAccountsInTheJungle.add(new BankAccount("Zordon", 1500, "lion",false, true));
+    listOfAccountsInTheJungle.add(new BankAccount("Timon", 500, "meerkat",false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Zazu", 750, "hornbill",false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Pumba", 1800, "warthog",false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Rafiki", 200, "mandrill",false, false));
+    listOfAccountsInTheJungle.add(new BankAccount("Shenzi", 350, "hyena",false, true));
+    listOfAccountsInTheJungle.add(new BankAccount("Ed", 450, "hyena",false, true));
   }
 
   @RequestMapping(value = "/web/show", method = RequestMethod.GET)
@@ -43,6 +45,12 @@ public class AccountWebController {
   public String showtable(Model model) {
     model.addAttribute("allAccounts", listOfAccountsInTheJungle);
     return "accountstable";
+  }
+
+  @GetMapping("web/showtablebadguy")
+  public String showtableGadguy(Model model){
+    model.addAttribute("allAccounts", listOfAccountsInTheJungle);
+    return "accountstablebadguy";
   }
 
 }

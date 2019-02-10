@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Show Bank Accounts Of The Jungle</title>
+    <!--link rel="stylesheet" type="text/css" href="static/stylesheet_accountstable.css" />-->
+    <meta charset="utf-8" />
+</head>
+<body>
+<div>
+    <table>
+        <caption th:utext="'<strong>The actual status of the accounts in the jungle is</strong>'" th:style="'color:cornflowerblue'" ></caption>
+        <thead th:style="'font-family:verdana'">
+        <tr>
+            <th th:text="'Id'" th:style="'color:grey'" th:align="'left'" ></th>
+            <th th:text="'Name'" th:style="'color:grey'" th:align="'left'" ></th>
+            <th th:text="'Animal Type'" th:style="'color:grey'" th:align="'left'"></th>
+            <th th:text="'Balance'" th:style="'color:grey'" th:align="'left'"> </th>
+            <th th:text="'Is a King?'" th:style="'color:grey'" th:align="'left'"> </th>
+            <th th:text="'Good or Bad Guy?'" th:style="'color:grey'" th:align="'left'"> </th>
+        </tr>
+        </thead>
+        <tbody th:each="account : ${allAccounts}">
+        <tr th:style="${account.kingOfJungle} ? 'color:magenta' : 'color:darkgrey'">
+            <td th:text="${accountStat.index} + 1" th:style="'color:darkgrey'" th:align="'left'"></td>
+            <td th:text="${account.name}" th:style="'color:darkgrey'" th:align="'left'"></td>
+            <td th:text="${account.animalType}" th:style="'color:darkgrey'" th:align="'left'"></td>
+            <td th:text="${#numbers.formatDecimal(account.balance,1,2,'POINT')}" th:style="'color:darkgrey'" th:align="'left'"></td>
+            <td th:utext="${account.kingOfJungle} ? '<strong>Yes</strong>' : 'No'"></td>
+            <td th:switch="${account.badGuy}">
+                <span th:case="true" th:style="'color:tomato'">Bad Guy  || :-(</span>
+                <span th:case="false" th:style="'color:mediumspringgreen'">Good Guy  || :-)</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
