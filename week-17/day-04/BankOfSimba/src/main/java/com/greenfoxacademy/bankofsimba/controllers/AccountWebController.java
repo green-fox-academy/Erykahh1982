@@ -53,4 +53,9 @@ public class AccountWebController {
     return "accountstablebadguy";
   }
 
+  @RequestMapping("/web/add")
+  public String renderFormPage(){
+    return "addbankaccount";
+  }
+
 }

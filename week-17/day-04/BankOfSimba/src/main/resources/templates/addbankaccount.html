@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Bank Account</title>
+</head>
+  <body>
+    <h1>Widen the heroes of the Jungle</h1>
+        <div>
+            <form action="add" method="post">
+                <label for="name">Animal Name</label>
+                <input type="text" placeholder="Animal Name" name="name" id="name" required>
+                <label for="balance">Balance</label>
+                <input type="number" placeholder="Balance" name="balance" id="balance" required>
+                <label for="animalType">Animal Type</label>
+                <input type="text" placeholder="Animal Type" name="animalType" id="animalType" required>
+                <label for="kingOfJungle">Is King Of Jungle?</label>
+                <input type="radio" placeholder="King Of Jungle?" name="kingOfJungle" id="kingOfJungle">
+                <label for="badGuy">Good or Bad Guy?</label>
+                <input type="radio" placeholder="Bad Guy?" name="badGUy" id="badGuy">
+                <button type="submit">Add</button>
+            </form>
+        </div>
+  </body>
+</html>

@@ -19,6 +19,15 @@ public class BankAccount {
     this.badGuy = badGuy;
   }
 
+  public float raiseBalance() {
+    if (this.kingOfJungle) {
+      balance += 100;
+    } else {
+      balance += 10;
+    }
+    return balance;
+  }
+
   public String getName() {
     return name;
   }
