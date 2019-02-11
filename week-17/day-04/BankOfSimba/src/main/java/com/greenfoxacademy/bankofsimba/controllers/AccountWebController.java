@@ -82,7 +82,7 @@ public class AccountWebController {
           account.setBalance((account.getBalance() + 10));
         }
       }
-    return "redirect:/web/showtablebadguy";
+    return "redirect:showfinal";
   }
 
   @RequestMapping(value = "web/showfinal",method = RequestMethod.GET)
