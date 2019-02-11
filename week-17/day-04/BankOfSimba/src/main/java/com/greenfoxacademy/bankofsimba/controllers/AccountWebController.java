@@ -62,7 +62,7 @@ public class AccountWebController {
   @RequestMapping(value = "web/add", method = RequestMethod.POST)
   public String addBankAccount(BankAccount bankAccount) {
     listOfAccountsInTheJungle.add(bankAccount);
-    return "redirect:/web/showtablebadguy";
+    return "redirect:showfinal";
   }
 
   @RequestMapping(value = "web/donateanimal", method = RequestMethod.GET)
