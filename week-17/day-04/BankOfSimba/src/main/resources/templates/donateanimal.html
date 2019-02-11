@@ -7,8 +7,8 @@
     <body>
         <h1>Donate a lucky one from the Jungle</h1>
             <div>
-                <form action="select" method="post">
-                <select name="Name of the Animal">
+                <form th:action="@{/web/donateanimal}" method="post">
+                <select th:object="${name}">
                     <option value="simba">Simba</option>
                     <option value="zordon">Zordon</option>
                     <option value="timon">Timon</option>
@@ -18,10 +18,10 @@
                     <option value="shenzi">Shenzi</option>
                     <option value="ed">Ed</option>
                 </select>
-                <button type="submit">Donate</button>
+                    <input type="submit" value="Donate" />
                 </form>
                 <br>
-                <img src="https://www.pngrepo.com/png/158263/170/give-money.png">
+                <img src="/give-money-pngrepo-com.png">
             </div>
     </body>
 </html>

@@ -7,17 +7,17 @@
 </head>
 <body>
 <div>
-    <img src="/the-lion-king-original (1).jpg">
+    <img src="https://d13ezvd6yrslxm.cloudfront.net/wp/wp-content/images/the-lion-king-1.jpg">
     <table>
-        <caption th:utext="'<strong>The actual status of the accounts in the jungle is</strong>'" th:style="'color:cornflowerblue'" ></caption>
+        <caption th:utext="'<strong>The actual status of the accounts in the jungle is</strong>'"></caption>
         <thead th:style="'font-family:verdana'">
         <tr>
-            <th th:text="'Id'" th:style="'color:grey'" th:align="'left'" ></th>
-            <th th:text="'Name'" th:style="'color:grey'" th:align="'left'" ></th>
-            <th th:text="'Animal Type'" th:style="'color:grey'" th:align="'left'"></th>
-            <th th:text="'Balance'" th:style="'color:grey'" th:align="'left'"> </th>
-            <th th:text="'Is a King?'" th:style="'color:grey'" th:align="'left'"> </th>
-            <th th:text="'Good or Bad Guy?'" th:style="'color:grey'" th:align="'left'"> </th>
+            <th th:text="'Id'"></th>
+            <th th:text="'Name'"></th>
+            <th th:text="'Animal Type'"></th>
+            <th th:text="'Balance'" ></th>
+            <th th:text="'Is a King?'" ></th>
+            <th th:text="'Good or Bad Guy?'"></th>
         </tr>
         </thead>
         <tbody th:each="account : ${allAccounts}">

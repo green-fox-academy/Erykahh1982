@@ -64,18 +64,18 @@ public class AccountWebController {
     return "redirect:/web/showtablebadguy";
   }
 
-  @RequestMapping(value = "/web/donateanimal", method = RequestMethod.GET)
-  public String renderDonateFormPage() {
+  @RequestMapping(value = "web/donateanimal", method = RequestMethod.GET)
+  public String renderDonateFormPage(Model model) {
+    String name = new String();
+    for (BankAccount account : listOfAccountsInTheJungle) {
+      name = account.getName();
+    }
+    model.addAttribute("name", name);
     return "donateanimal";
   }
 
   @RequestMapping(value = "web/donateanimal", method = RequestMethod.POST)
   public String donateAnimal(BankAccount bankAccount) {
-
-    for (int i = 0; i <listOfAccountsInTheJungle.size() ; i++) {
-      bankAccount.getName();
-    }
-
     bankAccount.raiseBalance();
     return "redirect:/web/showtablebadguy";
   }
