@@ -1,12 +1,31 @@
 body{
     background-image: url(lionking.jpg);
     position: relative;
-    opacity: 0.65;
+    opacity: 50%;
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
-    color: white;
 }
+table{
+    display: block;
+    border-radius: 5px;
+    border-collapse: separate;
+}
+
 td{
     color: honeydew;
 }
+tr{
+    color: goldenrod;
+}
+
+h2{
+    color: goldenrod;
+}
+p{
+    color: blue;
+}
+
+
+
+

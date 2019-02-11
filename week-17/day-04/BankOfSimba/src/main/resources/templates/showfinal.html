@@ -25,7 +25,7 @@
             <td th:text="${accountStat.index} + 1"></td>
             <td th:text="${account.name}"></td>
             <td th:text="${account.animalType}"></td>
-            <td th:text="${#numbers.formatDecimal(account.balance,1,2,'POINT')}"></td>
+            <td th:text="${#numbers.formatDecimal(account.balance,1,2,'POINT')} + ' ' + ${account.CURRENCY}"></td>
             <td th:utext="${account.kingOfJungle} ? 'Yes' : 'No'"></td>
             <td th:switch="${account.badGuy}">
                 <span th:case="true">Bad Guy</span>

@@ -8,6 +8,8 @@ public class BankAccount {
   private boolean kingOfJungle;
   private boolean badGuy;
 
+  public static final String CURRENCY = "Zebras";
+
   public BankAccount() {
   }
 
