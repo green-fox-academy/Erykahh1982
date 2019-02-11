@@ -3,7 +3,7 @@ package com.greenfoxacademy.bankofsimba.Model;
 public class BankAccount {
 
   private String name;
-  private float balance;
+  private int balance;
   private String animalType;
   private boolean kingOfJungle;
   private boolean badGuy;
@@ -11,7 +11,7 @@ public class BankAccount {
   public BankAccount() {
   }
 
-  public BankAccount(String name, float balance, String animalType, boolean kingOfJungle, boolean badGuy) {
+  public BankAccount(String name, int balance, String animalType, boolean kingOfJungle, boolean badGuy) {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
@@ -36,11 +36,11 @@ public class BankAccount {
     this.name = name;
   }
 
-  public double getBalance() {
+  public int getBalance() {
     return balance;
   }
 
-  public void setBalance(float balance) {
+  public void setBalance(int balance) {
     this.balance = balance;
   }
 

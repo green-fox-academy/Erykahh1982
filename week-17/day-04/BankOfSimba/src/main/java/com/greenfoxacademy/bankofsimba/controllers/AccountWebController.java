@@ -4,6 +4,7 @@ import com.greenfoxacademy.bankofsimba.Model.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -66,18 +67,28 @@ public class AccountWebController {
 
   @RequestMapping(value = "web/donateanimal", method = RequestMethod.GET)
   public String renderDonateFormPage(Model model) {
-    String name = new String();
-    for (BankAccount account : listOfAccountsInTheJungle) {
-      name = account.getName();
-    }
-    model.addAttribute("name", name);
+    model.addAttribute("allAccounts", listOfAccountsInTheJungle);
     return "donateanimal";
   }
 
   @RequestMapping(value = "web/donateanimal", method = RequestMethod.POST)
-  public String donateAnimal(BankAccount bankAccount) {
-    bankAccount.raiseBalance();
+  public String donateAnimal(@ModelAttribute(value = "animalName") String name) {
+
+    for (BankAccount account : listOfAccountsInTheJungle)
+      if (account.getName().equalsIgnoreCase(name)) {
+        if (account.isKingOfJungle()) {
+          account.setBalance((account.getBalance() + 100));
+        } else {
+          account.setBalance((account.getBalance() + 10));
+        }
+      }
     return "redirect:/web/showtablebadguy";
+  }
+
+  @RequestMapping(value = "web/showfinal",method = RequestMethod.GET)
+  public String showfinal(Model model){
+    model.addAttribute("allAccount", listOfAccountsInTheJungle);
+    return "showfinal";
   }
 
 }

@@ -2,39 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Show Bank Accounts Of The Jungle</title>
-    <!--link rel="stylesheet" type="text/css" href="static/stylesheet_accountstable.css" />-->
+    <!--link rel="stylesheet" type="text/css" href="static/stylesheetShowfinal.css" />-->
     <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheetShowfinal.css"/>
 </head>
 <body>
 <div>
-    <img src="https://d13ezvd6yrslxm.cloudfront.net/wp/wp-content/images/the-lion-king-1.jpg">
     <table>
-        <caption th:utext="'<strong>The actual status of the accounts in the jungle is</strong>'"></caption>
-        <thead th:style="'font-family:verdana'">
+        <h2 th:text="'The actual status of the accounts in the jungle is'"></h2>
+        <thead>
         <tr>
-            <th th:text="'Id'"></th>
-            <th th:text="'Name'"></th>
-            <th th:text="'Animal Type'"></th>
-            <th th:text="'Balance'" ></th>
-            <th th:text="'Is a King?'" ></th>
-            <th th:text="'Good or Bad Guy?'"></th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Animal</th>
+            <th>Balance</th>
+            <th>Is a King?</th>
+            <th>Good or Bad Guy?</th>
         </tr>
         </thead>
-        <tbody th:each="account : ${allAccounts}">
-        <tr th:style="${account.kingOfJungle} ? 'color:magenta' : 'color:darkgrey'">
-            <td th:text="${accountStat.index} + 1" th:style="'color:darkgrey'" th:align="'left'"></td>
-            <td th:text="${account.name}" th:style="'color:darkgrey'" th:align="'left'"></td>
-            <td th:text="${account.animalType}" th:style="'color:darkgrey'" th:align="'left'"></td>
-            <td th:text="${#numbers.formatDecimal(account.balance,1,2,'POINT')}" th:style="'color:darkgrey'" th:align="'left'"></td>
-            <td th:utext="${account.kingOfJungle} ? '<strong>Yes</strong>' : 'No'"></td>
+        <tbody th:each="account : ${allAccount}">
+        <tr th:style="${account.kingOfJungle} ? 'color:magenta' : 'color:black'">
+            <td th:text="${accountStat.index} + 1"></td>
+            <td th:text="${account.name}"></td>
+            <td th:text="${account.animalType}"></td>
+            <td th:text="${#numbers.formatDecimal(account.balance,1,2,'POINT')}"></td>
+            <td th:utext="${account.kingOfJungle} ? 'Yes' : 'No'"></td>
             <td th:switch="${account.badGuy}">
-                <span th:case="true" th:style="'color:tomato'">Bad Guy  || :-(</span>
-                <span th:case="false" th:style="'color:mediumspringgreen'">Good Guy  || :-)</span>
+                <span th:case="true">Bad Guy</span>
+                <span th:case="false">Good Guy</span>
             </td>
         </tr>
         </tbody>
     </table>
-    <p><em>If you wish to widen the heroes of the Jungle</em>, <a href="http://localhost:8080/web/add"> Click here!</a></p>
-    <p><em>If you wish to donate the heroes of the Jungle</em>, <a href="http://localhost:8080/web/donateanimal"> Click here!</a></p>
+    <p>If you wish to widen the heroes of the Jungle, <a href="http://localhost:8080/web/add"> Click here!</a></p>
+    <p>If you wish to donate the heroes of the Jungle, <a href="http://localhost:8080/web/donateanimal"> Click here!</a></p>
 </div>
 </body>

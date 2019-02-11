@@ -1,0 +1,12 @@
+body{
+    background-image: url(lionking.jpg);
+    position: relative;
+    opacity: 0.65;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+td{
+    color: honeydew;
+}

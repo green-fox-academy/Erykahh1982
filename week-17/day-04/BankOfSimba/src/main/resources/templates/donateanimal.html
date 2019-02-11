@@ -8,15 +8,8 @@
         <h1>Donate a lucky one from the Jungle</h1>
             <div>
                 <form th:action="@{/web/donateanimal}" method="post">
-                <select th:object="${name}">
-                    <option value="simba">Simba</option>
-                    <option value="zordon">Zordon</option>
-                    <option value="timon">Timon</option>
-                    <option value="zazu">Zazu</option>
-                    <option value="pumba">Pumba</option>
-                    <option value="rafiki">Rafiki</option>
-                    <option value="shenzi">Shenzi</option>
-                    <option value="ed">Ed</option>
+                <select id="animalName" name="animalName" class="animal-name">
+                    <option th:each="bankaccount : ${allAccounts}" th:value="${bankaccount.name}" th:text="${bankaccount.name}"></option>
                 </select>
                     <input type="submit" value="Donate" />
                 </form>
