@@ -11,7 +11,7 @@ html {
 body{
     background-image: url(lionking.jpg);
     position: relative;
-    opacity: 20%;
+    opacity: 50%;
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,6 +19,11 @@ body{
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     flex-direction: column;
+}
+img{
+    align-items: baseline;
+    width:300px;
+    height: 400px;
 }
 
 h1 {
@@ -30,7 +35,7 @@ h1 {
     width: 30%;
     border: 1px solid darkgoldenrod;
     border-radius: 5px;
-    background-color: rgba(255, 215, 0, 0.5);
+    background-color: rgba(250, 222, 101, 0.45);
 }
 
 select{
@@ -38,7 +43,7 @@ select{
     color: rgba(138, 43, 226, 0.6);
     font-size: 17px;
     font-weight: bolder;
-    background-color: rgba(255, 215, 0, 0.5);
+    background-color: rgba(250, 222, 101, 0.45);
     border: 1px solid darkgoldenrod;
     border-radius:5px;
 }
@@ -47,11 +52,11 @@ input[type='submit']{
     color: rgba(138, 43, 226, 0.6);
     font-size: 17px;
     font-weight: bolder;
-    background-color: rgba(255, 215, 0, 0.5);
+    background-color: rgba(250, 222, 101, 0.45);
     border: 1px solid darkgoldenrod;
     border-radius:5px;
 }
 
-input:active{
+input[type='submit']:hover{
     color: rgba(138, 43, 226, 0.6);
 }
