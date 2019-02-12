@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Book {
 
-  private static final AtomicInteger count = new AtomicInteger(1);
+  private static final AtomicInteger count = new AtomicInteger(0);
   private int id;
   private String title;
   private String author;
@@ -14,7 +14,7 @@ public class Book {
     this.id = count.incrementAndGet();
   }
 
-  public Book(String title, String author, int releaseYear) {
+  public Book(String author, String title, int releaseYear) {
     this.id = count.incrementAndGet();
     this.title = title;
     this.author = author;

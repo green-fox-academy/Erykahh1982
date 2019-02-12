@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Display books</title>
+    <!--<link rel="stylesheet" type="text/css" href="\static\stylesheet_accountstable.css" />-->
+    <meta charset="utf-8" />
+</head>
+<body>
+<div>
+    <h1 th:utext="'Check out my <i>library</i> of <b>books</b>'" th:style="'color:grey'"></h1>
+</div>
+<div th:each="book : ${books}">
+    <div th:object="${book}">
+        <h4 th:text="*{id} + ' | ' + *{author} + ' | ' + *{title} + ' | ' + *{releaseYear}" th:style="'color:lightblue'"></h4>
+    </div>
+</div>
+</body>
+</html>
