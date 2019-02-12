@@ -32,7 +32,7 @@ public class BookController {
   @GetMapping("/books2")
   public String listBooks2(Model model){
     model.addAttribute("books", listOfBooks);
-    return "displaybooks";
+    return "displaybooks2";
   }
 
   public ArrayList<Book> getListOfBooks() {
