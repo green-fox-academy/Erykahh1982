@@ -5,14 +5,16 @@
     <!--<link rel="stylesheet" type="text/css" href="\static\stylesheet_accountstable.css" />-->
     <meta charset="utf-8" />
 </head>
-<body>
-<div>
-    <h1 th:utext="'Check out my <i>library</i> of <b>books</b>'" th:style="'color:grey'"></h1>
-</div>
-<div th:each="book : ${books}">
-    <div th:object="${book}">
-        <h4 th:text="*{id} + ' | ' + *{author} + ' | ' + *{title} + ' | ' + *{releaseYear}" th:style="'color:lightblue'"></h4>
-    </div>
-</div>
-</body>
+    <body>
+        <div>
+            <h1 th:utext="'Check out my <i>library</i> of <b>books</b>'" th:style="'color:grey'"></h1>
+        </div>
+        <div th:each="book : ${books}">
+            <div th:object="${book}">
+                <h4 th:text="*{id} + ' | ' + *{author} + ' | ' + *{title} + ' | ' + *{releaseYear}" th:style="'color:lightblue'"></h4>
+            </div>
+        </div>
+        <p>Widen the library,<a href="http://localhost:8080/books/add"> click here!</a></p>
+        <p>Check a book by ID,<a href="http://localhost:8080/books/?id=3/details"> click here!</a></p>
+    </body>
 </html>

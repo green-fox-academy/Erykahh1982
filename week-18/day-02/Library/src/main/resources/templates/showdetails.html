@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Display books by ID</title>
+    <!--<link rel="stylesheet" type="text/css" href="\static\stylesheet_accountstable.css" />-->
+    <meta charset="utf-8" />
+</head>
+    <body>
+        <div>
+            <h1 th:utext="'Check out a <b>book</b> by <b>id</b>'" th:style="'color:grey'"></h1>
+        </div>
+        <div>
+            <span th:if="${error}" th:text="${error}"></span>
+                <div th:unless="${error}" th:object="${book}">
+                    <span th:text="*{id}" th:style="'color:lightblue'"></span>
+                    <span th:text="*{author}" th:style="'color:lightblue'"></span>
+                    <span th:text="*{title}" th:style="'color:lightblue'"></span>
+                    <span th:text="*{releaseYear}" th:style="'color:lightblue'"></span>
+                </div>
+        </div>
+    </body>
+</html>
