@@ -7,11 +7,11 @@
   <body>
     <h2>Let's add a book to my Library</h2>
         <div>
-            <form action="#" th:object="${book}" method="post">
+            <form th:object="${book}" method="post">
                 <input type="text" name="title" placeholder="Title" id ="title" th:field="*{title}" required/>
                 <input type="text" name="author" placeholder="Author" id="author" th:field="*{author}" required/>
                 <input type="number" name="releaseYear" placeholder="ReleaseYear" id="releaseYear" th:field="*{releaseYear}" required/>
-                <input type="submit"></input>
+                <input type="submit"/>
             </form>
         </div>
   </body>

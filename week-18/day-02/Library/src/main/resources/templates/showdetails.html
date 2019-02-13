@@ -9,6 +9,8 @@
         <div>
             <h1 th:utext="'Check out a <b>book</b> by <b>id</b>'" th:style="'color:grey'"></h1>
         </div>
+            <a th:href="'/books/'+${book.id}+'/edit'"><b>Edit</b></a>
+        <p></p>
         <div>
             <span th:if="${error}" th:text="${error}"></span>
                 <div th:unless="${error}" th:object="${book}">
