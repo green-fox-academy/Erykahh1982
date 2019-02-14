@@ -23,8 +23,10 @@ public class UtilityController {
   }
 
   @RequestMapping(value = "/useful/colored", method = RequestMethod.GET)
-  public String loadColoredWedSite(Model model) {
-    model.addAttribute("color", utilityService.randomColor());
+  public String loadColoredWedSite(Model model, UtilityService utilityService) {
+
+    String color = utilityService.randomColor();
+    model.addAttribute("color",color);
     return "coloredwebsite";
   }
 }
