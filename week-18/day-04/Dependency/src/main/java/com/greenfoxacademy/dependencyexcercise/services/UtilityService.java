@@ -25,4 +25,19 @@ public class UtilityService {
     return colors.get(random.nextInt(colors.size()));
   }
 
+  public ArrayList<String> getColors() {
+    return colors;
+  }
+
+  public void setColors(ArrayList<String> colors) {
+    this.colors = colors;
+  }
+
+  public Random getRandom() {
+    return random;
+  }
+
+  public void setRandom(Random random) {
+    this.random = random;
+  }
 }
