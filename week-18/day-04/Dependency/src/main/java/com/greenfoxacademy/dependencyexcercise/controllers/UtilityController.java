@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UtilityController {
@@ -43,4 +40,12 @@ public class UtilityController {
     return "emailvalidationform";
   }
 
+  @RequestMapping(value = "useful/{number}/encode", method = RequestMethod.GET)
+  public String encodeText(@RequestParam(name = "text") String text, @PathVariable(name = "number") Integer number, Model model, UtilityService utilityService) {
+
+    model.addAttribute("textToEncode", text);
+    model.addAttribute("encode", utilityService.caesar(text, number));
+
+    return "encode";
+  }
 }
