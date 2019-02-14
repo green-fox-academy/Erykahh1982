@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Email Validation</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h2 style="color: grey">This is an e-mail validation site</h2>
+        <div>
+            <span th:if="${emailTrue}" th:text="${emailTrue} + ' ,is a valid email address'" th:style="'color:lime'"></span>
+            <span th:if="${error}" th:text="${error} + ' ,is not a valid email address'" th:style="'color:red'"></span>
+        </div>
+    <br>
+    <a href="/useful" th:text="'Go Back to Menu'" th:style="'color:grey'"></a>
+    </body>
+</html>

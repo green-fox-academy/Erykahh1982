@@ -10,6 +10,7 @@ public class UtilityService {
 
   private ArrayList<String> colors;
   private Random random;
+  private String email;
 
   public UtilityService() {
     colors = new ArrayList<>();
@@ -21,8 +22,15 @@ public class UtilityService {
     random = new Random();
   }
 
-  public String randomColor(){
+  public String randomColor() {
     return colors.get(random.nextInt(colors.size()));
+  }
+
+  public boolean validateEmail(String email) {
+    if (email.contains("@") && email.contains(".")) {
+      return true;
+    }
+    return false;
   }
 
   public ArrayList<String> getColors() {
