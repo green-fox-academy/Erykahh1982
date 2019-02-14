@@ -2,7 +2,6 @@ package com.greenfoxacademy.dependencyexcercise.controllers;
 
 import com.greenfoxacademy.dependencyexcercise.services.UtilityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +12,8 @@ public class UtilityController {
   private UtilityService utilityService;
 
   @Autowired
-  public UtilityController() {
+  public UtilityController(UtilityService utilityService) {
+    this.utilityService = utilityService;
   }
 
   @RequestMapping(value = "/useful", method = RequestMethod.GET)
@@ -22,7 +22,7 @@ public class UtilityController {
   }
 
   @RequestMapping(value = "/useful/colored", method = RequestMethod.GET)
-  public String loadColoredWedSite(Model model, UtilityService utilityService) {
+  public String loadColoredWedSite(Model model) {
 
     String color = utilityService.randomColor();
     model.addAttribute("color", color);
@@ -30,7 +30,7 @@ public class UtilityController {
   }
 
   @RequestMapping(value = "useful/email", method = RequestMethod.GET)
-  public String showIfEmailIsCorrect(@RequestParam(name = "email") String email, Model model, UtilityService utilityService) {
+  public String showIfEmailIsCorrect(@RequestParam(name = "email") String email, Model model) {
 
     if (utilityService.validateEmail(email)) {
       model.addAttribute("emailTrue", email);
@@ -41,7 +41,7 @@ public class UtilityController {
   }
 
   @RequestMapping(value = "useful/{number}/encode", method = RequestMethod.GET)
-  public String encodeText(@RequestParam(name = "text") String text, @PathVariable(name = "number") Integer number, Model model, UtilityService utilityService) {
+  public String encodeText(@RequestParam(name = "text") String text, @PathVariable(name = "number") Integer number, Model model) {
 
     model.addAttribute("textToEncode", text);
     model.addAttribute("encode", utilityService.caesar(text, number));
@@ -50,11 +50,12 @@ public class UtilityController {
   }
 
   @RequestMapping(value = "useful/{number}/decode", method = RequestMethod.GET)
-  public String decodeText(@RequestParam(name = "text") String text, @PathVariable(name = "number") Integer number, Model model, UtilityService utilityService) {
+  public String decodeText(@RequestParam(name = "text") String text, @PathVariable(name = "number") Integer number, Model model) {
 
     model.addAttribute("textToDecode", text);
     model.addAttribute("decode", utilityService.caesar(text, number));
 
     return "decode";
   }
+
 }
