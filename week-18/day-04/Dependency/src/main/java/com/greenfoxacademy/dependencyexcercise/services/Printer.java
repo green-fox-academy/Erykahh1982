@@ -1,5 +1,6 @@
 package com.greenfoxacademy.dependencyexcercise.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -7,7 +8,15 @@ import java.time.LocalDateTime;
 @Service
 public class Printer {
 
-  public Printer() {
+  private MyColor myColor;
+
+  public Printer(MyColor myColor) {
+    this.myColor = myColor;
+  }
+
+  @Autowired
+  public void displayColor(){
+    myColor.printColor();
   }
 
   public void log(String message) {

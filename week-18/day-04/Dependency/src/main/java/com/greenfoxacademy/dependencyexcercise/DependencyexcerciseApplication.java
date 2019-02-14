@@ -11,12 +11,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DependencyexcerciseApplication implements CommandLineRunner {
 
   private Printer printer;
-  private MyColor myColor;
 
   @Autowired
-  DependencyexcerciseApplication(Printer printer, MyColor myColor) {
+  DependencyexcerciseApplication(Printer printer) {
     this.printer = printer;
-    this.myColor = myColor;
   }
 
   public static void main(String[] args) {
@@ -26,7 +24,7 @@ public class DependencyexcerciseApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     printer.log("hello Erika");
-    myColor.printColor();
+    printer.displayColor();
   }
 
 
