@@ -48,4 +48,13 @@ public class UtilityController {
 
     return "encode";
   }
+
+  @RequestMapping(value = "useful/{number}/decode", method = RequestMethod.GET)
+  public String decodeText(@RequestParam(name = "text") String text, @PathVariable(name = "number") Integer number, Model model, UtilityService utilityService) {
+
+    model.addAttribute("textToDecode", text);
+    model.addAttribute("decode", utilityService.caesar(text, number));
+
+    return "decode";
+  }
 }

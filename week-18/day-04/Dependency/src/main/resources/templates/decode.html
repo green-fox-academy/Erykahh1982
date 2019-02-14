@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Encode Text</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<h2 style="color: grey">Text Decoder Site</h2>
+<h3 style="color: grey">Caesar coding is just shifting every character in the text with a specific number of amount in the alphabet</h3>
+<p style="color: grey">Enter a number (negative) and an already decoded text in the URL and break the encryption!</p>
+<div>
+    <p th:text="${textToDecode} + ' | encoded text'" th:style="'color:cornflowerblue'"></p>
+    <p th:text="${decode} + ' | decoded text'" th:style="'color:cornflowerblue'"></p>
+</div>
+<br>
+<a href="/useful" th:text="'Go Back to Menu'" th:style="'color:grey'"></a>
+</body>
+</html>
