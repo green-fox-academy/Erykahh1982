@@ -15,8 +15,8 @@ public class DependencyexcerciseApplication implements CommandLineRunner {
 
   private Printer printer;
 
-  @Autowired
-  @Qualifier("color")
+//  @Autowired
+//  @Qualifier("color")
   MyColor myColor;
 
   @Autowired
