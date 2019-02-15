@@ -71,4 +71,18 @@ public class UtilityController {
 model.addAttribute("names", studentService.findAll() );
     return "studentlist";
   }
+
+  @RequestMapping(value = "/gfa/add", method = RequestMethod.GET)
+  public String renderAddStudentPage() {
+    return "addstudent";
+  }
+
+  @GetMapping("/gfa/save")
+  public String addStudentToList(Model model, @RequestParam (name = "name") String name) {
+
+    studentService.save(name);
+    model.addAttribute("name", studentService.findAll());
+
+    return "redirect:/gfa/list";
+  }
 }
