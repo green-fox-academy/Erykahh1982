@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Check Student</title>
+    <meta charset="utf-8" />
+</head>
+    <body>
+        <h2 style="color: grey">Search a Student by Name</h2>
+            <div>
+                <p th:style="'color:lightcoral'" th:text="${student} ? ${student} + ' ,is part of the GFA Organization' : ${error} + ' ,is not part of the GFA Organization'" ></p>
+                <br>
+                <a href="/gfa" th:text="'Go Back to Menu'" th:style="'color:grey'"></a>
+            </div>
+    </body>
+</html>

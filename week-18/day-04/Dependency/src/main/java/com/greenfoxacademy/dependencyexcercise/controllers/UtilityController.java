@@ -69,7 +69,7 @@ public class UtilityController {
 
   @RequestMapping(value = "/gfa/list", method = RequestMethod.GET)
   public String loadGFAStudentListPage(Model model) {
-model.addAttribute("names", studentService.findAll() );
+    model.addAttribute("names", studentService.findAll());
     return "studentlist";
   }
 
@@ -79,11 +79,29 @@ model.addAttribute("names", studentService.findAll() );
   }
 
   @GetMapping("/gfa/save")
-  public String addStudentToList(Model model, @RequestParam (name = "name") String name) {
+  public String addStudentToList(Model model, @RequestParam(name = "name") String name) {
 
     studentService.save(name);
     model.addAttribute("name", studentService.findAll());
 
     return "redirect:/gfa/list";
+  }
+
+  @RequestMapping(value = "/gfa/checkGet", method = RequestMethod.GET)
+  public String renderCheckStudentSite() {
+    return "checkGet";
+  }
+
+  @RequestMapping(value = "/gfa/checkGet", method = RequestMethod.POST)
+  public String checkStudent(Model model, @RequestParam String name) {
+
+    for (String studentName : studentService.findAll()) {
+      if (studentName.equalsIgnoreCase(name)) {
+        model.addAttribute("student", name);
+      } else {
+        model.addAttribute("error", name);
+      }
+    }
+    return "check";
   }
 }
