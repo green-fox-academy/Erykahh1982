@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Students</title>
+</head>
+    <body>
+        <h2 th:text="'List of students at GFA'" th:style="'color:grey'"></h2>
+            <div th:each="name : ${names}">
+                <p th:text="'Name : | ' + ${name}" th:style="'color:lightblue'"></p>
+            </div>
+        <br>
+            <a href="/useful" th:text="'Go Back to Menu'" th:style="'color:grey'"></a>
+    </body>
+<html/>

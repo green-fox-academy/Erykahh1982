@@ -1,5 +1,6 @@
 package com.greenfoxacademy.dependencyexcercise.controllers;
 
+import com.greenfoxacademy.dependencyexcercise.services.StudentService;
 import com.greenfoxacademy.dependencyexcercise.services.UtilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,12 @@ import org.springframework.web.bind.annotation.*;
 public class UtilityController {
 
   private UtilityService utilityService;
+  private StudentService studentService;
 
   @Autowired
-  public UtilityController(UtilityService utilityService) {
+  public UtilityController(UtilityService utilityService, StudentService studentService) {
     this.utilityService = utilityService;
+    this.studentService = studentService;
   }
 
   @RequestMapping(value = "/useful", method = RequestMethod.GET)
@@ -58,4 +61,14 @@ public class UtilityController {
     return "decode";
   }
 
+  @RequestMapping(value = "/gfa", method = RequestMethod.GET)
+  public String renderGFAPage() {
+    return "gfa";
+  }
+
+  @RequestMapping(value = "/gfa/list", method = RequestMethod.GET)
+  public String loadGFAStudentListPage(Model model) {
+model.addAttribute("names", studentService.findAll() );
+    return "studentlist";
+  }
 }
