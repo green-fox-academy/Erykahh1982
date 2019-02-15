@@ -62,7 +62,8 @@ public class UtilityController {
   }
 
   @RequestMapping(value = "/gfa", method = RequestMethod.GET)
-  public String renderGFAPage() {
+  public String renderGFAPage(Model model) {
+    model.addAttribute("studentCount", studentService.countStudent());
     return "gfa";
   }
 

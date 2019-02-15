@@ -7,7 +7,9 @@
 <body>
 <h2 style="color:grey">Check Green Fox Academy's Structure</h2>
 <div>
-    <p style="color: lightblue">List all the Students of GFA | <a style="color: lightcoral" href="/gfa/list">Click here!</a></p><p style="color: lightblue">Add a new Student | <a style="color: lightcoral" href="/gfa/add">Click here!</a></p>
+    <p th:text="'Number of Students at GFA | ' + ${studentCount}" style="color: lightblue"></p>
+    <p style="color: lightblue">List all the Students of GFA | <a style="color: lightcoral" href="/gfa/list">Click here!</a></p>
+    <p style="color: lightblue">Add a new Student | <a style="color: lightcoral" href="/gfa/add">Click here!</a></p>
 
 </div>
 </body>
