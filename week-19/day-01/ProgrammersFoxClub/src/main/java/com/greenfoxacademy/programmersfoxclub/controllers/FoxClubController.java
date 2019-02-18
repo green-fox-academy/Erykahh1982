@@ -8,9 +8,15 @@ import org.springframework.web.bind.annotation.*;
 public class FoxClubController {
 
   @GetMapping("/main")
-  public String renderMainPage(@RequestParam(name = "name") String name, Model model) {
+  public String renderMainPage(@RequestParam(required=false) String name, Model model) {
     model.addAttribute("name", name);
     return "index";
+  }
+
+  @GetMapping("/information")
+  public String renderInformationPage(@RequestParam(name = "name") String name, Model model){
+    model.addAttribute("name", name);
+    return "information";
   }
 
   @GetMapping("/login")

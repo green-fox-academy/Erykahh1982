@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Fox Information</title>
+</head>
+<body>
+<ul>
+    <li>
+        <a style="color: lightblue" href="/information">Information</a>
+    </li>
+</ul>
+<br>
+<img th:src="@{/greenfox.png}" alt="Character image">
+
+<h2 style="color: grey" th:text="'This is ' + ${name} + '. Currently living on ' + ${food} + ' and ' + ${drink} + ' . He knows ' + ${tricks} + ' tricks.'"></h2>
+
+<h1 style="color: darkslategrey">Known Tricks</h1>
+<ul style="color: darkslateblue;">
+    <li>
+        <p>Write HTML</p>
+    </li>
+    <li>
+        <p>Code in Java</p>
+    </li>
+</ul>
+
+</body>
+<html/>
