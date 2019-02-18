@@ -10,4 +10,9 @@ public class FoxClubController {
   public String renderMainPage(){
     return "index";
   }
+
+  @GetMapping("/login")
+  public String renderLoginPage(){
+    return "login";
+  }
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login Form</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<h2 style="color: grey">Welcome to Programmer Fox Club!</h2>
+<div>
+    <h3 style="color: lightblue">Please provide a name, so that you can associate it to your pet!</h3>
+    <form action="/login" method="post">
+        <label for="name" th:style="'color:grey'">Name</label>
+        <input type="text" name="name" id ="name" required/>
+        <input type="submit" value="GO" style="color: whitesmoke; background-color: lightcoral;"/>
+    </form>
+</div>
+</body>
+</html>
