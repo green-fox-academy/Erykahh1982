@@ -36,4 +36,10 @@ public class FoxService {
     }
     return fox;
   }
+
+  public void feedTheFox(String name, String food, String drink){
+    Fox fox = findFoxByName(name);
+    fox.setFood(food);
+    fox.setDrink(drink);
+  }
 }

@@ -17,7 +17,7 @@ public class FoxClubController {
   private FoxService foxService;
 
   @Autowired
-  public FoxClubController(NutritionService nutritionService, TrickService trickService, FoxService foxService){
+  public FoxClubController(NutritionService nutritionService, TrickService trickService, FoxService foxService) {
     this.foxService = foxService;
     this.trickService = trickService;
     this.nutritionService = nutritionService;
@@ -29,14 +29,14 @@ public class FoxClubController {
   }
 
   @GetMapping("/information")
-  public String renderInformationPage(@RequestParam(name = "name") String name, Model model){
+  public String renderInformationPage(@RequestParam(name = "name") String name, Model model) {
 
     Fox fox = foxService.loginAFox(name);
     model.addAttribute("character", fox);
 
-    if(trickService.showAlreadyCompletedList().isEmpty()){
+    if (trickService.showAlreadyCompletedList().isEmpty()) {
       model.addAttribute("error", "No tricks to show yet, go and learn some");
-    }else {
+    } else {
       model.addAttribute("trickcount", trickService.countTricks());
       model.addAttribute("list", trickService.listAllTricks());
     }
@@ -51,23 +51,29 @@ public class FoxClubController {
   @RequestMapping(value = "/login", method = RequestMethod.POST)
   public String postLoginForm(@RequestParam(name = "name") String name) {
 
-    return "redirect:/information/?name="+ name;
+    return "redirect:/information/?name=" + name;
   }
 
   @GetMapping("/nutrition")
-  public String renderNutritionPage(@RequestParam String name, Model model){
+  public String renderNutritionPage(@RequestParam String name, Model model) {
 
     Fox fox = foxService.loginAFox(name);
-    model.addAttribute("character",fox );
+    model.addAttribute("character", fox);
     model.addAttribute("foods", nutritionService.getFoods());
     model.addAttribute("drinks", nutritionService.getDrinks());
     return "nutrition";
   }
 
+  @PostMapping("/nutrition")
+  public String feedTheFox(@RequestParam(value = "name") String name, @RequestParam(value = "food") String food, @RequestParam(value = "drink") String drink) {
+    foxService.feedTheFox(name, food, drink);
+    return "redirect:/information/?name=" + name;
+  }
+
   @GetMapping("/trickstore")
-  public String renderTrickStorePage(@RequestParam String name, Model model){
+  public String renderTrickStorePage(@RequestParam String name, Model model) {
     Fox fox = foxService.loginAFox(name);
-    model.addAttribute("character",fox );
+    model.addAttribute("character", fox);
     return "tricks";
   }
 }

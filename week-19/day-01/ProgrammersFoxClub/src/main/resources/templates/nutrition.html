@@ -6,19 +6,14 @@
 </head>
 <body>
 <ul>
-    <li>
-        <a style="color: lightblue" th:href="'/information?name=' + ${character.name}">Information</a>
-    </li>
-    <li>
-        <a style="color: lightblue" th:href="'/nutrition?name=' + ${character.name}">Nutrition Store</a>
-    </li>
-    <li>
-        <a style="color: lightblue" th:href="'/trickstore?name=' + ${character.name}">Trick Store</a>
-    </li>
+    <li><a style="color: lightblue" th:href="'/information?name=' + ${character.name}">Information</a></li>
+    <li><a style="color: lightblue" th:href="'/nutrition?name=' + ${character.name}">Nutrition Store</a></li>
+    <li><a style="color: lightblue" th:href="'/trickstore?name=' + ${character.name}">Trick Store</a></li>
 </ul>
 <h2 th:text="'Give food and drink to your Fox from the available Menu!'" th:style="'color:grey'"></h2>
 <div>
     <form action="/nutrition" method="post">
+        <input type="hidden" name="name" th:value="${character.name}"/>
             <label style="color: lightgrey; font-weight: bold" for="food">Choose Food</label>
 
             <select id="food" name="food" class="food">
