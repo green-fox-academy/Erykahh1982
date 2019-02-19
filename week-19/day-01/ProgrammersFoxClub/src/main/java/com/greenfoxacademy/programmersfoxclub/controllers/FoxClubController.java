@@ -36,7 +36,7 @@ public class FoxClubController {
     model.addAttribute("character", fox);
 
     if(trickService.listAllTricks().isEmpty()){
-      model.addAttribute("error", "No tricks to show yet");
+      model.addAttribute("error", "No tricks to show yet, go and learn some");
     }else {
       model.addAttribute("trickcount", trickService.countTricks());
       model.addAttribute("list", trickService.listAllTricks());

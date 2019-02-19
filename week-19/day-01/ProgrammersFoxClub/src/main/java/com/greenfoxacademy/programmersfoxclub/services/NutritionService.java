@@ -11,8 +11,14 @@ public class NutritionService{
   private ArrayList<String> drinks;
 
   public NutritionService(){
-    this.foods = new ArrayList<>();
     this.drinks = new ArrayList<>();
+    this.foods = new ArrayList<>();
+    foods.add("pizza");
+    foods.add("spagetti");
+    foods.add("bone");
+    drinks.add("water");
+    drinks.add("lemonade");
+    drinks.add("energydrink");
   }
 
   public void addFood(String foodName){
