@@ -7,7 +7,7 @@ import java.util.ArrayList;
 @Service
 public class TrickService {
 
-  ArrayList<String> tricks;
+  private ArrayList<String> tricks;
 
   public TrickService() {
     this.tricks = new ArrayList<>();
@@ -24,4 +24,11 @@ public class TrickService {
     return tricks.size();
   }
 
+  public ArrayList<String> getTricks() {
+    return tricks;
+  }
+
+  public void setTricks(ArrayList<String> tricks) {
+    this.tricks = tricks;
+  }
 }
