@@ -2,28 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Welcome!</title>
 </head>
-<body>
-<ul>
-    <li>
-        <a style="color: lightblue" href="/information">Information</a>
-    </li>
-</ul>
-<br>
-<img src="/greenfox.png">
-
-<h2 style="color: grey" th:text="'This is ' + ${name} + '. Currently living on pizza and lemonade. He knows 2 tricks'"></h2>
-
-<h1 style="color: darkslategrey">Known Tricks</h1>
-<ul style="color: darkslateblue;">
-    <li>
-        <p>Write HTML</p>
-    </li>
-    <li>
-        <p>Code in Java</p>
-    </li>
-</ul>
-
-</body>
+    <body>
+        <img src="/foxes.svg">
+        <h1 style="color: grey" th:text="'Hello there!'"></h1>
+        <h1 style="color: grey" th:text="'This is a game where you can take care of your own FOX...'"></h1>
+        <br>
+        <a href="/login" th:style="'color:coral'">Let's get started!</a>
+    </body>
 <html/>

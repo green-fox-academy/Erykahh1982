@@ -24,8 +24,7 @@ public class FoxClubController {
   }
 
   @GetMapping("/main")
-  public String renderMainPage(@RequestParam(required=false) String name, Model model) {
-    model.addAttribute("name", name);
+  public String renderMainPage() {
     return "index";
   }
 
