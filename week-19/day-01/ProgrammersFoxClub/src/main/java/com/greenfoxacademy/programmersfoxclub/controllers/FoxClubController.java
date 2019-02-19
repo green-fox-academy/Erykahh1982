@@ -66,6 +66,8 @@ public class FoxClubController {
 
   @PostMapping("/nutrition")
   public String feedTheFox(@RequestParam(value = "name") String name, @RequestParam(value = "food") String food, @RequestParam(value = "drink") String drink) {
+    nutritionService.addFood(food);
+    nutritionService.addDrink(drink);
     foxService.feedTheFox(name, food, drink);
     return "redirect:/information/?name=" + name;
   }

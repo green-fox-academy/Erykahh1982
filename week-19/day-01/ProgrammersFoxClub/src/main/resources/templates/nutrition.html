@@ -15,34 +15,29 @@
     <form action="/nutrition" method="post">
         <input type="hidden" name="name" th:value="${character.name}"/>
             <label style="color: lightgrey; font-weight: bold" for="food">Choose Food</label>
-
             <select id="food" name="food" class="food">
-                <option th:each="food : ${foods}" th:value="${food}" th:text="${food}"></option>
-        </select>
-
-        <label style="color: lightgrey; font-weight: bold" for="drink">Choose Drink</label>
-        <select id="drink" name="drink" class="drink">
-            <option th:each="drink : ${drinks}" th:value="${drink}" th:text="${drink}"></option>
-        </select>
+                <option th:each="food : ${foods}" th:value="${food}" th:text="${food}"></option></select>
+            <label style="color: lightgrey; font-weight: bold" for="drink">Choose Drink</label>
+            <select id="drink" name="drink" class="drink">
+            <option th:each="drink : ${drinks}" th:value="${drink}" th:text="${drink}"></option></select>
         <input type="submit" value="Change" style="color: whitesmoke; background-color: lightcoral;"/>
     </form>
 </div>
 <h2 th:style="'color:grey'">OR</h2>
-<form action="/nutrition" method="post">
-    <div>
-    <label style="color: lightgrey; font-weight: bold" for="addFood">Add Your Specialty Food</label>
-    <input type="text" id="addFood" name="add"/>
-    <input type="submit" value="AddFood"style="color: whitesmoke; background-color: lightcoral"/>
-    </div>
-    <br>
-    <div>
-    <label style="color: lightgrey; font-weight: bold" for="addDrink">Add Your Specialty Drink</label>
-    <input type="text" id="addDrink" name="add"/>
-    <input type="submit" value="AddDrink"style="color: whitesmoke; background-color: lightcoral"/>
-    </div>
-</form>
+<div>
+    <form action="/nutrition" method="post">
+        <input type="hidden" name="name" th:value="${character.name}"/>
+        <label style="color: lightgrey; font-weight: bold" for="addFood">Add Your Specialty Food</label>
+        <input type="text" id="addFood" name="add"/>
+        <input type="submit" value="AddFood"style="color: whitesmoke; background-color: lightcoral"/>
+        <br>
+        <br>
+        <label style="color: lightgrey; font-weight: bold" for="addDrink">Add Your Specialty Drink</label>
+        <input type="text" id="addDrink" name="add"/>
+        <input type="submit" value="AddDrink"style="color: whitesmoke; background-color: lightcoral"/>
+    </form>
+</div>
 <br>
 <img src="/food-and-drink-png-5.png">
-
 </body>
 <html/>
