@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Fox Nutrition</title>
+</head>
+<body>
+<ul>
+    <li>
+        <a style="color: lightblue" href="/information">Information</a>
+    </li>
+    <li>
+        <a style="color: lightblue" href="/nutrition">Nutrition Store</a>
+    </li>
+    <li>
+        <a style="color: lightblue" href="/trickstore">Trick Store</a>
+    </li>
+</ul>
+<div>
+    <form action="/nutrition" method="get">
+        <label style="color: darkslategrey; font-weight: bold" for="food">Food</label>
+        <input type="text" name="food" placeholder="Food" id ="food" required/>
+        <label style="color: darkslategrey; font-weight: bold" for="drink">Drink</label>
+        <input type="text" name="drink" placeholder="Drink" id ="drink" required/>
+        <input type="submit" value="Change" style="color: whitesmoke; background-color: lightcoral;"/>
+    </form>
+</div>
+
+
+</body>
+<html/>

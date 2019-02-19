@@ -35,7 +35,7 @@ public class FoxClubController {
     Fox fox = foxService.loginAFox(name);
     model.addAttribute("character", fox);
 
-    if(trickService.listAllTricks().isEmpty()){
+    if(trickService.showAlreadyCompletedList().isEmpty()){
       model.addAttribute("error", "No tricks to show yet, go and learn some");
     }else {
       model.addAttribute("trickcount", trickService.countTricks());
@@ -53,5 +53,15 @@ public class FoxClubController {
   public String postLoginForm(@RequestParam(name = "name") String name) {
 
     return "redirect:/information/?name="+ name;
+  }
+
+  @GetMapping("/nutrition")
+  public String renderNutriotionPage(){
+    return "nutrition";
+  }
+
+  @GetMapping("/trickstore")
+  public String renderTrickStorePage(){
+    return "tricks";
   }
 }

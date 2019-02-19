@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Fox Tricks</title>
+</head>
+<body>
+<ul>
+    <li>
+        <a style="color: lightblue" href="/information">Information</a>
+    </li>
+    <li>
+        <a style="color: lightblue" href="/nutrition">Nutrition Store</a>
+    </li>
+    <li>
+        <a style="color: lightblue" href="/trickstore">Trick Store</a>
+    </li>
+</ul>
+<div>
+    <form action="/trickstore" method="get">
+        <label style="color: darkslategrey; font-weight: bold" for="trick">Trick</label>
+        <input type="text" name="trick" placeholder="Trick" id ="trick" required/>
+        <input type="submit" value="Learn" style="color: whitesmoke; background-color: lightcoral;"/>
+    </form>
+</div>
+
+
+</body>
+<html/>

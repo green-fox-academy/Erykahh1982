@@ -32,6 +32,9 @@ public class TrickService {
       completedTricks.add(trickName);
     }
   }
+   public ArrayList<String> showAlreadyCompletedList(){
+    return completedTricks;
+   }
 
   public void completeATrick(String trickName) {
     setTrickCompleted(true);
