@@ -3,6 +3,8 @@ package com.greenfoxacademy.programmersfoxclub.services;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class NutritionService{
@@ -11,14 +13,8 @@ public class NutritionService{
   private ArrayList<String> drinks;
 
   public NutritionService(){
-    this.drinks = new ArrayList<>();
-    this.foods = new ArrayList<>();
-    foods.add("pizza");
-    foods.add("spagetti");
-    foods.add("bone");
-    drinks.add("water");
-    drinks.add("lemonade");
-    drinks.add("energydrink");
+    this.foods = new ArrayList<>(Arrays.asList("pizza", "spagetti", "bone"));
+    this.drinks = new ArrayList<>(Arrays.asList("water", "lemonade", "energydrink"));
   }
 
   public void addFood(String foodName){
@@ -28,11 +24,19 @@ public class NutritionService{
     foods.add(drinkName);
   }
 
-  public ArrayList<String> listAllFoods(){
+  public ArrayList<String> getFoods() {
     return foods;
   }
 
-  public ArrayList<String> listAllDrinks(){
+  public void setFoods(ArrayList<String> foods) {
+    this.foods = foods;
+  }
+
+  public ArrayList<String> getDrinks() {
     return drinks;
+  }
+
+  public void setDrinks(ArrayList<String> drinks) {
+    this.drinks = drinks;
   }
 }

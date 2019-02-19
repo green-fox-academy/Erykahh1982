@@ -59,6 +59,8 @@ public class FoxClubController {
 
     Fox fox = foxService.loginAFox(name);
     model.addAttribute("character",fox );
+    model.addAttribute("foods", nutritionService.getFoods());
+    model.addAttribute("drinks", nutritionService.getDrinks());
     return "nutrition";
   }
 
