@@ -16,23 +16,38 @@
         <a style="color: lightblue" th:href="'/trickstore?name=' + ${character.name}">Trick Store</a>
     </li>
 </ul>
-<h2 th:text="'Give food and drink to your Fox!'" th:style="'color:grey'"></h2>
+<h2 th:text="'Give food and drink to your Fox from the available Menu!'" th:style="'color:grey'"></h2>
 <div>
     <form action="/nutrition" method="post">
-            <label style="color: darkslategrey; font-weight: bold" for="food">Food</label>
+            <label style="color: lightgrey; font-weight: bold" for="food">Choose Food</label>
 
             <select id="food" name="food" class="food">
                 <option th:each="food : ${foods}" th:value="${food}" th:text="${food}"></option>
         </select>
 
-        <label style="color: darkslategrey; font-weight: bold" for="drink">Drink</label>
+        <label style="color: lightgrey; font-weight: bold" for="drink">Choose Drink</label>
         <select id="drink" name="drink" class="drink">
             <option th:each="drink : ${drinks}" th:value="${drink}" th:text="${drink}"></option>
         </select>
         <input type="submit" value="Change" style="color: whitesmoke; background-color: lightcoral;"/>
     </form>
 </div>
-
+<h2 th:style="'color:grey'">OR</h2>
+<form action="/nutrition" method="post">
+    <div>
+    <label style="color: lightgrey; font-weight: bold" for="addFood">Add Your Specialty Food</label>
+    <input type="text" id="addFood" name="add"/>
+    <input type="submit" value="AddFood"style="color: whitesmoke; background-color: lightcoral"/>
+    </div>
+    <br>
+    <div>
+    <label style="color: lightgrey; font-weight: bold" for="addDrink">Add Your Specialty Drink</label>
+    <input type="text" id="addDrink" name="add"/>
+    <input type="submit" value="AddDrink"style="color: whitesmoke; background-color: lightcoral"/>
+    </div>
+</form>
+<br>
+<img src="/food-and-drink-png-5.png">
 
 </body>
 <html/>
