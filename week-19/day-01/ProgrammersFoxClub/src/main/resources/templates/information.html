@@ -7,13 +7,13 @@
 <body>
 <ul>
     <li>
-        <a style="color: lightblue" th:href="'/information/?name=' + ${name}">Information</a>
+        <a style="color: lightblue" th:href="'/information?name=' + ${character.name}">Information</a>
     </li>
     <li>
-        <a style="color: lightblue" href="/nutrition">Nutrition Store</a>
+        <a style="color: lightblue" th:href="'/nutrition?name=' + ${character.name}">Nutrition Store</a>
     </li>
     <li>
-        <a style="color: lightblue" href="/trickstore">Trick Store</a>
+        <a style="color: lightblue" th:href="'/trickstore?name=' + ${character.name}">Trick Store</a>
     </li>
 </ul>
 <br>

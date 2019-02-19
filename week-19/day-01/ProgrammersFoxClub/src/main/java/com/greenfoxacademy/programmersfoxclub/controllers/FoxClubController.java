@@ -56,12 +56,17 @@ public class FoxClubController {
   }
 
   @GetMapping("/nutrition")
-  public String renderNutriotionPage(){
+  public String renderNutritionPage(@RequestParam String name, Model model){
+
+    Fox fox = foxService.loginAFox(name);
+    model.addAttribute("character",fox );
     return "nutrition";
   }
 
   @GetMapping("/trickstore")
-  public String renderTrickStorePage(){
+  public String renderTrickStorePage(@RequestParam String name, Model model){
+    Fox fox = foxService.loginAFox(name);
+    model.addAttribute("character",fox );
     return "tricks";
   }
 }
