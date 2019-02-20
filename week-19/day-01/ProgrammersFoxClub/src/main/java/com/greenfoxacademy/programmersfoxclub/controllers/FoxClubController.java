@@ -66,8 +66,6 @@ public class FoxClubController {
 
   @PostMapping("/nutrition")
   public String feedTheFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "food") String food, @ModelAttribute(value = "drink") String drink) {
-    nutritionService.addFood(food);
-    nutritionService.addDrink(drink);
     foxService.feedTheFox(name, food, drink);
     return "redirect:/information/?name=" + name;
   }
@@ -75,14 +73,19 @@ public class FoxClubController {
   @GetMapping("/trickstore")
   public String renderTrickStorePage(@RequestParam String name, Model model) {
     Fox fox = foxService.loginAFox(name);
+
+    if(trickService.allTricksCompleted(name)){
+      model.addAttribute("error",trickService.loadErrorMessage(name));
+    }
+
     model.addAttribute("character", fox);
     model.addAttribute("tricks", trickService.createRemainigList(name));
     return "tricks";
   }
 
   @PostMapping("/trickstore")
-  public String educateFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "trick")String trick){
-    foxService.educateTheFox(name, trick);
+  public String educateFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "trick") String trick) {
+      foxService.educateTheFox(name, trick);
     return "redirect:/information/?name=" + name;
   }
 }

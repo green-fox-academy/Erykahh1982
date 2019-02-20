@@ -15,7 +15,8 @@
     <form th:action="'/trickstore/?name=' + ${character.name}" method="post">
         <label style="color: lightgrey; font-weight: bold" for="trick">Choose a Trick</label>
         <select id="trick" name="trick" class="trick">
-            <option th:each="trick : ${tricks}" th:value="${trick}" th:text="${trick}"></option></select>
+            <option th:if="${error}" th:text="${error}"></option>
+            <option th:unless="${error}" th:each="trick : ${tricks}" th:value="${trick}" th:text="${trick}"></option></select>
         <input type="submit" value="Learn" style="color: whitesmoke; background-color: lightcoral;"/>
     </form>
 </div>

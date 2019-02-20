@@ -44,6 +44,20 @@ public class TrickService {
     return remainingTricksToLearn;
   }
 
+  public boolean allTricksCompleted(String name){
+    if(createRemainigList(name).isEmpty()){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  public String loadErrorMessage(String name) {
+    if (allTricksCompleted(name) == true) {
+    }
+    return "Congratulations! You have completed all the mandatory tricks! Go and add a NEW trick, it is up to you what!";
+  }
+
   public ArrayList<String> getTricks() {
     return tricks;
   }

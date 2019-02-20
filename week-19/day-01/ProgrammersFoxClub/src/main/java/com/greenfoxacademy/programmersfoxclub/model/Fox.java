@@ -12,11 +12,15 @@ public class Fox {
 
   public Fox() {
     this.completedTricks = new ArrayList<>();
+    this.food = "steak";
+    this.drink = "water";
   }
 
   public Fox(String name) {
     this.name = name;
     this.completedTricks = new ArrayList<>();
+    this.food = "steak";
+    this.drink = "water";
   }
 
   public void addTrick(String trickName) {
