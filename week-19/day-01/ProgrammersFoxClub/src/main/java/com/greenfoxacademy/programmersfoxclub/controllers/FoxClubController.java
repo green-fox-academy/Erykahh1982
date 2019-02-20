@@ -76,6 +76,13 @@ public class FoxClubController {
   public String renderTrickStorePage(@RequestParam String name, Model model) {
     Fox fox = foxService.loginAFox(name);
     model.addAttribute("character", fox);
+    model.addAttribute("tricks", trickService.getTricksToLearn());
     return "tricks";
+  }
+
+  @PostMapping("/trickstore")
+  public String educateFox(@RequestParam(value = "name") String name, @RequestParam(value = "trick")String trick){
+    foxService.educateTheFox(name, trick);
+    return "redirect/information/?name=" + name;
   }
 }

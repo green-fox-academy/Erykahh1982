@@ -6,20 +6,16 @@
 </head>
 <body>
 <ul>
-    <li>
-        <a style="color: lightblue" th:href="'/information?name=' + ${character.name}">Information</a>
-    </li>
-    <li>
-        <a style="color: lightblue" th:href="'/nutrition?name=' + ${character.name}">Nutrition Store</a>
-    </li>
-    <li>
-        <a style="color: lightblue" th:href="'/trickstore?name=' + ${character.name}">Trick Store</a>
-    </li>
+    <li><a style="color: lightblue" th:href="'/information?name=' + ${character.name}">Information</a></li>
+    <li><a style="color: lightblue" th:href="'/nutrition?name=' + ${character.name}">Nutrition Store</a></li>
+    <li><a style="color: lightblue" th:href="'/trickstore?name=' + ${character.name}">Trick Store</a></li>
 </ul>
 <div>
-    <form action="/trickstore" method="get">
-        <label style="color: darkslategrey; font-weight: bold" for="trick">Trick</label>
-        <input type="text" name="trick" placeholder="Trick" id ="trick" required/>
+    <form action="/trickstore" method="post">
+        <input type="hidden" name="name" th:value="${character.name}"/>
+        <label style="color: darkslategrey; font-weight: bold" for="trick">Choose Trick</label>
+        <select id="trick" name="trick" class="trick">
+            <option th:each="trick : ${tricks}" th:value="${trick}" th:text="${trick}"></option></select>
         <input type="submit" value="Learn" style="color: whitesmoke; background-color: lightcoral;"/>
     </form>
 </div>

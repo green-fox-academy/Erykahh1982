@@ -3,20 +3,20 @@ package com.greenfoxacademy.programmersfoxclub.services;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @Service
 public class TrickService {
 
   private ArrayList<String> tricks;
   private ArrayList<String> completedTricks;
+  private ArrayList<String> tricksToLearn;
   private boolean trickCompleted = false;
 
   public TrickService() {
     this.tricks = new ArrayList<>();
+    this.tricksToLearn = new ArrayList<>(Arrays.asList("Java", "HTML & CSS", "SQL"));
     this.completedTricks = new ArrayList<>();
-    tricks.add("Java");
-    tricks.add("HTML & CSS");
-    tricks.add("SQL");
   }
 
   public void addTrick(String trickName) {
@@ -67,4 +67,13 @@ public class TrickService {
   public void setTrickCompleted(boolean trickCompleted) {
     this.trickCompleted = trickCompleted;
   }
+
+  public ArrayList<String> getTricksToLearn() {
+    return tricksToLearn;
+  }
+
+  public void setTricksToLearn(ArrayList<String> tricksToLearn) {
+    this.tricksToLearn = tricksToLearn;
+  }
+
 }
