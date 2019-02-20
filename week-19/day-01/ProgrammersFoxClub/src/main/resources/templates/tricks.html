@@ -12,8 +12,7 @@
 </ul>
 <h2 th:text="'Educate your Fox from the available Skill Library!'" th:style="'color:grey'"></h2>
 <div>
-    <form action="/trickstore" method="post">
-        <input type="hidden" name="name" th:value="${character.name}"/>
+    <form th:action="'/trickstore/?name=' + ${character.name}" method="post">
         <label style="color: lightgrey; font-weight: bold" for="trick">Choose a Trick</label>
         <select id="trick" name="trick" class="trick">
             <option th:each="trick : ${tricks}" th:value="${trick}" th:text="${trick}"></option></select>
@@ -22,9 +21,8 @@
 </div>
 <h2 th:style="'color:grey'">OR</h2>
 <div>
-    <form action="/trickstore" method="post">
+    <form th:action="'/trickstore/?name=' + ${character.name}" method="post">
         <div>
-            <input type="hidden" name="name" th:value="${character.name}"/>
             <label style="color: lightgrey; font-weight: bold" for="addTrick">Add a new Trick</label>
             <input type="text" id="addTrick" name="trick"/>
             <input type="submit" value="AddSkill"style="color: whitesmoke; background-color: lightcoral"/>

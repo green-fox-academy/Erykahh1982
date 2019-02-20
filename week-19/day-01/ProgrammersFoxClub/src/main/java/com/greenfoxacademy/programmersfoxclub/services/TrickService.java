@@ -11,8 +11,6 @@ public class TrickService {
 
   private ArrayList<String> tricks;
   private ArrayList<String> tricksToLearn;
-  private boolean trickCompleted = false;
-  Fox fox;
 
   public TrickService() {
     this.tricks = new ArrayList<>();
@@ -27,20 +25,6 @@ public class TrickService {
     return tricks;
   }
 
-  public void addTrickToCompletedTricksList(String trickName) {
-    if (trickCompleted == true) {
-      for (int i = 0; i < fox.getCompletedTricks().size(); i++) {
-        if (!fox.getCompletedTricks().get(i).equalsIgnoreCase(trickName)) {
-          fox.addTrick(trickName);
-        }
-      }
-    }
-  }
-
-  public void completeATrick(String trickName) {
-    setTrickCompleted(true);
-  }
-
   public int countTricks() {
     return tricks.size();
   }
@@ -51,14 +35,6 @@ public class TrickService {
 
   public void setTricks(ArrayList<String> tricks) {
     this.tricks = tricks;
-  }
-
-  public boolean isTrickCompleted() {
-    return trickCompleted;
-  }
-
-  public void setTrickCompleted(boolean trickCompleted) {
-    this.trickCompleted = trickCompleted;
   }
 
   public ArrayList<String> getTricksToLearn() {

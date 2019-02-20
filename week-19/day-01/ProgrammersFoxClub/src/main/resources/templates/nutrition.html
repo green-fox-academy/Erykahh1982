@@ -12,8 +12,7 @@
 </ul>
 <h2 th:text="'Give food and drink to your Fox from the available Menu!'" th:style="'color:grey'"></h2>
 <div>
-    <form action="/nutrition" method="post">
-        <input type="hidden" name="name" th:value="${character.name}"/>
+    <form th:action="'/nutrition/?name=' + ${character.name}" method="post">
             <label style="color: lightgrey; font-weight: bold" for="food">Choose Food</label>
             <select id="food" name="food" class="food">
                 <option th:each="food : ${foods}" th:value="${food}" th:text="${food}"></option></select>
@@ -25,9 +24,8 @@
 </div>
 <h2 th:style="'color:grey'">OR</h2>
 <div>
-    <form action="/nutrition" method="post">
+    <form th:action="'/nutrition/?name=' + ${character.name}" method="post">
         <div>
-        <input type="hidden" name="name" th:value="${character.name}"/>
         <label style="color: lightgrey; font-weight: bold" for="addFood">Add Your Specialty Food</label>
         <input type="text" id="addFood" name="food"/>
         </div>

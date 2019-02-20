@@ -65,7 +65,7 @@ public class FoxClubController {
   }
 
   @PostMapping("/nutrition")
-  public String feedTheFox(@RequestParam(value = "name") String name, @RequestParam(value = "food") String food, @RequestParam(value = "drink") String drink) {
+  public String feedTheFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "food") String food, @ModelAttribute(value = "drink") String drink) {
     nutritionService.addFood(food);
     nutritionService.addDrink(drink);
     foxService.feedTheFox(name, food, drink);
@@ -81,7 +81,7 @@ public class FoxClubController {
   }
 
   @PostMapping("/trickstore")
-  public String educateFox(@RequestParam(value = "name") String name, @RequestParam(value = "trick")String trick){
+  public String educateFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "trick")String trick){
     foxService.educateTheFox(name, trick);
     return "redirect:/information/?name=" + name;
   }

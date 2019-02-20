@@ -1,12 +1,9 @@
 package com.greenfoxacademy.programmersfoxclub.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.ArrayList;
 
 public class Fox {
 
-  @Autowired
   private String name;
   private ArrayList<String> completedTricks;
   private String food;
@@ -25,7 +22,7 @@ public class Fox {
     completedTricks.add(trickName);
   }
 
-  public int countOftricks(){
+  public int countOftricks() {
     return completedTricks.size();
   }
 
