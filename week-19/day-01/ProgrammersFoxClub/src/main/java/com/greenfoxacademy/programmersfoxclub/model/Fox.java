@@ -8,25 +8,25 @@ public class Fox {
 
   @Autowired
   private String name;
-  private ArrayList<String> tricks;
+  private ArrayList<String> completedTricks;
   private String food;
   private String drink;
 
   public Fox() {
-    this.tricks = new ArrayList<>();
+    this.completedTricks = new ArrayList<>();
   }
 
   public Fox(String name) {
     this.name = name;
-    this.tricks = new ArrayList<>();
+    this.completedTricks = new ArrayList<>();
   }
 
   public void addTrick(String trickName) {
-    tricks.add(trickName);
+    completedTricks.add(trickName);
   }
 
   public int countOftricks(){
-    return tricks.size();
+    return completedTricks.size();
   }
 
   public String getName() {
@@ -37,12 +37,12 @@ public class Fox {
     this.name = name;
   }
 
-  public ArrayList<String> getTricks() {
-    return tricks;
+  public ArrayList<String> getCompletedTricks() {
+    return completedTricks;
   }
 
-  public void setTricks(ArrayList<String> tricks) {
-    this.tricks = tricks;
+  public void setCompletedTricks(ArrayList<String> completedTricks) {
+    this.completedTricks = completedTricks;
   }
 
   public String getFood() {

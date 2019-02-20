@@ -34,11 +34,11 @@ public class FoxClubController {
     Fox fox = foxService.loginAFox(name);
     model.addAttribute("character", fox);
 
-    if (trickService.showAlreadyCompletedList().isEmpty()) {
+    if (fox.getCompletedTricks().isEmpty()) {
       model.addAttribute("error", "No tricks to show yet, go and learn some");
     } else {
       model.addAttribute("trickcount", trickService.countTricks());
-      model.addAttribute("list", trickService.listAllTricks());
+      model.addAttribute("list", fox.getCompletedTricks());
     }
     return "information";
   }
@@ -83,6 +83,6 @@ public class FoxClubController {
   @PostMapping("/trickstore")
   public String educateFox(@RequestParam(value = "name") String name, @RequestParam(value = "trick")String trick){
     foxService.educateTheFox(name, trick);
-    return "redirect/information/?name=" + name;
+    return "redirect:/information/?name=" + name;
   }
 }

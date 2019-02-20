@@ -1,5 +1,6 @@
 package com.greenfoxacademy.programmersfoxclub.services;
 
+import com.greenfoxacademy.programmersfoxclub.model.Fox;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,14 +10,13 @@ import java.util.Arrays;
 public class TrickService {
 
   private ArrayList<String> tricks;
-  private ArrayList<String> completedTricks;
   private ArrayList<String> tricksToLearn;
   private boolean trickCompleted = false;
+  Fox fox;
 
   public TrickService() {
     this.tricks = new ArrayList<>();
     this.tricksToLearn = new ArrayList<>(Arrays.asList("Java", "HTML & CSS", "SQL"));
-    this.completedTricks = new ArrayList<>();
   }
 
   public void addTrick(String trickName) {
@@ -29,12 +29,13 @@ public class TrickService {
 
   public void addTrickToCompletedTricksList(String trickName) {
     if (trickCompleted == true) {
-      completedTricks.add(trickName);
+      for (int i = 0; i < fox.getCompletedTricks().size(); i++) {
+        if (!fox.getCompletedTricks().get(i).equalsIgnoreCase(trickName)) {
+          fox.addTrick(trickName);
+        }
+      }
     }
   }
-   public ArrayList<String> showAlreadyCompletedList(){
-    return completedTricks;
-   }
 
   public void completeATrick(String trickName) {
     setTrickCompleted(true);
@@ -50,14 +51,6 @@ public class TrickService {
 
   public void setTricks(ArrayList<String> tricks) {
     this.tricks = tricks;
-  }
-
-  public ArrayList<String> getCompletedTricks() {
-    return completedTricks;
-  }
-
-  public void setCompletedTricks(ArrayList<String> completedTricks) {
-    this.completedTricks = completedTricks;
   }
 
   public boolean isTrickCompleted() {

@@ -47,9 +47,9 @@ public class FoxService {
 
   public void educateTheFox(String name, String trick) {
     Fox fox = findFoxByName(name);
-
-    trickService.setTrickCompleted(true);
-    trickService.addTrickToCompletedTricksList(trick);
-    fox.setTricks(trickService.getCompletedTricks());
+//    trickService.setTrickCompleted(true);
+//    trickService.addTrickToCompletedTricksList(trick);
+    fox.addTrick(trick);
+    fox.setCompletedTricks(fox.getCompletedTricks());
   }
 }

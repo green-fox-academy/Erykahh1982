@@ -13,13 +13,12 @@
 <br>
 <img th:src="@{/greenfox.png}" alt="Character image">
 
-<h2 style="color: grey" th:text="'This is ' + ${character.name} + '. Currently living on ' + ${character.food} + ' and ' + ${character.drink} + ' . ' + ${character.name} + ' knows ' + ${character.countOftricks()} + ' tricks.'"></h2>
+<h2 style="color: grey" th:text="'This is ' + ${character.name} + '. Currently living on ' + ${character.food} + ' and ' + ${character.drink} + ' . ' + ${character.name} + ' knows ' + ${character.countOftricks()} + ' trick(s).'"></h2>
 
 <h1 style="color: mediumseagreen">Known Tricks</h1>
-        <ul style="color: deepskyblue" th:if="${error}" th:text="${error}" th:style="'color:red'">
-            <div th:unless="${list}" th:each="trick : ${list}">
-                <li th:text="${trick}"></li>
-            </div>
+        <ul>
+            <li th:style="'color:red'" th:if="${error}" th:text="${error}"></li>
+            <li th:style="'color:grey'" th:unless="${error}" th:each="trick : ${list}" th:text="${trick}"></li>
         </ul>
 </body>
 <html/>
