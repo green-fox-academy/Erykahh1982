@@ -10,16 +10,17 @@
     <li><a style="color: lightblue" th:href="'/nutrition?name=' + ${character.name}">Nutrition Store</a></li>
     <li><a style="color: lightblue" th:href="'/trickstore?name=' + ${character.name}">Trick Store</a></li>
 </ul>
+<h2 th:text="'Educate your Fox from the available Skill Library!'" th:style="'color:grey'"></h2>
 <div>
     <form action="/trickstore" method="post">
         <input type="hidden" name="name" th:value="${character.name}"/>
-        <label style="color: darkslategrey; font-weight: bold" for="trick">Choose Trick</label>
+        <label style="color: lightgrey; font-weight: bold" for="trick">Choose a Trick</label>
         <select id="trick" name="trick" class="trick">
             <option th:each="trick : ${tricks}" th:value="${trick}" th:text="${trick}"></option></select>
         <input type="submit" value="Learn" style="color: whitesmoke; background-color: lightcoral;"/>
     </form>
 </div>
-<br>
+<h2 th:style="'color:grey'">OR</h2>
 <div>
     <form action="/trickstore" method="post">
         <div>
@@ -30,5 +31,7 @@
         </div>
     </form>
 </div>
+<br>
+<img src="/skill2.png">
 </body>
 <html/>
