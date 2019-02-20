@@ -9,6 +9,7 @@ public class Fox {
   private String food;
   private String drink;
 
+
   public Fox() {
     this.completedTricks = new ArrayList<>();
   }

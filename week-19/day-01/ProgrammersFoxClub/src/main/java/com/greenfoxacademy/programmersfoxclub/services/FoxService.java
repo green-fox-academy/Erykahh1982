@@ -11,12 +11,9 @@ import java.util.HashMap;
 public class FoxService {
 
   private HashMap<String, Fox> foxes;
-  private TrickService trickService;
 
-  @Autowired
-  public FoxService(TrickService trickService) {
+  public FoxService() {
     this.foxes = new HashMap<>();
-    this.trickService = trickService;
   }
 
   public void addNewFox(Fox fox) {
@@ -52,8 +49,9 @@ public class FoxService {
     Fox fox = findFoxByName(name);
 
     ArrayList<String> tricksAlreadyKnown = fox.getCompletedTricks();
-    if(!tricksAlreadyKnown.contains(trick)){
+    if (!tricksAlreadyKnown.contains(trick)) {
       fox.addTrick(trick);
     }
   }
+
 }

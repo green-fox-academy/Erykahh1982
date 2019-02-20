@@ -76,7 +76,7 @@ public class FoxClubController {
   public String renderTrickStorePage(@RequestParam String name, Model model) {
     Fox fox = foxService.loginAFox(name);
     model.addAttribute("character", fox);
-    model.addAttribute("tricks", trickService.getTricksToLearn());
+    model.addAttribute("tricks", trickService.createRemainigList(name));
     return "tricks";
   }
 
