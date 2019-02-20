@@ -26,15 +26,18 @@
 <h2 th:style="'color:grey'">OR</h2>
 <div>
     <form action="/nutrition" method="post">
+        <div>
         <input type="hidden" name="name" th:value="${character.name}"/>
         <label style="color: lightgrey; font-weight: bold" for="addFood">Add Your Specialty Food</label>
-        <input type="text" id="addFood" name="add"/>
-        <input type="submit" value="AddFood"style="color: whitesmoke; background-color: lightcoral"/>
+        <input type="text" id="addFood" name="food"/>
+        </div>
         <br>
-        <br>
+        <div>
         <label style="color: lightgrey; font-weight: bold" for="addDrink">Add Your Specialty Drink</label>
-        <input type="text" id="addDrink" name="add"/>
-        <input type="submit" value="AddDrink"style="color: whitesmoke; background-color: lightcoral"/>
+        <input type="text" id="addDrink" name="drink"/>
+        </div>
+        <br>
+        <input type="submit" value="AddYourOwnSpecialty"style="color: whitesmoke; background-color: lightcoral"/>
     </form>
 </div>
 <br>
