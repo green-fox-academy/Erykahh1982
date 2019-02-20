@@ -19,7 +19,16 @@
         <input type="submit" value="Learn" style="color: whitesmoke; background-color: lightcoral;"/>
     </form>
 </div>
-
-
+<br>
+<div>
+    <form action="/trickstore" method="post">
+        <div>
+            <input type="hidden" name="name" th:value="${character.name}"/>
+            <label style="color: lightgrey; font-weight: bold" for="addTrick">Add a new Trick</label>
+            <input type="text" id="addTrick" name="trick"/>
+            <input type="submit" value="AddSkill"style="color: whitesmoke; background-color: lightcoral"/>
+        </div>
+    </form>
+</div>
 </body>
 <html/>
