@@ -20,7 +20,7 @@
             <li th:style="'color:red'" th:if="${error}" th:text="${error}"></li>
             <li th:style="'color:grey'" th:unless="${error}" th:each="trick : ${list}" >
                 <span th:text="${trick.getName()}"></span>
-                <img th:src="${trick.getImageurl()}">
+                <img th:src="${trick.getImageurl()}" style="width: 100px; height: auto;">
             </li>
         </ul>
 </body>

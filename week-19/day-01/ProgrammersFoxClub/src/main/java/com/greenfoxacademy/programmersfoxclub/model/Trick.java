@@ -10,6 +10,11 @@ public class Trick {
     this.imageurl = imageurl;
   }
 
+  public Trick (String name){
+    this.name = name;
+    this.imageurl = "/certificate.png";
+  }
+
   public String getName() {
     return name;
   }

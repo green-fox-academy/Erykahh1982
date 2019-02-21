@@ -63,4 +63,13 @@ public class FoxService {
     }
   }
 
+  public void teachOptional (String name, String trickName){
+    Fox fox = findFoxByName(name);
+
+    if(!fox.getListOfCompletedTricks().contains(new Trick(trickName))){
+      fox.addNewTrickObject(new Trick(trickName));
+    }
+
+  }
+
 }

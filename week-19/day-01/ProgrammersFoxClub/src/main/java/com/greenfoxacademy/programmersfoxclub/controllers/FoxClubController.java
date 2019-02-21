@@ -90,7 +90,11 @@ public class FoxClubController {
   @PostMapping("/trickstore")
   public String educateFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "trick") String trickName) {
 //      foxService.educateTheFox(name, trick);
-    foxService.teachTheFox(name, trickService.findTrickByName(trickName));
+    if (trickService.checkTrickName(trickName) == true) {
+      foxService.teachTheFox(name, trickService.findTrickByName(trickName));
+    } else {
+      foxService.teachOptional(name, trickName);
+    }
     return "redirect:/information/?name=" + name;
   }
 }

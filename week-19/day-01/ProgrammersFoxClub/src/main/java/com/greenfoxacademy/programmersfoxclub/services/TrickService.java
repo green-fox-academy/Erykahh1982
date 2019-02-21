@@ -28,6 +28,16 @@ public class TrickService {
     tricksToLearn.add(trickName);
   }
 
+  public boolean checkTrickName(String name){
+
+    for(Trick trick : listOfTricks) {
+      if (trick.getName().equalsIgnoreCase(name)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public void addNewTrick(Trick trick) {
     listOfTricks.add(trick);
   }
