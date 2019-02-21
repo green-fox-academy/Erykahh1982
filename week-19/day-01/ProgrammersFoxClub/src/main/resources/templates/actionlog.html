@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Action Log</title>
+</head>
+<body>
+    <ul>
+        <li><a style="color: lightblue" th:href="'/information?name=' + ${character.name}">Information</a></li>
+        <li><a style="color: lightblue" th:href="'/nutrition?name=' + ${character.name}">Nutrition Store</a></li>
+        <li><a style="color: lightblue" th:href="'/trickstore?name=' + ${character.name}">Trick Store</a></li>
+        <li><a style="color: lightblue" th:href="'/actionlog?name=' + ${character.name}">Action History</a></li>
+    </ul>
+<h1 style="color: mediumseagreen" th:text="'Action History of ' +${character.name}"></h1>
+    <ul>
+        <li th:style="'color:grey'" th:each="action:${character.actionList}" th:text="${action}"></li>
+    </ul>
+</body>
+<html/>

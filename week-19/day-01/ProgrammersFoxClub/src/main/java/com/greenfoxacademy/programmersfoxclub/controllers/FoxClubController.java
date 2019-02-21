@@ -97,4 +97,11 @@ public class FoxClubController {
     }
     return "redirect:/information/?name=" + name;
   }
+
+  @GetMapping("/actionlog")
+  public String renderActionLog(@RequestParam(value = "name") String name, Model model){
+    Fox fox = foxService.loginAFox(name);
+    model.addAttribute("character", fox);
+    return "actionlog";
+  }
 }
