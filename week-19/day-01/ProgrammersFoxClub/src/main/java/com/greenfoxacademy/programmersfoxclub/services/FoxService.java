@@ -4,9 +4,7 @@ import com.greenfoxacademy.programmersfoxclub.model.Fox;
 import com.greenfoxacademy.programmersfoxclub.model.Trick;
 import org.springframework.stereotype.Service;
 
-import java.security.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -50,9 +48,8 @@ public class FoxService {
     fox.setDrink(drink);
     String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
 
-    String actionDrink = timestamp + " Drink has been changed from: " + currentDrink + " to " + drink + ".";
-    String actionFood = timestamp + " Food has been changed from: " + currentFood + " to " + food + ".";
-
+    String actionDrink = timestamp + " | Drink has been changed from: " + currentDrink + " to " + drink + ".";
+    String actionFood = timestamp + " | Food has been changed from: " + currentFood + " to " + food + ".";
     fox.addAction(actionDrink);
     fox.addAction((actionFood));
   }
@@ -64,7 +61,9 @@ public class FoxService {
     if (!tricksAlreadyKnown.contains(trick)) {
       fox.addTrick(trick);
     }
-
+    String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+    String actionTrick = timestamp + " | Trick: "+ trick + " has been picked up.";
+    fox.addAction(actionTrick);
   }
 
   public void teachTheFox(String name, Trick trick) {
@@ -74,6 +73,9 @@ public class FoxService {
     if (!tricksAlreadyCompleted.contains(trick)) {
       fox.addNewTrickObject(trick);
     }
+    String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+    String actionTrick = timestamp + " | Trick: "+ trick.getName() + " has been picked up.";
+    fox.addAction(actionTrick);
   }
 
   public void teachOptional (String name, String trickName){
@@ -82,8 +84,9 @@ public class FoxService {
     if(!fox.getListOfCompletedTricks().contains(new Trick(trickName))){
       fox.addNewTrickObject(new Trick(trickName));
     }
+    String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+    String actionTrick = timestamp + " | Trick: "+ trickName + " has been picked up.";
+    fox.addAction(actionTrick);
   }
-
-
 
 }
