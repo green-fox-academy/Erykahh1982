@@ -1,6 +1,7 @@
 package com.greenfoxacademy.programmersfoxclub.controllers;
 
 import com.greenfoxacademy.programmersfoxclub.model.Fox;
+import com.greenfoxacademy.programmersfoxclub.model.Trick;
 import com.greenfoxacademy.programmersfoxclub.services.FoxService;
 import com.greenfoxacademy.programmersfoxclub.services.NutritionService;
 import com.greenfoxacademy.programmersfoxclub.services.TrickService;
@@ -34,11 +35,12 @@ public class FoxClubController {
     Fox fox = foxService.loginAFox(name);
     model.addAttribute("character", fox);
 
-    if (fox.getCompletedTricks().isEmpty()) {
+    if (fox.getListOfCompletedTricks().isEmpty()) {
       model.addAttribute("error", "No tricks to show yet, go and learn some");
     } else {
-      model.addAttribute("trickcount", trickService.countTricks());
-      model.addAttribute("list", fox.getCompletedTricks());
+//      model.addAttribute("trickcount", trickService.countTricks());
+      model.addAttribute("trickcount", trickService.trickCount());
+      model.addAttribute("list", fox.getListOfCompletedTricks());
     }
     return "information";
   }
@@ -74,18 +76,21 @@ public class FoxClubController {
   public String renderTrickStorePage(@RequestParam String name, Model model) {
     Fox fox = foxService.loginAFox(name);
 
-    if(trickService.allTricksCompleted(name)){
-      model.addAttribute("error",trickService.loadErrorMessage(name));
+    if (trickService.allCompleted(name)) {
+//      model.addAttribute("error",trickService.loadErrorMessage(name));
+      model.addAttribute("error", trickService.showErrorMessage(name));
     }
 
     model.addAttribute("character", fox);
-    model.addAttribute("tricks", trickService.createRemainigList(name));
+    model.addAttribute("tricks", trickService.showRemainingList(name));
+//    model.addAttribute("tricks", trickService.createRemainigList(name));
     return "tricks";
   }
 
   @PostMapping("/trickstore")
-  public String educateFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "trick") String trick) {
-      foxService.educateTheFox(name, trick);
+  public String educateFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "trick") String trickName) {
+//      foxService.educateTheFox(name, trick);
+    foxService.teachTheFox(name, trickService.findTrickByName(trickName));
     return "redirect:/information/?name=" + name;
   }
 }

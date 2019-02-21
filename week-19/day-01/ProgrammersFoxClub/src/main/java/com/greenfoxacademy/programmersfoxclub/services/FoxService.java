@@ -1,7 +1,7 @@
 package com.greenfoxacademy.programmersfoxclub.services;
 
 import com.greenfoxacademy.programmersfoxclub.model.Fox;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.greenfoxacademy.programmersfoxclub.model.Trick;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -51,6 +51,15 @@ public class FoxService {
     ArrayList<String> tricksAlreadyKnown = fox.getCompletedTricks();
     if (!tricksAlreadyKnown.contains(trick)) {
       fox.addTrick(trick);
+    }
+  }
+
+  public void teachTheFox(String name, Trick trick) {
+    Fox fox = findFoxByName(name);
+
+    ArrayList<Trick> tricksAlreadyCompleted = fox.getListOfCompletedTricks();
+    if (!tricksAlreadyCompleted.contains(trick)) {
+      fox.addNewTrickObject(trick);
     }
   }
 
