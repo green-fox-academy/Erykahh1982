@@ -10,8 +10,7 @@
     <li><a style="color: lightblue" th:href="'/nutrition?name=' + ${character.name}">Nutrition Store</a></li>
     <li><a style="color: lightblue" th:href="'/trickstore?name=' + ${character.name}">Trick Store</a></li>
 </ul>
-<br>
-<img th:src="@{/greenfox.png}" alt="Character image">
+<img th:src="@{/greenfox.png}" alt="Character image" style="width: 150px;height: auto">
 
 <h2 style="color: grey" th:text="'This is ' + ${character.name} + '. Currently living on ' + ${character.food} + ' and ' + ${character.drink} + ' . ' + ${character.name} + ' knows ' + ${character.countOftricks()} + ' trick(s).'"></h2>
 
@@ -23,5 +22,9 @@
                 <img th:src="${trick.getImageurl()}" style="width: 75px; height: auto;">
             </li>
         </ul>
+<h1 style="color: mediumseagreen">Action History</h1>
+<ul>
+    <li th:style="'color:grey'" th:each="action:${character.actionList}" th:text="${action}"></li>
+</ul>
 </body>
 <html/>

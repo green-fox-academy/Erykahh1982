@@ -4,6 +4,9 @@ import com.greenfoxacademy.programmersfoxclub.model.Fox;
 import com.greenfoxacademy.programmersfoxclub.model.Trick;
 import org.springframework.stereotype.Service;
 
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -41,8 +44,17 @@ public class FoxService {
 
   public void feedTheFox(String name, String food, String drink) {
     Fox fox = findFoxByName(name);
+    String currentFood = fox.getFood();
+    String currentDrink = fox.getDrink();
     fox.setFood(food);
     fox.setDrink(drink);
+    String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+
+    String actionDrink = timestamp + " Drink has been changed from: " + currentDrink + " to " + drink + ".";
+    String actionFood = timestamp + " Food has been changed from: " + currentFood + " to " + food + ".";
+
+    fox.addAction(actionDrink);
+    fox.addAction((actionFood));
   }
 
   public void educateTheFox(String name, String trick) {
@@ -52,6 +64,7 @@ public class FoxService {
     if (!tricksAlreadyKnown.contains(trick)) {
       fox.addTrick(trick);
     }
+
   }
 
   public void teachTheFox(String name, Trick trick) {
@@ -69,7 +82,8 @@ public class FoxService {
     if(!fox.getListOfCompletedTricks().contains(new Trick(trickName))){
       fox.addNewTrickObject(new Trick(trickName));
     }
-
   }
+
+
 
 }

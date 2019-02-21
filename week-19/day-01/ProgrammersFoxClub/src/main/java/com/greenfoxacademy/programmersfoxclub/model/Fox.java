@@ -1,6 +1,8 @@
 package com.greenfoxacademy.programmersfoxclub.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Fox {
 
@@ -9,6 +11,7 @@ public class Fox {
   private String food;
   private String drink;
   private ArrayList<Trick> listOfCompletedTricks;
+  private ArrayList<String> actionList;
 
 
   public Fox() {
@@ -16,6 +19,7 @@ public class Fox {
     this.food = "steak";
     this.drink = "water";
     this.listOfCompletedTricks = new ArrayList<>();
+    this.actionList = new ArrayList<>();
   }
 
   public Fox(String name) {
@@ -24,6 +28,7 @@ public class Fox {
     this.food = "steak";
     this.drink = "water";
     this.listOfCompletedTricks = new ArrayList<>();
+    this.actionList = new ArrayList<>();
   }
 
   public void addTrick(String trickName) {
@@ -76,5 +81,17 @@ public class Fox {
 
   public void setListOfCompletedTricks(ArrayList<Trick> listOfCompletedTricks) {
     this.listOfCompletedTricks = listOfCompletedTricks;
+  }
+
+  public void addAction(String action){
+    actionList.add(action);
+  }
+
+  public ArrayList<String> getActionList() {
+    return actionList;
+  }
+
+  public void setActionList(ArrayList<String> actionList) {
+    this.actionList = actionList;
   }
 }
