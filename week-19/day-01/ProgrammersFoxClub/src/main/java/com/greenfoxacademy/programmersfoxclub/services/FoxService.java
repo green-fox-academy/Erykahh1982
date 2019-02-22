@@ -21,6 +21,18 @@ public class FoxService {
     foxes.put(fox.getName(), fox);
   }
 
+  public ArrayList<String> list5LatestAction(String name) {
+    Fox fox = findFoxByName(name);
+
+    ArrayList<String> fiveLatest = new ArrayList<>();
+    int listSize = fox.getActionList().size();
+
+    for (int i = 4; i < fox.getActionList().size(); i++) {
+      fiveLatest.add(fox.getActionList().get(listSize - 1));
+    }
+    return fiveLatest;
+  }
+
   public Fox findFoxByName(String name) {
     Fox selectedFox = null;
 
@@ -28,6 +40,25 @@ public class FoxService {
       selectedFox = foxes.get(name);
     }
     return selectedFox;
+  }
+
+  public Fox findOrCreateFoxByName(String name) {
+    Fox fox;
+    if (listExistingFoxes().containsKey(name)) {
+      fox = findFoxByName(name);
+    } else {
+      fox = new Fox(name);
+      saveAFox(fox);
+    }
+    return fox;
+  }
+
+  public HashMap<String, Fox> listExistingFoxes() {
+    return foxes;
+  }
+
+  public void saveAFox(Fox foxToSave) {
+    foxes.put(foxToSave.getName(), foxToSave);
   }
 
   public Fox loginAFox(String name) {
@@ -62,7 +93,7 @@ public class FoxService {
       fox.addTrick(trick);
     }
     String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
-    String actionTrick = timestamp + " | Trick: "+ trick + " has been picked up.";
+    String actionTrick = timestamp + " | Trick: " + trick + " has been picked up.";
     fox.addAction(actionTrick);
   }
 
@@ -74,18 +105,18 @@ public class FoxService {
       fox.addNewTrickObject(trick);
     }
     String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
-    String actionTrick = timestamp + " | Trick: "+ trick.getName() + " has been picked up.";
+    String actionTrick = timestamp + " | Trick: " + trick.getName() + " has been picked up.";
     fox.addAction(actionTrick);
   }
 
-  public void teachOptional (String name, String trickName){
+  public void teachOptional(String name, String trickName) {
     Fox fox = findFoxByName(name);
 
-    if(!fox.getListOfCompletedTricks().contains(new Trick(trickName))){
+    if (!fox.getListOfCompletedTricks().contains(new Trick(trickName))) {
       fox.addNewTrickObject(new Trick(trickName));
     }
     String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
-    String actionTrick = timestamp + " | Trick: "+ trickName + " has been picked up.";
+    String actionTrick = timestamp + " | Trick: " + trickName + " has been picked up.";
     fox.addAction(actionTrick);
   }
 
