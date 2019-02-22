@@ -22,6 +22,8 @@ public class TrickService {
     listOfTricks.add(new Trick("Java", "/java.jpg"));
     listOfTricks.add(new Trick("HTML & CSS", "/html&css.jpg"));
     listOfTricks.add(new Trick("SQL", "/sql.png"));
+    listOfTricks.add(new Trick("Javascript", "/javascript.png"));
+    listOfTricks.add(new Trick("Angular", "/angular.png"));
   }
 
   public void addTrick(String trickName) {

@@ -42,15 +42,13 @@ public class FoxService {
     return selectedFox;
   }
 
-  public Fox findOrCreateFoxByName(String name) {
+  public boolean checkIfFoxExists (String name) {
     Fox fox;
     if (listExistingFoxes().containsKey(name)) {
-      fox = findFoxByName(name);
+      return true;
     } else {
-      fox = new Fox(name);
-      saveAFox(fox);
+      return false;
     }
-    return fox;
   }
 
   public HashMap<String, Fox> listExistingFoxes() {

@@ -2,20 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Fox Information</title>
 </head>
 <body>
-<ul>
-    <li><a style="color: lightblue" th:href="'/information?name=' + ${character.name}">Information</a></li>
-    <li><a style="color: lightblue" th:href="'/nutrition?name=' + ${character.name}">Nutrition Store</a></li>
-    <li><a style="color: lightblue" th:href="'/trickstore?name=' + ${character.name}">Trick Store</a></li>
-    <li><a style="color: lightblue" th:href="'/actionlog?name=' + ${character.name}">Action History</a></li>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+    <a class="navbar-brand" href="#">Programmers Fox Club</a>
+        <img th:src="@{/fox.png}" alt="Character image" style="width: 80px;height: auto">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item active"><a class="nav-link" th:href="'/information?name=' + ${character.name}">Information<span class="sr-only">(current)</span></a></li>
+
+                <li class="nav-item"><a class="nav-link" th:href="'/nutrition?name=' + ${character.name}">Nutrition Store</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="'/trickstore?name=' + ${character.name}">Trick Store</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="'/actionlog?name=' + ${character.name}">Action History</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="'/main'">Log Out</a></li>
+          </ul>
+        </div>
+    </div>
+</nav>
 <img th:src="@{/greenfox.png}" alt="Character image" style="width: 150px;height: auto">
 
-<h2 style="color: grey" th:text="'This is ' + ${character.name} + '. Currently living on ' + ${character.food} + ' and ' + ${character.drink} + ' . ' + ${character.name} + ' knows ' + ${character.countOftricks()} + ' trick(s).'"></h2>
+<h3 style="color: grey" th:text="'This is ' + ${character.name} + '. Currently living on ' + ${character.food} + ' and ' + ${character.drink} + ' . ' + ${character.name} + ' knows ' + ${character.countOftricks()} + ' trick(s).'"></h3>
 
-<h1 style="color: mediumseagreen">Known Tricks</h1>
+<h3 style="color: mediumseagreen">Known Tricks</h3>
         <ul>
             <li th:style="'color:red'" th:if="${error}" th:text="${error}"></li>
             <li th:style="'color:grey'" th:unless="${error}" th:each="trick : ${list}" >
@@ -23,9 +38,14 @@
                 <img th:src="${trick.getImageurl()}" style="width: 75px; height: auto;">
             </li>
         </ul>
-<h1 style="color: mediumseagreen">Action History</h1>
+<h3 style="color: mediumseagreen">Action History</h3>
 <ul>
     <li th:style="'color:grey'" th:each="action:${character.actionList}" th:text="${action}"></li>
 </ul>
 </body>
+<footer class="page-footer bg-dark text-white fixed-bottom">
+    <div class="card-footer">
+        For more detail contact us at posta.erika.mail@gmail.com
+    </div>
+</footer>
 <html/>

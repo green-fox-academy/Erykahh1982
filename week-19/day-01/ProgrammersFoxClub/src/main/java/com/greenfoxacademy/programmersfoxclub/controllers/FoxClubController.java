@@ -52,7 +52,6 @@ public class FoxClubController {
 
   @RequestMapping(value = "/login", method = RequestMethod.POST)
   public String postLoginForm(@RequestParam(name = "name") String name) {
-
     return "redirect:/information/?name=" + name;
   }
 
@@ -67,7 +66,8 @@ public class FoxClubController {
   }
 
   @PostMapping("/nutrition")
-  public String feedTheFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "food") String food, @ModelAttribute(value = "drink") String drink) {
+  public String feedTheFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "food") String
+      food, @ModelAttribute(value = "drink") String drink) {
     foxService.feedTheFox(name, food, drink);
     return "redirect:/information/?name=" + name;
   }
@@ -88,7 +88,8 @@ public class FoxClubController {
   }
 
   @PostMapping("/trickstore")
-  public String educateFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "trick") String trickName) {
+  public String educateFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "trick") String
+      trickName) {
 //      foxService.educateTheFox(name, trick);
     if (trickService.checkTrickName(trickName) == true) {
       foxService.teachTheFox(name, trickService.findTrickByName(trickName));
