@@ -29,9 +29,11 @@
 <br>
 <h1 style="color: mediumseagreen" th:text="'Action History of ' +${character.name}"></h1>
 <img src="/activity.png" style="width: 50px; height: auto">
-    <ul>
-        <li th:style="'color:grey'" th:each="action:${character.actionList}" th:text="${action}"></li>
-    </ul>
+<ul th:if="${character.actionList.isEmpty()}">
+    <li th:text="'Nothing happened to' + ${character.getName()} + ' yet.'" th:style="'color:red'"></li></ul>
+<ul th:unless="${character.actionList.isEmpty()}">
+    <li th:style="'color:grey'" th:each="action:${character.actionList}" th:text="${action}"></li>
+</ul>
 </body>
 <footer class="page-footer bg-dark text-white fixed-bottom">
     <div class="card-footer">

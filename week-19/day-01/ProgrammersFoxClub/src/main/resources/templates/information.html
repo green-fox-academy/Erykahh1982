@@ -32,15 +32,16 @@
 
 <h3 style="color: mediumseagreen">Known Tricks</h3>
         <ul>
-            <li th:style="'color:red'" th:if="${error}" th:text="${error}"></li>
-            <li th:style="'color:grey'" th:unless="${error}" th:each="trick : ${list}" >
+            <li th:if="${character.getListOfCompletedTricks().isEmpty()}" th:style="'color:red'" th:text="'You know no tricks yet, go to Trick Center and pick up one'"></li>
+            <li th:style="'color:grey'" th:unless="${character.getListOfCompletedTricks().isEmpty()}" th:each="trick : ${list}" >
                 <span th:text="${trick.getName()}"></span>
                 <img th:src="${trick.getImageurl()}" style="width: 75px; height: auto;">
             </li>
         </ul>
-<h3 style="color: mediumseagreen">Action History</h3>
-<ul>
-    <li th:style="'color:grey'" th:each="action:${character.actionList}" th:text="${action}"></li>
+<h3  style="color: mediumseagreen">Action History</h3>
+<ul >
+    <li th:if="${last5action.isEmpty()}" th:text="'Nothing happened to ' + ${character.getName()} + ' yet.'" th:style="'color:red'"></li>
+    <li th:unless="${last5action.isEmpty()}" th:style="'color:grey'" th:each="action:${last5action}" th:text="${action}"></li>
 </ul>
 </body>
 <footer class="page-footer bg-dark text-white fixed-bottom">

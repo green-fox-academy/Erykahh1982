@@ -21,18 +21,6 @@ public class FoxService {
     foxes.put(fox.getName(), fox);
   }
 
-  public ArrayList<String> list5LatestAction(String name) {
-    Fox fox = findFoxByName(name);
-
-    ArrayList<String> fiveLatest = new ArrayList<>();
-    int listSize = fox.getActionList().size();
-
-    for (int i = 4; i < fox.getActionList().size(); i++) {
-      fiveLatest.add(fox.getActionList().get(listSize - 1));
-    }
-    return fiveLatest;
-  }
-
   public Fox findFoxByName(String name) {
     Fox selectedFox = null;
 
@@ -42,7 +30,7 @@ public class FoxService {
     return selectedFox;
   }
 
-  public boolean checkIfFoxExists (String name) {
+  public boolean checkIfFoxExists(String name) {
     Fox fox;
     if (listExistingFoxes().containsKey(name)) {
       return true;
@@ -116,6 +104,23 @@ public class FoxService {
     String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
     String actionTrick = timestamp + " | Trick: " + trickName + " has been picked up.";
     fox.addAction(actionTrick);
+  }
+
+  public ArrayList<String> list5LatestAction(String name) {
+    Fox fox = findFoxByName(name);
+
+    ArrayList<String> allActions = fox.getActionList();
+    ArrayList<String> fiveLastAction = new ArrayList<>();
+    int fullListSize = allActions.size();
+
+    if (fullListSize >= 5) {
+      for (int i = 5; i > 0; i--) {
+        fiveLastAction.add(allActions.get(fullListSize - i));
+      }
+    } else {
+      fiveLastAction = allActions;
+    }
+    return fiveLastAction;
   }
 
 }

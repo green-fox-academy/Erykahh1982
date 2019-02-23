@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <head>
     <meta charset="UTF-8"/>
     <title>Welcome!</title>
 </head>
     <body>
-        <img src="/foxes.svg" style="width: 1100px; height: auto;">
-        <h2 style="color: grey" th:text="'Hello there!'"></h2>
-        <h2 style="color: grey" th:text="'This is a game where you can take care of your own FOX...'"></h2>
-        <h5 th:text="'Already have an account?'" th:style="'color:grey'"></h5>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Programmers Fox Club</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        </nav>
+    <h4 style="color: grey" th:text="'Hello there!'"></h4>
+    <h4 style="color: grey" th:text="'This is a game where you can take care of your own FOX...'"></h4>
+    <img src="/foxes.svg" style="width: 1000px; height: auto;">
+        <h6 th:text="'Already have an account?'" th:style="'color:grey'"></h6>
         <a href="/login"><button style="color: whitesmoke; background-color: lightcoral">LOGIN</button></a>
-        <h5 th:text="'Not yet having an account?'" th:style="'color:grey'"></h5>
+        <h6 th:text="'Not yet having an account?'" th:style="'color:grey'"></h6>
         <a href="/login"><button style="color: whitesmoke; background-color: lightcoral">REGISTER</button></a>
     </body>
+<footer class="page-footer bg-dark text-white fixed-bottom">
+    <div class="card-footer">
+        For more detail contact us at posta.erika.mail@gmail.com
+    </div>
+</footer>
 <html/>

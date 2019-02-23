@@ -34,14 +34,10 @@ public class FoxClubController {
 
     Fox fox = foxService.loginAFox(name);
     model.addAttribute("character", fox);
+    model.addAttribute("trickcount", trickService.trickCount());
+    model.addAttribute("list", fox.getListOfCompletedTricks());
+    model.addAttribute("last5action", foxService.list5LatestAction(name));
 
-    if (fox.getListOfCompletedTricks().isEmpty()) {
-      model.addAttribute("error", "No tricks to show yet, go and learn some");
-    } else {
-//      model.addAttribute("trickcount", trickService.countTricks());
-      model.addAttribute("trickcount", trickService.trickCount());
-      model.addAttribute("list", fox.getListOfCompletedTricks());
-    }
     return "information";
   }
 
