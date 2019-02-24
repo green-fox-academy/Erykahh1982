@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="stylesheet_main.css"/>
+<link rel="stylesheet" href="cssfiles/stylesheet_main.css"/>
 <head>
     <meta charset="UTF-8"/>
     <title>Welcome!</title>
@@ -17,16 +17,16 @@
         </div>
         </nav>
     <div class="hello">
-    <h3 style="color: grey" th:text="'Hello there!'"></h3>
-    <h3 style="color: grey" th:text="'This is a game where you can take care of your own FOX...'"></h3>
-    <img src="/foxes.svg" style="width: 1000px; height: auto;">
+    <h3 th:text="'Hello there!'"></h3>
+    <h3 th:text="'This is a game where you can take care of your own FOX...'"></h3>
+    <img src="/images/foxes.svg" style="width: 1000px; height: auto;">
     </div>
         <div class="login">
-        <h6 th:text="'Already have an account?'" th:style="'color:grey'"></h6>
+        <h6>Already have an account?</h6>
         <a href="/login"><button>LOGIN</button></a>
         </div>
         <div class="register">
-        <h6 th:text="'Not yet having an account?'" th:style="'color:grey'"></h6>
+        <h6>Not yet having an account?</h6>
         <a href="/login"><button>REGISTER</button></a>
         </div>
     </body>

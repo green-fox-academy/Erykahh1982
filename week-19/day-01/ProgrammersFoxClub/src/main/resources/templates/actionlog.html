@@ -4,14 +4,14 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="stylesheet_action.css"/>
+    <link rel="stylesheet" href="cssfiles/stylesheet_action.css"/>
     <title>Action Log</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="#">Programmers Fox Club</a>
-        <img th:src="@{/fox.png}" alt="Character image" style="width: 80px;height: auto">
+        <img th:src="@{/images/fox.png}" alt="Character image" style="width: 80px;height: auto">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,7 +28,7 @@
     </div>
 </nav>
 <br>
-<img class="img-icon" src="/activity.png">
+<img class="img-icon" src="/images/activity.png">
 <div class="actionlog">
 <h3 th:text="'Action History of ' +${character.name}"></h3>
 <br>
