@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet_information.css">
     <title>Fox Information</title>
 </head>
 <body>
@@ -26,23 +27,29 @@
         </div>
     </div>
 </nav>
-<img th:src="@{/greenfox.png}" alt="Character image" style="width: 150px;height: auto">
-
-<h3 style="color: grey" th:text="'This is ' + ${character.name} + '. Currently living on ' + ${character.food} + ' and ' + ${character.drink} + ' . ' + ${character.name} + ' knows ' + ${character.countOftricks()} + ' trick(s).'"></h3>
-
-<h3 style="color: mediumseagreen">Known Tricks</h3>
+<img class="img-fox" src="/greenfox.png">
+<div class="summary">
+    <h3 th:text="'This is ' + ${character.name} + '.'"></h3>
+    <h3 th:text="'Currently living on ' + ${character.food} + ' and ' + ${character.drink} + ' . '"></h3>
+    <h3 th:text="${character.name} + ' knows ' + ${character.countOftricks()} + ' trick(s).'"></h3>
+</div>
+<div class="knowntricks">
+<h3>Known Tricks</h3>
         <ul>
-            <li th:if="${character.getListOfCompletedTricks().isEmpty()}" th:style="'color:red'" th:text="'You know no tricks yet, go to Trick Center and pick up one'"></li>
+            <li th:if="${character.getListOfCompletedTricks().isEmpty()}" th:style="'color:red'" th:text="${character.name} + ' knows anything but a trick, so go to Trick Center and shed some light there'"></li>
             <li th:style="'color:grey'" th:unless="${character.getListOfCompletedTricks().isEmpty()}" th:each="trick : ${list}" >
                 <span th:text="${trick.getName()}"></span>
                 <img th:src="${trick.getImageurl()}" style="width: 75px; height: auto;">
             </li>
         </ul>
-<h3  style="color: mediumseagreen">Action History</h3>
+</div>
+<div class="actionhistory">
+<h3>Action History</h3>
 <ul >
     <li th:if="${last5action.isEmpty()}" th:text="'Nothing happened to ' + ${character.getName()} + ' yet.'" th:style="'color:red'"></li>
     <li th:unless="${last5action.isEmpty()}" th:style="'color:grey'" th:each="action:${last5action}" th:text="${action}"></li>
 </ul>
+</div>
 </body>
 <footer class="page-footer bg-dark text-white fixed-bottom">
     <div class="card-footer">

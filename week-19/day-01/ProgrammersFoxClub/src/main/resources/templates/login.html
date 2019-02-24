@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet_login.css"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -23,16 +24,18 @@
     </div>
 </nav>
 <br>
-<h2 style="color: grey">Welcome to Programmer Fox Club!</h2>
+<div class="welcome">
+<h3>Welcome to Programmer Fox Club!</h3>
 <br>
 <div>
-    <h5 style="color: mediumseagreen">Please provide a name, so that you can associate it to your pet!</h5>
+    <h5>Please provide a name, to associate it to your pet!</h5>
     <br>
     <form action="/login" method="post">
-        <label for="name" th:style="'color:grey'">Name</label>
+        <label for="name">Name</label>
         <input type="text" name="name" id ="name" required autofocus/>
-        <input type="submit" value="GO" style="color: whitesmoke; background-color: lightcoral;"/>
+        <input type="submit" value="GO"/>
     </form>
+</div>
 </div>
 </body>
 <footer class="page-footer bg-dark text-white fixed-bottom">

@@ -1,0 +1,21 @@
+.welcome {
+    position: absolute;
+    top: 125px;
+    left: 125px;
+}
+
+h3 {
+    color: grey;
+}
+
+h5 {
+    color: mediumseagreen;
+}
+
+input[type=submit] {
+    color: whitesmoke;
+    background-color: mediumseagreen;
+}
+label{
+    color: grey;
+}

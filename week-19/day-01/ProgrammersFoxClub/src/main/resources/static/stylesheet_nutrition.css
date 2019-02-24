@@ -1,0 +1,27 @@
+.menu {
+    position: absolute;
+    left: 125px;
+    top: 125px;
+}
+
+.specialty {
+    position: absolute;
+    left: 125px;
+    top: 240px;
+}
+.icon{
+    position: absolute;
+    left: 125px;
+    top: 370px;
+}
+h3{
+    color: mediumseagreen;
+}
+label{
+    color: grey;
+    font-weight: bold;
+}
+input[type=submit]{
+    color: whitesmoke;
+    background-color: mediumseagreen;
+}

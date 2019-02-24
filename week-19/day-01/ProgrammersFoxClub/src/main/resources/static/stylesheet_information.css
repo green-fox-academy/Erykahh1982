@@ -1,0 +1,32 @@
+.img-fox {
+    width: 200px;
+    height: auto;
+    padding-left: 1%;
+    margin-left: 80px;
+}
+
+.actionhistory{
+
+    color: mediumseagreen;
+    width: 600px;
+    display: block;
+    position: absolute;
+    left: 450px;
+    top: 300px;
+}
+.knowntricks{
+
+    color: mediumseagreen;
+    width: 289px;
+    display: block;
+    position: absolute;
+    left: 125px;
+    top: 300px;
+}
+.summary{
+    width: 500px;
+    color: grey;
+    position: absolute;
+    left: 381px;
+    top: 125px;
+}

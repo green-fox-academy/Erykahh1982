@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet_action.css"/>
     <title>Action Log</title>
 </head>
 <body>
@@ -27,13 +28,16 @@
     </div>
 </nav>
 <br>
-<h1 style="color: mediumseagreen" th:text="'Action History of ' +${character.name}"></h1>
-<img src="/activity.png" style="width: 50px; height: auto">
+<img class="img-icon" src="/activity.png">
+<div class="actionlog">
+<h3 th:text="'Action History of ' +${character.name}"></h3>
+<br>
 <ul th:if="${character.actionList.isEmpty()}">
     <li th:text="'Nothing happened to' + ${character.getName()} + ' yet.'" th:style="'color:red'"></li></ul>
 <ul th:unless="${character.actionList.isEmpty()}">
     <li th:style="'color:grey'" th:each="action:${character.actionList}" th:text="${action}"></li>
 </ul>
+</div>
 </body>
 <footer class="page-footer bg-dark text-white fixed-bottom">
     <div class="card-footer">

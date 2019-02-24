@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet_trick.css"/>
     <title>Fox Tricks</title>
 </head>
 <body>
@@ -27,28 +28,34 @@
     </div>
 </nav>
 <br>
-<h2 th:text="'Educate your Fox from the available Skill Library!'" th:style="'color:grey'"></h2>
-<div>
+<div class="mandatory">
+<h3>Educate your Fox from the Mandatory List</h3>
+<br>
+    <div>
     <form th:action="'/trickstore/?name=' + ${character.name}" method="post">
-        <label style="color: lightgrey; font-weight: bold" for="trick">Choose a Trick</label>
+        <label for="trick">Choose a Trick</label>
         <select id="trick" name="trick" class="trick">
             <option th:if="${error}" th:text="${error}"></option>
             <option th:unless="${error}" th:each="trick : ${tricks}" th:value="${trick.getName()}" th:text="${trick.getName()}"></option></select>
-        <input type="submit" value="Learn" style="color: whitesmoke; background-color: lightcoral;"/>
+        <input type="submit" value="Learn"/>
     </form>
 </div>
-<h2 th:style="'color:grey'">OR</h2>
+</div>
+<div class="optional">
+<h3>Or Learn an Optional</h3>
+    <br>
 <div>
     <form th:action="'/trickstore/?name=' + ${character.name}" method="post">
         <div>
-            <label style="color: lightgrey; font-weight: bold" for="addTrick">Add a new Trick</label>
+            <label for="addTrick">Add a new Trick</label>
             <input type="text" id="addTrick" name="trick"/>
-            <input type="submit" value="AddSkill"style="color: whitesmoke; background-color: lightcoral"/>
+            <input type="submit" value="Add a Skill"/>
         </div>
     </form>
 </div>
+</div>
 <br>
-<img src="/skill2.png" style="width: 250px; height: auto">
+<img class="icon" src="/skill2.png">
 <br>
 </body>
 <footer class="page-footer bg-dark text-white fixed-bottom">

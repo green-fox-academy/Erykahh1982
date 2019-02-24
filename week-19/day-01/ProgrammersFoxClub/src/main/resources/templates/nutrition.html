@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet_nutrition.css"/>
     <title>Fox Nutrition</title>
 </head>
 <body>
@@ -27,36 +28,36 @@
     </div>
 </nav>
 <br>
-<h2 th:text="'Give food and drink to your Fox from the available Menu!'" th:style="'color:grey'"></h2>
+<div class="menu">
+<h3>Feed your Fox from the available Menu</h3>
+    <br>
 <div>
     <form th:action="'/nutrition/?name=' + ${character.name}" method="post">
-            <label style="color: lightgrey; font-weight: bold" for="food">Choose Food</label>
+            <label for="food">Choose Food</label>
             <select id="food" name="food" class="food">
                 <option th:each="food : ${foods}" th:value="${food}" th:text="${food}"></option></select>
-            <label style="color: lightgrey; font-weight: bold" for="drink">Choose Drink</label>
+            <label for="drink">Choose Drink</label>
             <select id="drink" name="drink" class="drink">
             <option th:each="drink : ${drinks}" th:value="${drink}" th:text="${drink}"></option></select>
-        <input type="submit" value="Change" style="color: whitesmoke; background-color: lightcoral;"/>
+        <input type="submit" value="Change"/>
     </form>
 </div>
-<h2 th:style="'color:grey'">OR</h2>
+</div>
+<div class="specialty">
 <div>
+    <h3>Or Add Your Own Specialty</h3>
+    <br>
     <form th:action="'/nutrition/?name=' + ${character.name}" method="post">
-        <div>
-        <label style="color: lightgrey; font-weight: bold" for="addFood">Add Your Specialty Food</label>
+        <label for="addFood">Add Food</label>
         <input type="text" id="addFood" name="food"/>
-        </div>
-        <br>
-        <div>
-        <label style="color: lightgrey; font-weight: bold" for="addDrink">Add Your Specialty Drink</label>
+        <label for="addDrink">Add Drink</label>
         <input type="text" id="addDrink" name="drink"/>
-        </div>
-        <br>
-        <input type="submit" value="AddYourOwnSpecialty"style="color: whitesmoke; background-color: lightcoral"/>
+        <input type="submit" value="Add To Menu"/>
     </form>
+</div>
 </div>
 <br>
-<img src="/food-and-drink-png-5.png" style="width: 250px; height: auto">
+<img class="icon" src="/food-and-drink-png-5.png" style="width: 250px; height: auto">
 <br>
 </body>
 <footer class="page-footer bg-dark text-white fixed-bottom">
