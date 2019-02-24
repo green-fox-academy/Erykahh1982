@@ -10,13 +10,11 @@ import java.util.Arrays;
 @Service
 public class TrickService {
 
-  private ArrayList<String> tricksToLearn;
   private FoxService foxService;
   private ArrayList<Trick> listOfTricks;
 
   @Autowired
   public TrickService(FoxService foxService) {
-    this.tricksToLearn = new ArrayList<>(Arrays.asList("Java", "HTML & CSS", "SQL"));
     this.foxService = foxService;
     this.listOfTricks = new ArrayList<>();
     listOfTricks.add(new Trick("Java", "/java.jpg"));
@@ -26,13 +24,9 @@ public class TrickService {
     listOfTricks.add(new Trick("Angular", "/angular.png"));
   }
 
-  public void addTrick(String trickName) {
-    tricksToLearn.add(trickName);
-  }
+  public boolean checkTrickName(String name) {
 
-  public boolean checkTrickName(String name){
-
-    for(Trick trick : listOfTricks) {
+    for (Trick trick : listOfTricks) {
       if (trick.getName().equalsIgnoreCase(name)) {
         return true;
       }
@@ -44,28 +38,8 @@ public class TrickService {
     listOfTricks.add(trick);
   }
 
-  public ArrayList<String> listAllTricks() {
-    return tricksToLearn;
-  }
-
-  public int countTricks() {
-    return tricksToLearn.size();
-  }
-
   public int trickCount() {
     return listOfTricks.size();
-  }
-
-  public ArrayList<String> createRemainigList(String name) {
-
-    ArrayList<String> alredyKnownTricksByFox = foxService.findFoxByName(name).getCompletedTricks();
-    ArrayList<String> remainingTricksToLearn = new ArrayList<>();
-    for (String element : tricksToLearn) {
-      if (!alredyKnownTricksByFox.contains(element)) {
-        remainingTricksToLearn.add(element);
-      }
-    }
-    return remainingTricksToLearn;
   }
 
   public ArrayList<Trick> showRemainingList(String name) {
@@ -80,14 +54,6 @@ public class TrickService {
     return remainingTricks;
   }
 
-  public boolean allTricksCompleted(String name) {
-    if (createRemainigList(name).isEmpty()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   public boolean allCompleted(String name) {
     if (showRemainingList(name).isEmpty()) {
       return true;
@@ -96,20 +62,10 @@ public class TrickService {
     }
   }
 
-  public String loadErrorMessage(String name) {
-    if (allTricksCompleted(name) == true) {
-    }
-    return "Congratulations! You have completed all the mandatory tricks! Go and add a NEW trick, it is up to you what!";
-  }
-
   public String showErrorMessage(String name) {
     if (allCompleted(name) == true) {
     }
     return "Congratulations! You have completed all the mandatory tricks! Go and add a NEW trick, it is up to you what!";
-  }
-
-  public ArrayList<String> getTricksToLearn() {
-    return tricksToLearn;
   }
 
   public Trick findTrickByName(String name) {
@@ -121,10 +77,6 @@ public class TrickService {
       }
     }
     return selectedTrick;
-  }
-
-  public void setTricksToLearn(ArrayList<String> tricksToLearn) {
-    this.tricksToLearn = tricksToLearn;
   }
 
   public ArrayList<Trick> getListOfTricks() {

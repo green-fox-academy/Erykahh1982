@@ -23,7 +23,6 @@ public class FoxService {
 
   public Fox findFoxByName(String name) {
     Fox selectedFox = null;
-
     if (foxes.containsKey(name)) {
       selectedFox = foxes.get(name);
     }
@@ -49,7 +48,6 @@ public class FoxService {
 
   public Fox loginAFox(String name) {
     Fox fox = findFoxByName(name);
-
     if (fox == null) {
       fox = new Fox(name);
       addNewFox(fox);
@@ -69,18 +67,6 @@ public class FoxService {
     String actionFood = timestamp + " | Food has been changed from: " + currentFood + " to " + food + ".";
     fox.addAction(actionDrink);
     fox.addAction((actionFood));
-  }
-
-  public void educateTheFox(String name, String trick) {
-    Fox fox = findFoxByName(name);
-
-    ArrayList<String> tricksAlreadyKnown = fox.getCompletedTricks();
-    if (!tricksAlreadyKnown.contains(trick)) {
-      fox.addTrick(trick);
-    }
-    String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
-    String actionTrick = timestamp + " | Trick: " + trick + " has been picked up.";
-    fox.addAction(actionTrick);
   }
 
   public void teachTheFox(String name, Trick trick) {
