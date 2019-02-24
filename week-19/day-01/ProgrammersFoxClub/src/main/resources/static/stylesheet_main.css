@@ -1,0 +1,20 @@
+.hello{
+    position: absolute;
+    top: 80px;
+    left:125px;
+}
+button{
+    color: whitesmoke;
+    background-color: mediumseagreen;
+}
+.login{
+    position: absolute;
+    top: 480px;
+    left:125px;
+
+}
+.register{
+    position: absolute;
+    top: 480px;
+    left:350px;
+}
