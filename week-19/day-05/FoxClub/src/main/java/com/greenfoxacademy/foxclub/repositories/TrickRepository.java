@@ -27,4 +27,7 @@ public class TrickRepository {
     this.tricks = tricks;
   }
 
+  public void addTrick(Trick trick){
+    tricks.add(trick);
+  }
 }

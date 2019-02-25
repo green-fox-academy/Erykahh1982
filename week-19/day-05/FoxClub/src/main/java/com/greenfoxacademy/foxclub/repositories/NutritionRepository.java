@@ -8,8 +8,8 @@ import java.util.Arrays;
 @Repository
 public class NutritionRepository {
 
-  public ArrayList<String> foodsToChoose;
-  public ArrayList<String> drinksToChoose;
+  private ArrayList<String> foodsToChoose;
+  private ArrayList<String> drinksToChoose;
 
   public NutritionRepository() {
     this.foodsToChoose = new ArrayList<>(Arrays.asList("pizza", "bone", "spagetti", "steak", "pasta"));
@@ -32,4 +32,11 @@ public class NutritionRepository {
     this.drinksToChoose = drinksToChoose;
   }
 
+  public void addFood(String food){
+    foodsToChoose.add(food);
+  }
+
+  public void addDrink (String drink){
+    drinksToChoose.add(drink);
+  }
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="cssfiles/stylesheet_main.css"/>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome!</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Programmers Fox Club</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+<div class="hello">
+    <h3 th:text="'Hello there!'"></h3>
+    <h3 th:text="'This is a game where you can take care of your own FOX...'"></h3>
+    <img src="/images/cover2.jpg" style="width: 400px; height: auto;">
+</div>
+<div class="login">
+    <h6>Already have an account?</h6>
+    <a href="/login"><button>LOGIN</button></a>
+</div>
+<div class="register">
+    <h6>Not yet having an account?</h6>
+    <a href="/register"><button>REGISTER</button></a>
+</div>
+</body>
+<footer class="page-footer bg-dark text-white fixed-bottom">
+    <div class="footer-copyright text-center py-3">© 2019 Copyright: Kovács-Posta Erika</div>
+</footer>
+<html/>
