@@ -18,7 +18,4 @@ public class TrickService {
     this.trickRepository = trickRepository;
   }
 
-  public void addNewTrick (Trick trick){
-    trickRepository.showAllTricks().add(trick);
-  }
 }

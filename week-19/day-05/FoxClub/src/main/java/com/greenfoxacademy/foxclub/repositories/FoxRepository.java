@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.HashMap;
 
 @Repository
-class FoxRepository implements RepositoryInterface {
+public class FoxRepository implements RepositoryInterface {
 
   private HashMap<String, Fox> foxes;
 

@@ -13,8 +13,8 @@ import java.util.ArrayList;
 @Service
 public class FoxService {
 
-  private
   private TrickRepository trickRepository;
+  private FoxRepository foxRepository;
 
 
   @Autowired
@@ -62,7 +62,7 @@ public class FoxService {
 
     ArrayList<Trick> tricksAlreadyCompleted = fox.getTricks();
     if (!tricksAlreadyCompleted.contains(trick)) {
-      foxRepository.
+      foxRepository.addNewTrick(name, trick);
     }
 
     String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
@@ -74,7 +74,7 @@ public class FoxService {
     Fox fox = findAFoxByName(name);
 
     if (!fox.getTricks().contains(new Trick(trickName))) {
-      foxRepository.addNewTrick(trickName);
+      foxRepository.addNewTrick(name, new Trick(trickName));
     }
 
     String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
