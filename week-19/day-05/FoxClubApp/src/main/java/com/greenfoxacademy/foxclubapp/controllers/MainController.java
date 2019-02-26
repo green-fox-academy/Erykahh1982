@@ -45,6 +45,7 @@ public class MainController {
 
   @PostMapping("/register")
   public String registerTheFox(@ModelAttribute(value = "name") String name, @ModelAttribute(value = "imageurl") String imageurl, Model model) {
+
     if (foxService.checkIfFoxIsRegistered(name)) {
       model.addAttribute("error", "Someone has already registered with this name, please select another one");
       model.addAttribute("imagelist", imageRepository.getImages());
@@ -62,6 +63,7 @@ public class MainController {
 
   @PostMapping("/login")
   public String postLoginForm(@RequestParam(name = "name") String name) {
+
     if (foxService.checkIfFoxIsRegistered(name)) {
       return "redirect:/information?name=" + name;
     } else {
@@ -69,13 +71,31 @@ public class MainController {
     }
   }
 
-
   @GetMapping("/information")
   public String renderInformationPage(@RequestParam(value = "name") String name, Model model) {
+
     Fox fox = foxService.loginAFox(name);
     model.addAttribute("fox", fox);
     model.addAttribute("last5", foxService.list5LatestAction(name));
+
     return "information";
+  }
+
+  @GetMapping("/nutrition")
+  public String renderNutritionPage(@RequestParam(value = "name") String name, Model model) {
+
+    Fox fox = foxService.loginAFox(name);
+    model.addAttribute("fox", fox);
+    model.addAttribute("drinks", nutritionService.displayDrinks());
+    model.addAttribute("foods", nutritionService.displayFoods());
+
+    return "nutrition";
+  }
+
+  @PostMapping("/nutrition")
+  public String feedTheFox(@RequestParam(value = "name") String name, @ModelAttribute(value = "food") String food, @ModelAttribute(value = "drink") String drink) {
+    foxService.feedTheFox(name, food, drink);
+    return "redirect:/information?name=" + name;
   }
 
 
