@@ -1,0 +1,15 @@
+h3{
+    color: mediumseagreen;
+}
+.actionlog{
+    position: absolute;
+    left: 125px;
+    top: 125px;
+}
+.img-icon{
+    position: absolute;
+    left: 480px;
+    top: 124px;
+    width: 35px;
+    height: auto;
+}

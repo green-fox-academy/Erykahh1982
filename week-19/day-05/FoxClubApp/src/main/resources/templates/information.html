@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="cssfiles/stylesheet_information.css">
+    <title>Fox Information</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Programmers Fox Club</a>
+        <img th:src="@{/images/fox.png}" alt="Character image" style="width: 80px;height: auto">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link" th:href="'/information?name=' + ${fox.getName()}">Information<span class="sr-only">(current)</span></a></li>
+
+                <li class="nav-item"><a class="nav-link" th:href="'/nutrition?name=' + ${fox.getName()}">Nutrition Store</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="'/trickstore?name=' + ${fox.getName()}">Trick Store</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="'/actionlog?name=' + ${fox.getName()}">Action History</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="'/main'">Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<img class="img-fox" th:src="${fox.getImageurl()}" style="height: 200px; width: auto">
+<div class="summary">
+    <h3 th:text="'This is ' + ${fox.getName()} + '.'"></h3>
+    <h3 th:text="'Currently living on ' + ${fox.getFood()} + ' and ' + ${fox.getDrink()} + ' . '"></h3>
+    <h3 th:text="${fox.getName()} + ' knows ' + ${fox.trickCount()} + ' trick(s).'"></h3>
+</div>
+<div class="knowntricks">
+    <h3>Known Tricks</h3>
+    <ul>
+        <li th:if="${fox.getKnownTricks().isEmpty()}" style="color:indianred;font-weight: lighter" th:text="${fox.getName()} + ' knows anything but a trick, so go to Trick Center and shed some light there'"></li>
+        <li th:style="'color:grey'" th:unless="${fox.getKnownTricks().isEmpty()}" th:each="trick : ${fox.getKnownTricks()}" >
+            <span th:text="${trick.getName()}"></span>
+            <img th:src="'/images/' + ${trick.getImageurl()}" style="width: 75px; height: auto;">
+        </li>
+    </ul>
+</div>
+<div class="actionhistory">
+    <h3>Action History</h3>
+    <ul >
+        <li th:if="${last5.isEmpty()}" th:text="'Nothing happened to ' + ${fox.getName()} + ' yet.'" style="color: indianred;font-weight: lighter"></li>
+        <li th:unless="${last5.isEmpty()}" th:style="'color:grey'" th:each="action:${last5}" th:text="${action}"></li>
+    </ul>
+</div>
+</body>
+<footer class="page-footer bg-dark text-white fixed-bottom">
+    <div class="container">
+        <div class="footer-copyright text-center">
+            <span class="align-middle"><small>© 2019 Copyright: Kovács-Posta Erika</small></span>
+        </div>
+    </div>
+</footer>
+<html/>

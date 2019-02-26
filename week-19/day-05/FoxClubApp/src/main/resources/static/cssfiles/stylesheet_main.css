@@ -1,0 +1,30 @@
+.hello{
+    position: absolute;
+    top: 30px;
+    left:125px;
+}
+button{
+    color: whitesmoke;
+    background-color: mediumseagreen;
+}
+.login{
+    position: absolute;
+    top: 150px;
+    left:600px;
+
+}
+.register{
+    position: absolute;
+    top: 250px;
+    left:600px;
+}
+h3{
+    color: grey;
+}
+h6{
+    color:grey;
+}
+body{
+    background-image: url(/static/images/hypster.jpg);
+    background-repeat: no-repeat;
+}

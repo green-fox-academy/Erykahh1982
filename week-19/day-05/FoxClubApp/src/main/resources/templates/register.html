@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="cssfiles/stylesheet_register.css"/>
+</head>
+<body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Programmers Fox Club</a>
+        <img th:src="@{/images/fox.png}" alt="Character image" style="width: 80px;height: auto">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a class="nav-link" th:href="'/login'">LogIn<span
+                        class="sr-only">(current)</span></a></li>
+
+                <li class="nav-item"><a class="nav-link" th:href="'/register'">Register</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="body">
+    <div class="container-fluid">
+        <div class="col-md-10">
+            <h3>Welcome to Programmer Fox Club!</h3>
+            <div>
+                <h5>Register Your Fox with a name!</h5>
+                <form action="/register" method="post">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required autofocus/>
+                    <h5> ... and a corresponding image</h5>
+                    <br>
+                    <div th:if="${error}">
+                        <p th:text="${error}" style="color: indianred;font-weight: lighter"></p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3" th:each="image:${imagelist}">
+                            <div class="form-check">
+                                <span th:text="${image.getName()}"></span>
+                                <img th:src="${image.getUrl()}" style="width:150px; height: auto">
+                                <input class="form-check-input" type="radio" name="imageurl"
+                                       th:value="${image.getUrl()}">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" value="Register"
+                           style="position: absolute; margin-top: -60px; margin-left: 650px"/>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer class="page-footer bg-dark text-white fixed-bottom">
+    <div class="container">
+        <div class="footer-copyright text-center">
+            <span class="align-middle"><small>© 2019 Copyright: Kovács-Posta Erika</small></span>
+        </div>
+    </div>
+</footer>
+<html/>
