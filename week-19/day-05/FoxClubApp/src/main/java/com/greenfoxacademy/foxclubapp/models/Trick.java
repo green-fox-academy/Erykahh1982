@@ -5,12 +5,12 @@ public class Trick {
   private String name;
   private String imageurl;
 
-  public Trick(String name){
+  public Trick(String name, String imageurl){
     this.name = name;
     this.imageurl = imageurl;
   }
 
-  public Trick(String name, String imageurl){
+  public Trick(String name){
     this.name = name;
     this.imageurl = "images/certificate.png";
   }

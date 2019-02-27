@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="cssfiles/stylesheet_information.css">
-    <title>Fox Information</title>
+    <link rel="stylesheet" href="cssfiles/stylesheet_trick.css"/>
+    <title>Fox Tricks</title>
 </head>
 <body>
 
@@ -38,35 +38,39 @@
         </div>
     </div>
 </nav>
-<img class="img-fox" th:src="${fox.getImageurl()}" style="height: 200px; width: auto">
-<div class="summary">
-    <h3 th:text="'This is ' + ${fox.getName()} + '.'"></h3>
-    <h3 th:text="'Currently living on ' + ${fox.getFood()} + ' and ' + ${fox.getDrink()} + ' . '"></h3>
-    <h3 th:text="${fox.getName()} + ' knows ' + ${fox.trickCount()} + ' trick(s).'"></h3>
+<br>
+<div class="mandatory">
+    <h3>Educate your Fox from the Mandatory List</h3>
+    <br>
+    <div>
+        <!--<form th:action="'/trickstore/?name=' + ${fox.getName()}" method="post">-->
+            <form th:action="'/trickstore?name=' + ${fox.getName()}" method="post">
+            <label for="trick">Choose a Trick</label>
+            <select id="trick" name="trick" class="trick">
+                <option th:if="${error}" th:text="${error}"></option>
+                <option th:unless="${error}" th:each="trick : ${tricks}" th:value="${trick.getName()}" th:text="${trick.getName()}"></option></select>
+            <input type="submit" value="Learn"/>
+        </form>
+    </div>
 </div>
-<div class="knowntricks">
-    <h3>Known Tricks</h3>
-    <ul>
-        <li th:if="${fox.getKnownTricks().isEmpty()}" style="color:indianred;font-weight: lighter" th:text="${fox.getName()} + ' knows anything but a trick, so go to Trick Center and shed some light there'"></li>
-        <li th:style="'color:grey'" th:unless="${fox.getKnownTricks().isEmpty()}" th:each="trick : ${fox.getKnownTricks()}" >
-            <span th:text="${trick.getName()}"></span>
-            <img th:src="${trick.getImageurl()}" style="width: 75px; height: auto;">
-        </li>
-    </ul>
+<div class="optional">
+    <h3>Or Learn an Optional</h3>
+    <br>
+    <div>
+        <form th:action="'/trickstore/?name=' + ${fox.getName()}" method="post">
+            <div>
+                <label for="addTrick">Add a new Trick</label>
+                <input type="text" id="addTrick" name="trick"/>
+                <input type="submit" value="Add a Skill"/>
+            </div>
+        </form>
+    </div>
 </div>
-<div class="actionhistory">
-    <h3>Action History</h3>
-    <ul >
-        <li th:if="${last5.isEmpty()}" th:text="'Nothing happened to ' + ${fox.getName()} + ' yet.'" style="color: indianred;font-weight: lighter"></li>
-        <li th:unless="${last5.isEmpty()}" th:style="'color:grey'" th:each="action:${last5}" th:text="${action}"></li>
-    </ul>
-</div>
+<br>
+<img class="icon" src="/images/skill2.png">
+<br>
 </body>
 <footer class="page-footer bg-dark text-white fixed-bottom">
-    <div class="container">
-        <div class="footer-copyright text-center">
-            <span class="align-middle"><small>© 2019 Copyright: Kovács-Posta Erika</small></span>
-        </div>
-    </div>
+    <div class="footer-copyright text-center py-3">© 2019 Copyright: Kovács-Posta Erika</div>
 </footer>
 <html/>

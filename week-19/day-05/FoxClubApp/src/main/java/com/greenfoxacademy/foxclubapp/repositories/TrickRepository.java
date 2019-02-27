@@ -12,11 +12,11 @@ public class TrickRepository {
 
   public TrickRepository() {
     this.tricks = new ArrayList<>();
-    tricks.add(new Trick("Java", "/images/java.png"));
-    tricks.add(new Trick("HTML & CSS", "/images/html&css.jpg"));
-    tricks.add(new Trick("SQL", "/images/sql.png"));
-    tricks.add(new Trick("Javascript", "/images/javascript.png"));
-    tricks.add(new Trick("Angular", "/images/angular.png"));
+    tricks.add(new Trick("Java", "images/java.jpg"));
+    tricks.add(new Trick("HTML & CSS", "images/html&css.jpg"));
+    tricks.add(new Trick("SQL", "images/sql.png"));
+    tricks.add(new Trick("Javascript", "images/javascript.png"));
+    tricks.add(new Trick("Angular", "images/angular.png"));
   }
 
   public void addTrick(Trick trick) {

@@ -36,4 +36,37 @@ public class TrickService {
     return remainingTricksToLearn;
   }
 
+  public boolean isAllCopleted(Fox fox) {
+    if (displayRemainingTricks(fox).isEmpty()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public String showErrorMessage(Fox fox) {
+    if (isAllCopleted(fox) == true) {
+    }
+    return "Congratulations! You have completed all the mandatory tricks! Go and add a NEW trick, it is up to you what!";
+  }
+
+  public boolean checkTrickName(String trickName) {
+
+    for (Trick trick : trickRepository.getTricks()) {
+      if (trick.getName().equalsIgnoreCase(trickName)) ;
+      return true;
+    }
+    return false;
+  }
+
+  public Trick findTrickByName(String name) {
+    Trick selectedTrick = null;
+
+    for (Trick trick : trickRepository.getTricks()) {
+      if (trick.getName().equalsIgnoreCase(name)) {
+        selectedTrick = trick;
+      }
+    }
+    return selectedTrick;
+  }
 }

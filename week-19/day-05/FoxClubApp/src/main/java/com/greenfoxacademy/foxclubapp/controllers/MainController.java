@@ -98,5 +98,35 @@ public class MainController {
     return "redirect:/information?name=" + name;
   }
 
+  @GetMapping("/trickstore")
+  public String renderTrickcenterPage(@RequestParam String name, Model model) {
+    Fox fox = foxService.searchFoxByName(name);
+
+    if (trickService.isAllCopleted(fox) == true) {
+      model.addAttribute("error", trickService.showErrorMessage(fox));
+    }
+    model.addAttribute("fox", fox);
+    model.addAttribute("tricks", trickService.displayRemainingTricks(fox));
+    return "tricks";
+  }
+
+  @PostMapping("/trickstore")
+  public String educateFoxOnTrickCenter(@RequestParam(value = "name") String name, @ModelAttribute(value = "trick") String trickName) {
+
+    if (trickService.checkTrickName(trickName) == true) {
+      foxService.educateFoxMandatory(name, trickService.findTrickByName(trickName));
+    } else {
+      foxService.educateFoxOptional(name, trickName);
+    }
+    return "redirect:/information?name=" + name;
+  }
+
+  @GetMapping("/actionlog")
+  public String renderActionHistoryPage(@RequestParam String name, Model model) {
+    Fox fox = foxService.searchFoxByName(name);
+    model.addAttribute("fox", fox);
+    return "actionlog";
+  }
+
 
 }
