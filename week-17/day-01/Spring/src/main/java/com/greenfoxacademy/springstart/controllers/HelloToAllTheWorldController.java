@@ -2,11 +2,11 @@ package com.greenfoxacademy.springstart.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.awt.*;
-import java.util.Random;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Controller
@@ -19,7 +19,7 @@ public class HelloToAllTheWorldController {
       "Salve", "Ciao", "Kon-nichiwa", "An-nyong Ha-se-yo", "Salvëte", "Ni hao", "Dzien' dobry", "Olá", "Bunã ziua", "Zdravstvuyte", "Hola", "Jambo", "Hujambo", "Hej",
       "Sa-wat-dee", "Merhaba", "Selam", "Vitayu", "Xin chào", "Hylo", "Sut Mae", "Sholem Aleychem", "Sawubona"};
 
-  public String[] colors = {"red", "green", "blue", "yellow", "grey", "orange", "violet", "green", "black", "magenta", "purple", "brown"};
+  public String[] colors = {"darkstategrey", "lightcoral", "cornflowerblue", "aquamarine", "coral", "darkcyan", "darkgoldenrod", "darkorange", "darkseagreen", "gold", "khaki", "lavender", "peru"};
 
 
   public String concatHellos(String[] strarray) {     //with this method I display the String[] elements as a concatenated stand alone String aka newString
@@ -31,35 +31,46 @@ public class HelloToAllTheWorldController {
     return newString;
   }
 
-  public int generateRandomIndex() {
+  public int generateRandomIndexHello() {
     int randomIndex = (int) (Math.random() * hellos.length);
     return randomIndex;
   }
 
-  public Color generateRandomRgb() {
-    Random random = new Random();
-    float r = random.nextFloat();
-    float g = random.nextFloat();
-    float b = random.nextFloat();
-    Color randomColor = new Color(random.nextFloat(), random.nextFloat(), random.nextFloat());
-    return randomColor;
+  public int generateRandomIndexColor() {
+    int radomIndex = (int) (Math.random() * colors.length);
+    return radomIndex;
   }
 
   public int generateRandomSize() {
-    int randomFontSize = (int) (Math.random() * 10 + 35);
+    int randomFontSize = (int) (Math.random() * 50 + 12);
     return randomFontSize;
   }
 
-  public int generateRandomColor() {
-    int randomColor = (int)((Math.random() * colors.length));
-    return randomColor;
+  public String findRandomColor() {
+    int size = colors.length;
+    int randomIndex = (int) (Math.random() * size);
+    return colors[randomIndex];
   }
 
+  public String generateRandomStyle() {
+    return "color:" + findRandomColor() + ";font-size: " + generateRandomSize() + "px";
+  }
+
+  public String generateHellosConcatenated(String[] hellos) {
+    ArrayList<String> greetings = new ArrayList<>();
+    String displayOnScreen = "";
+
+    for (String hello : hellos) {
+      greetings.add(hello);
+      displayOnScreen = displayOnScreen + "<span style='" + generateRandomStyle() + "'>" + hello + " , </span>";
+    }
+    return displayOnScreen;
+  }
 
   @RequestMapping("/web/severalGreetings")
   public String severalGreeting(Model model) {
-    model.addAttribute("hellos", hellos[generateRandomIndex()]);
-    model.addAttribute("color", colors[generateRandomColor()]);
+    model.addAttribute("hellos", hellos[generateRandomIndexHello()]);
+    model.addAttribute("color", colors[generateRandomIndexColor()]);
     model.addAttribute("fontSize", generateRandomSize());
     model.addAttribute("name", "Erika");
     model.addAttribute("counter", websiteLoadCount.incrementAndGet());
@@ -78,5 +89,15 @@ public class HelloToAllTheWorldController {
     model.addAttribute("username", "Erika");
     model.addAttribute("counter", websiteLoadCount.incrementAndGet());
     return "severalGreetings";
+  }
+
+  @GetMapping("/web/newGreetings")
+  public String greetTheWorld(Model model, @RequestParam String name) {
+
+    model.addAttribute("counter", websiteLoadCount.incrementAndGet());
+    model.addAttribute("hello", generateHellosConcatenated(hellos));
+    model.addAttribute("name", name);
+
+    return "multigreeting";
   }
 }

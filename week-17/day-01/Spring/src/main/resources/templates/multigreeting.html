@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Hello to the WORLD rainbowColors!</title>
+</head>
+<body>
+<p th:utext="${hello}"></p>
+<p th:text="${name} + '!'" th:style="'color:red' + ';font-size:20' + 'px'"></p>
+<p th:text="'This website was loaded ' + ${counter} + ' times today ...'"
+   th:style="'color:grey' + ';font-size:20' + 'px'"></p>
+
+</body>
+</html>
