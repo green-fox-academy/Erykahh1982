@@ -1,4 +1,4 @@
-package com.greenfoxacademy.springstart.listingtodos.models;
+package com.greenfoxacademy.springstart.listingtodos.model;
 
 import lombok.Getter;
 import lombok.Setter;
