@@ -6,9 +6,7 @@ import com.greenfoxacademy.connectionwithmysql.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -16,12 +14,10 @@ import java.util.ArrayList;
 @RequestMapping("/todo")
 public class TodosController {
 
-  private TodoRepository todoRepository;
   private TodoService todoService;
 
   @Autowired
-  public TodosController(TodoRepository todoRepository, TodoService todoService) {
-    this.todoRepository = todoRepository;
+  public TodosController(TodoService todoService) {
     this.todoService = todoService;
   }
 
@@ -55,7 +51,15 @@ public class TodosController {
   }
 
   @GetMapping("/add")
-  public String addNewTodo(){
+  public String renderAddNewPage() {
     return "addnew";
   }
+
+  @PostMapping("/add")
+  public String addNewTodo(@ModelAttribute Todo todo) {
+    todoService.saveNewTodo(todo);
+    return "redirect:/todo/list";
+  }
+
+
 }

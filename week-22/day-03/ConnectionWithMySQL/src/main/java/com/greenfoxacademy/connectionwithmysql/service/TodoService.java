@@ -35,4 +35,8 @@ public class TodoService {
     return uncompletedTodos;
   }
 
+  public void saveNewTodo(Todo todo) {
+    todoRepository.save(todo);
+  }
+
 }
