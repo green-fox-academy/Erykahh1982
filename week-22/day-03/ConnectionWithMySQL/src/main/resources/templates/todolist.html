@@ -23,6 +23,9 @@
         <td th:text="${todo.title}" style="text-align: left"></td>
         <td th:text="${todo.done}" style="text-align: left"></td>
         <td th:text="${todo.urgent}" style="text-align: left"></td>
+        <td>
+            <a th:href="'/todo/' + ${todo.id} +'/delete'" style="text-align: left">delete</a>
+        </td>
     </tr>
     </tbody>
 </table>
