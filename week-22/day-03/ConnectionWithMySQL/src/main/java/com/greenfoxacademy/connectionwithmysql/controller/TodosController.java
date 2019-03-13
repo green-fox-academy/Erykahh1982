@@ -14,8 +14,12 @@ import java.util.ArrayList;
 @RequestMapping("/todo")
 public class TodosController {
 
-  @Autowired
   private TodoRepository todoRepository;
+
+  @Autowired
+  public TodosController(TodoRepository todoRepository) {
+    this.todoRepository = todoRepository;
+  }
 
   @GetMapping("/list")
   public String list(Model model) {
@@ -25,5 +29,10 @@ public class TodosController {
     model.addAttribute("models", todos);
 
     return "todolist";
+  }
+
+  @GetMapping("/")
+  public String list2() {
+    return "redirect:/todo/list";
   }
 }
