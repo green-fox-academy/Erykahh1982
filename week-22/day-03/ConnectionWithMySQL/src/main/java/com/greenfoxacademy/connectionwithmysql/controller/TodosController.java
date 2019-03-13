@@ -52,6 +52,10 @@ public class TodosController {
       model.addAttribute("models", todoService.listAllItems());
     }
     return "todolist";
+  }
 
+  @GetMapping("/add")
+  public String addNewTodo(){
+    return "addnew";
   }
 }
