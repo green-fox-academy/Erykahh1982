@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Todo</title>
+</head>
+<body>
+<h1>Edit Todo</h1>
+<div>
+    <form action="/todo/edit" method="post">
+        <input type="text" placeholder="New todo" name="title" th:field="${}" required>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+    <a href="/todo/list">Cancel</a>
+</div>
+</body>
+</html>

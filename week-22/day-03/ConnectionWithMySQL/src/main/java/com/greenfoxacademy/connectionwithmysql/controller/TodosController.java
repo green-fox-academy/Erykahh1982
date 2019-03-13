@@ -68,5 +68,10 @@ public class TodosController {
     return "redirect:/todo/list";
   }
 
+  @GetMapping("/{id}/edit")
+  public String edit(@PathVariable long id) {
+
+    return "edit";
+  }
 
 }
