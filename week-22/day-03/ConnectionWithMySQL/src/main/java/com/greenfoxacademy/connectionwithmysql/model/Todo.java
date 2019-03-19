@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 @Entity
 public class Todo {
@@ -14,11 +16,15 @@ public class Todo {
   private String title;
   private boolean urgent = false;
   private boolean done = false;
+  private String creationDate;
 
-  public Todo(){}
+  public Todo(){
+    this.creationDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+  }
 
   public Todo(String title){
     this.title= title;
+    this.creationDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
   }
 
   public long getId() {
@@ -51,5 +57,13 @@ public class Todo {
 
   public void setDone(boolean done) {
     this.done = done;
+  }
+
+  public String getCreationDate() {
+    return creationDate;
+  }
+
+  public void setCreationDate(String creationDate) {
+    this.creationDate = creationDate;
   }
 }

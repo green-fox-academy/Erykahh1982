@@ -11,6 +11,7 @@
 <table th:border="1">
     <thead>
     <tr>
+        <th th:text="'DATE'" style="text-align: left"></th>
         <th th:text="'ID'" style="text-align: left"></th>
         <th th:text="'ACTION'" style="text-align: left"></th>
         <th th:text="'DONE'" style="text-align: left"></th>
@@ -19,6 +20,7 @@
     </thead>
     <tbody>
     <tr th:each="todo:${models}">
+        <td th:text="${todo.getCreationDate()}" style="text-align: left"></td>
         <td th:text="${todo.id}" style="text-align: left"></td>
         <td th:text="${todo.title}" style="text-align: left"></td>
         <td th:text="${todo.done}" style="text-align: left"></td>
