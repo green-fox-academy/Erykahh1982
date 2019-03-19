@@ -69,9 +69,20 @@ public class TodosController {
   }
 
   @GetMapping("/{id}/edit")
-  public String edit(@PathVariable long id) {
+  public String edit(@PathVariable long id, @ModelAttribute Todo todo, Model model) {
 
+    Todo editableTodo = todoService.findTodoById(id);
+    model.addAttribute("todo", editableTodo);
     return "edit";
+  }
+
+  @PostMapping("/{id}/edit")
+  public String postEdit(@PathVariable long id, @ModelAttribute Todo todo) {
+
+    Todo editableTodo = todoService.findTodoById(id);
+    editableTodo = todoService.editTodo(todo);
+
+    return "redirect:/todo/list";
   }
 
 }

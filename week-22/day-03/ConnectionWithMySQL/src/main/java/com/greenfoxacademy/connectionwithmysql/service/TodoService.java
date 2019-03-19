@@ -43,4 +43,11 @@ public class TodoService {
     todoRepository.deleteById(id);
   }
 
+  public Todo findTodoById(long id){
+    return todoRepository.findById(id).get();
+  }
+
+  public Todo editTodo(Todo todo){
+    return todoRepository.save(todo);
+  }
 }

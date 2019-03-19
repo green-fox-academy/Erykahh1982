@@ -7,8 +7,14 @@
 <body>
 <h1>Edit Todo</h1>
 <div>
-    <form action="/todo/edit" method="post">
-        <input type="text" placeholder="New todo" name="title" th:field="${}" required>
+    <form th:action="'/todo/'+${id} +'/edit'" method="post" th:object="${todo}">
+        <input type="hidden" th:field="*{id}" name="id">
+        <label for="title">Todo Description</label>
+        <input type="text" th:field="*{title}"  name="title" id="title" required>
+        <label for="isUrgent">Urgent</label>
+        <input type="checkbox" th:field="*{urgent}" name="isUrgent" id="isUrgent">
+        <label for="isDone">Done</label>
+        <input type="checkbox" th:field="*{done}" name="isDone" id="isDone">
         <p><input type="submit" value="Submit"></p>
     </form>
     <a href="/todo/list">Cancel</a>
