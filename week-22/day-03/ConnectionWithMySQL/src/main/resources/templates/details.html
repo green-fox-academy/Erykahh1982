@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Todo</title>
+</head>
+<body>
+<h1>Todo Details</h1>
+
+<ul th:object="${todo}">
+    <li th:text="'Creation Date: '+ *{creationDate}"></li>
+    <li th:text="'Id: '+ *{id}"></li>
+    <li th:text="'Title: ' + *{title}"></li>
+    <li th:text="'Is todo done?: '+ *{done}"></li>
+    <li th:text="'Is todo urgent?: '+ *{urgent}"></li>
+</ul>
+<a href="/todo/list">Back</a>
+</body>
+</html>

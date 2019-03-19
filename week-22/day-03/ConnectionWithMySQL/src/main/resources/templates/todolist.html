@@ -11,26 +11,28 @@
 <table th:border="1">
     <thead>
     <tr>
-        <th th:text="'DATE'" style="text-align: left"></th>
+        <th th:text="'CREATION DATE'" style="text-align: left"></th>
         <th th:text="'ID'" style="text-align: left"></th>
         <th th:text="'ACTION'" style="text-align: left"></th>
         <th th:text="'DONE'" style="text-align: left"></th>
         <th th:text="'URGENT'" style="text-align: left"></th>
     </tr>
     </thead>
-    <tbody>
-    <tr th:each="todo:${models}">
-        <td th:text="${todo.getCreationDate()}" style="text-align: left"></td>
-        <td th:text="${todo.id}" style="text-align: left"></td>
-        <td th:text="${todo.title}" style="text-align: left"></td>
-        <td th:text="${todo.done}" style="text-align: left"></td>
-        <td th:text="${todo.urgent}" style="text-align: left"></td>
-        <td>
-            <a th:href="'/todo/' + ${todo.id} +'/delete'" style="text-align: left">delete</a>
-        </td>
-        <td>
-            <a th:href="'/todo/' + ${todo.id} +'/edit'" style="text-align: left">edit</a>
-        </td>
+    <tbody th:each="todo:${models}">
+
+    <td th:text="${todo.creationDate}" style="text-align: left"></td>
+    <td th:text="${todo.id}" style="text-align: left"></td>
+    <td>
+        <a th:href="'/todo/' + ${todo.id} + '/details'" style="text-align: left" th:text="${todo.title}"></a>
+    </td>
+    <td th:text="${todo.done}" style="text-align: left"></td>
+    <td th:text="${todo.urgent}" style="text-align: left"></td>
+    <td>
+        <a th:href="'/todo/' + ${todo.id} +'/delete'" style="text-align: left">delete</a>
+    </td>
+    <td>
+        <a th:href="'/todo/' + ${todo.id} +'/edit'" style="text-align: left">edit</a>
+    </td>
     </tr>
     </tbody>
 </table>
