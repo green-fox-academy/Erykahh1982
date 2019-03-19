@@ -39,15 +39,19 @@ public class TodoService {
     todoRepository.save(todo);
   }
 
-  public void deleteTodo(long id){
+  public void deleteTodo(long id) {
     todoRepository.deleteById(id);
   }
 
-  public Todo findTodoById(long id){
+  public Todo findTodoById(long id) {
     return todoRepository.findById(id).get();
   }
 
-  public Todo editTodo(Todo todo){
+  public Todo editTodo(Todo todo) {
     return todoRepository.save(todo);
+  }
+
+  public ArrayList<Todo> searchForTodo(String wordPart) {
+    return todoRepository.findTodosByTitleContaining(wordPart);
   }
 }

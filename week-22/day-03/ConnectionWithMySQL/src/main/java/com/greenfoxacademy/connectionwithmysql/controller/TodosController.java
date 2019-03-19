@@ -22,9 +22,16 @@ public class TodosController {
   }
 
   @GetMapping("/list")
-  public String list(Model model) {
+  public String list(Model model, @RequestParam (required = false) String wordpart) {
 
-    model.addAttribute("models", todoService.listAllItems());
+    ArrayList<Todo> filteredTodos = new ArrayList<>();
+
+    if (wordpart == null) {
+      filteredTodos = todoService.listAllItems();
+    } else {
+      filteredTodos = todoService.searchForTodo(wordpart);
+    }
+    model.addAttribute("models", filteredTodos);
     return "todolist";
   }
 
