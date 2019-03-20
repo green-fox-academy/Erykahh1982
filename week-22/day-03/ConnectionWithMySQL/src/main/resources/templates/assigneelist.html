@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignees</title>
+</head>
+<body>
+<br>
+<div>
+    <a href="http://localhost:8080/assignee/add"
+       style="color: indianred; font-weight: bold; font-family: 'DejaVu Sans Mono', monospace">Add new assignee</a>
+</div>
+<h2 style="color: indianred; font-weight: bold; font-family: 'DejaVu Sans Mono', monospace">List of Assignees:</h2>
+<div th:if="${assignees.isEmpty()}">
+    <p>There is no such an assignee</p>
+</div>
+<div th:unless="${assignees.isEmpty()}">
+    <table th:border="1">
+        <thead style="color: grey; font-family: 'DejaVu Sans Mono', monospace">
+        <tr>
+            <th th:text="'CREATION DATE'" style="text-align: left"></th>
+            <th th:text="'ASSIGNEE_ID'" style="text-align: left"></th>
+            <th th:text="'NAME'" style="text-align: left"></th>
+            <th th:text="'EMAIL'" style="text-align: left"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="assignee:${assignees}">
+            <td th:text="${assignee.creationDate}" style="text-align: left"></td>
+            <td th:text="${assignee.id}" style="text-align: left"></td>
+            <td>
+                <a th:href="'/assignee/' + ${assignee.id} + '/details'" style="text-align: left" th:text="${assignee.name}"></a>
+            </td>
+            <td>
+                <a th:href="'/assignee/' + ${assignee.id} + '/details'" style="text-align: left" th:text="${assignee.email}"></a>
+            </td>
+            <td>
+                <a th:href="'/assignee/' + ${assignee.id} +'/delete'" style="text-align: left">delete</a>
+            </td>
+            <td>
+                <a th:href="'/assignee/' + ${assignee.id} +'/edit'" style="text-align: left">edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

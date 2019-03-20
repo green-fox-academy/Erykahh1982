@@ -1,7 +1,6 @@
 package com.greenfoxacademy.connectionwithmysql.controller;
 
 import com.greenfoxacademy.connectionwithmysql.model.Todo;
-import com.greenfoxacademy.connectionwithmysql.repository.TodoRepository;
 import com.greenfoxacademy.connectionwithmysql.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,7 @@ public class TodosController {
   }
 
   @GetMapping("/list")
-  public String list(Model model, @RequestParam (required = false) String wordpart) {
+  public String list(Model model, @RequestParam(required = false) String wordpart) {
 
     ArrayList<Todo> filteredTodos = new ArrayList<>();
 

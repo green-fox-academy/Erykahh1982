@@ -7,23 +7,39 @@ import javax.persistence.Id;
 import java.text.SimpleDateFormat;
 
 @Entity
-public class Todo {
+public class Assignee {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-  private String title;
-  private boolean urgent = false;
-  private boolean done = false;
+  private String name;
+  private String email;
   private String creationDate;
 
-  public Todo(){
+  public Assignee() {
     this.creationDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
   }
 
-  public Todo(String title){
-    this.title= title;
+  public Assignee(String name, String email) {
     this.creationDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+    this.name = name;
+    this.email = email;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public long getId() {
@@ -32,30 +48,6 @@ public class Todo {
 
   public void setId(long id) {
     this.id = id;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public boolean isUrgent() {
-    return urgent;
-  }
-
-  public void setUrgent(boolean urgent) {
-    this.urgent = urgent;
-  }
-
-  public boolean isDone() {
-    return done;
-  }
-
-  public void setDone(boolean done) {
-    this.done = done;
   }
 
   public String getCreationDate() {
