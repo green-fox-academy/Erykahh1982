@@ -5,6 +5,7 @@ import com.greenfoxacademy.connectionwithmysql.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Service
@@ -48,10 +49,12 @@ public class TodoService {
   }
 
   public Todo editTodo(Todo todo) {
+    todo.setUpdateTime(LocalDateTime.now());
     return todoRepository.save(todo);
   }
 
   public ArrayList<Todo> searchForTodo(String wordPart) {
     return todoRepository.findTodosByTitleContaining(wordPart);
   }
+
 }

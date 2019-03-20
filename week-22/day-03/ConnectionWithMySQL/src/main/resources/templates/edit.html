@@ -9,6 +9,7 @@
 <div>
     <form th:action="'/todo/'+${id} +'/edit'" method="post" th:object="${todo}">
         <input type="hidden" th:field="*{id}" name="id">
+        <input type="hidden" th:field="*{creationTime}" name="creationTime">
         <label for="title">Todo Description</label>
         <input type="text" th:field="*{title}"  name="title" id="title" required>
         <label for="isUrgent">Urgent</label>

@@ -1,10 +1,8 @@
 package com.greenfoxacademy.connectionwithmysql.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.text.SimpleDateFormat;
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Todo {
@@ -15,15 +13,18 @@ public class Todo {
   private String title;
   private boolean urgent = false;
   private boolean done = false;
-  private String creationDate;
+//  @Temporal(value = TemporalType.TIMESTAMP)
+  private LocalDateTime creationTime;
+//  @Temporal(value = TemporalType.TIMESTAMP)
+  private LocalDateTime updateTime;
+  private LocalDateTime dueDate;
 
-  public Todo(){
-    this.creationDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+  public Todo() {
   }
 
-  public Todo(String title){
-    this.title= title;
-    this.creationDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+  public Todo(String title) {
+    this.title = title;
+    this.creationTime = LocalDateTime.now();
   }
 
   public long getId() {
@@ -58,11 +59,27 @@ public class Todo {
     this.done = done;
   }
 
-  public String getCreationDate() {
-    return creationDate;
+  public LocalDateTime getCreationTime() {
+    return creationTime;
   }
 
-  public void setCreationDate(String creationDate) {
-    this.creationDate = creationDate;
+  public void setCreationTime(LocalDateTime creationTime) {
+    this.creationTime = creationTime;
+  }
+
+  public LocalDateTime getUpdateTime() {
+    return updateTime;
+  }
+
+  public void setUpdateTime(LocalDateTime updateTime) {
+    this.updateTime = updateTime;
+  }
+
+  public LocalDateTime getDueDate() {
+    return dueDate;
+  }
+
+  public void setDueDate(LocalDateTime dueDate) {
+    this.dueDate = dueDate;
   }
 }

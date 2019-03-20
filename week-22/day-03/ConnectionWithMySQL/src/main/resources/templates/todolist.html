@@ -13,7 +13,7 @@
 <br>
 <div>
     <form action="/todo/list" method="get">
-        <input type="text" name="wordpart" placeholder="Enter a todo here" required>
+        <input type="text" name="wordpart" placeholder="Enter a todo here">
         <input type="submit" value="Search" style="background-color:deepskyblue">
     </form>
 </div>
@@ -26,6 +26,8 @@
         <thead style="color: grey; font-family: 'DejaVu Sans Mono', monospace">
         <tr>
             <th th:text="'CREATION DATE'" style="text-align: left"></th>
+            <th th:text="'UPDATE DATE'" style="text-align: left"></th>
+            <th th:text="'DUE DATE'" style="text-align: left"></th>
             <th th:text="'ID'" style="text-align: left"></th>
             <th th:text="'ACTION'" style="text-align: left"></th>
             <th th:text="'DONE'" style="text-align: left"></th>
@@ -34,7 +36,9 @@
         </thead>
         <tbody>
         <tr th:each="todo:${models}">
-            <td th:text="${todo.creationDate}" style="text-align: left"></td>
+            <td th:text="${#temporals.format(todo.creationTime,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
+            <td th:text="${#temporals.format(todo.updateTime,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
+            <td th:text="${#temporals.format(todo.dueDate,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
             <td th:text="${todo.id}" style="text-align: left"></td>
             <td>
                 <a th:href="'/todo/' + ${todo.id} + '/details'" style="text-align: left" th:text="${todo.title}"></a>
