@@ -13,13 +13,16 @@ public class Todo {
   private String title;
   private boolean urgent = false;
   private boolean done = false;
-//  @Temporal(value = TemporalType.TIMESTAMP)
   private LocalDateTime creationTime;
-//  @Temporal(value = TemporalType.TIMESTAMP)
   private LocalDateTime updateTime;
-  private LocalDateTime dueDate;
+  private Date dueDate;
+
+  @ManyToOne
+  @JoinColumn(name = "assigneeId")
+  private Assignee assignee;
 
   public Todo() {
+    this.creationTime = LocalDateTime.now();
   }
 
   public Todo(String title) {
@@ -75,11 +78,19 @@ public class Todo {
     this.updateTime = updateTime;
   }
 
-  public LocalDateTime getDueDate() {
+  public Date getDueDate() {
     return dueDate;
   }
 
-  public void setDueDate(LocalDateTime dueDate) {
+  public void setDueDate(Date dueDate) {
     this.dueDate = dueDate;
+  }
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 }

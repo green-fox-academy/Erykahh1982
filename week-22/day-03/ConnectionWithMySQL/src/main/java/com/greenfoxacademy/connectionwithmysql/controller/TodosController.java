@@ -1,6 +1,8 @@
 package com.greenfoxacademy.connectionwithmysql.controller;
 
 import com.greenfoxacademy.connectionwithmysql.model.Todo;
+import com.greenfoxacademy.connectionwithmysql.repository.AssigneeRepository;
+import com.greenfoxacademy.connectionwithmysql.service.AssigneeService;
 import com.greenfoxacademy.connectionwithmysql.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,12 @@ import java.util.ArrayList;
 public class TodosController {
 
   private TodoService todoService;
+  private AssigneeService assigneeService;
 
   @Autowired
-  public TodosController(TodoService todoService) {
+  public TodosController(TodoService todoService, AssigneeService assigneeService) {
     this.todoService = todoService;
+    this.assigneeService = assigneeService;
   }
 
   @GetMapping("/list")
@@ -31,6 +35,7 @@ public class TodosController {
       filteredTodos = todoService.searchForTodo(wordpart);
     }
     model.addAttribute("models", filteredTodos);
+    model.addAttribute("assignees",assigneeService.listAllAssignees());
     return "todolist";
   }
 
@@ -79,6 +84,7 @@ public class TodosController {
 
     Todo editableTodo = todoService.findTodoById(id);
     model.addAttribute("todo", editableTodo);
+    model.addAttribute("assignees", assigneeService.listAllAssignees());
     return "edit";
   }
 

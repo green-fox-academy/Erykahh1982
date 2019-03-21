@@ -29,11 +29,10 @@
             <td th:text="${assignee.creationDate}" style="text-align: left"></td>
             <td th:text="${assignee.id}" style="text-align: left"></td>
             <td>
-                <a th:href="'/assignee/' + ${assignee.id} + '/details'" style="text-align: left" th:text="${assignee.name}"></a>
+                <a th:href="'/assignee/' + ${assignee.id} + '/details'" style="text-align: left"
+                   th:text="${assignee.name}"></a>
             </td>
-            <td>
-                <a th:href="'/assignee/' + ${assignee.id} + '/details'" style="text-align: left" th:text="${assignee.email}"></a>
-            </td>
+            <td th:text="${assignee.email}" style="text-align: left"></td>
             <td>
                 <a th:href="'/assignee/' + ${assignee.id} +'/delete'" style="text-align: left">delete</a>
             </td>
@@ -43,6 +42,8 @@
         </tr>
         </tbody>
     </table>
+    <br>
+    <a href="/todo/list">Back</a>
 </div>
 </body>
 </html>

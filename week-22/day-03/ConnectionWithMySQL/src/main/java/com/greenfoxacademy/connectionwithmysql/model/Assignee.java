@@ -1,10 +1,8 @@
 package com.greenfoxacademy.connectionwithmysql.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @Entity
 public class Assignee {
@@ -15,6 +13,10 @@ public class Assignee {
   private String name;
   private String email;
   private String creationDate;
+
+  @OneToMany
+  @JoinColumn(name = "assigneeId")
+  private List<Todo>todos;
 
   public Assignee() {
     this.creationDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());

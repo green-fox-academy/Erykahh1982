@@ -11,12 +11,22 @@
         <input type="hidden" th:field="*{id}" name="id">
         <input type="hidden" th:field="*{creationTime}" name="creationTime">
         <label for="title">Todo Description</label>
-        <input type="text" th:field="*{title}"  name="title" id="title" required>
+        <input type="text" th:field="*{title}" name="title" id="title" required>
+
+        <select name="assignee">
+            <option value="">---</option>
+            <option th:each="assignee:${assignees}"
+                    th:value="${assignee.id}"
+                    th:text="${assignee.name}"
+                    th:selected="${assignee.id == todo.assignee?.id}"></option>
+        </select>
+
         <label for="isUrgent">Urgent</label>
         <input type="checkbox" th:field="*{urgent}" name="isUrgent" id="isUrgent">
         <label for="isDone">Done</label>
         <input type="checkbox" th:field="*{done}" name="isDone" id="isDone">
         <p><input type="submit" value="Submit"></p>
+
     </form>
     <a href="/todo/list">Cancel</a>
 </div>
