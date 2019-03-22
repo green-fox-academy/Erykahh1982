@@ -1,5 +1,6 @@
 package com.greenfoxacademy.connectionwithmysql.controller;
 
+import com.greenfoxacademy.connectionwithmysql.model.Assignee;
 import com.greenfoxacademy.connectionwithmysql.model.Todo;
 import com.greenfoxacademy.connectionwithmysql.repository.AssigneeRepository;
 import com.greenfoxacademy.connectionwithmysql.service.AssigneeService;
@@ -35,7 +36,7 @@ public class TodosController {
       filteredTodos = todoService.searchForTodo(wordpart);
     }
     model.addAttribute("models", filteredTodos);
-    model.addAttribute("assignees",assigneeService.listAllAssignees());
+    model.addAttribute("assignees", assigneeService.listAllAssignees());
     return "todolist";
   }
 
@@ -103,6 +104,17 @@ public class TodosController {
     Todo todoDetail = todoService.findTodoById(id);
     model.addAttribute("todo", todoDetail);
     return "details";
+  }
+
+  @GetMapping("/{id}/assigneedetails")
+  public String renderAssigneeDetailsPage(@PathVariable long id, Model model, @ModelAttribute Assignee assignee) {
+
+    Assignee assigneeDetail = assigneeService.findAssigneeById(id);
+    ArrayList<Todo> filteredTodosByAssignee = todoService.findTodosByAssignee(assignee);
+    model.addAttribute("assignee", assigneeDetail);
+    model.addAttribute("todos", filteredTodosByAssignee);
+
+    return "assigneedetails";
   }
 
 }

@@ -14,7 +14,7 @@
 <div>
     <form action="/todo/list" method="get">
         <input type="text" name="wordpart" placeholder="Enter a todo here">
-        <input type="submit" value="Search" style="background-color:deepskyblue">
+        <input type="submit" value="Search" style="background-color: lightblue">
     </form>
 </div>
 
@@ -25,7 +25,7 @@
 </div>
 <div th:unless="${models.isEmpty()}">
     <table th:border="1">
-        <thead style="color: grey; font-family: 'DejaVu Sans Mono', monospace">
+        <thead style="color: grey; font-family: 'DejaVu Sans Mono', monospace; background-color: lightblue">
         <tr>
             <th th:text="'CREATION DATE'" style="text-align: left"></th>
             <th th:text="'UPDATE DATE'" style="text-align: left"></th>
@@ -35,6 +35,8 @@
             <th th:text="'ACTION'" style="text-align: left"></th>
             <th th:text="'DONE'" style="text-align: left"></th>
             <th th:text="'URGENT'" style="text-align: left"></th>
+            <th th:text="'DELETE'" style="text-align: left"></th>
+            <th th:text="'EDIT'" style="text-align: left"></th>
         </tr>
         </thead>
         <tbody>
@@ -43,21 +45,27 @@
             <td th:text="${#temporals.format(todo.updateTime,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
             <td th:text="${#temporals.format(todo.dueDate,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
             <td th:text="${todo.id}" style="text-align: left"></td>
-            <td th:text="${todo.assignee?.name}" style="text-align: left"></td>
             <td>
-                <a th:href="'/todo/' + ${todo.id} + '/details'" style="text-align: left" th:text="${todo.title}"></a>
-            </td>
+                <a th:href="'/todo/'+ ${todo.assignee?.id} + '/assigneedetails'" th:text="${todo.assignee?.name}"
+                   style="text-align: left"></a></td>
+            <td style="text-align: left" th:text="${todo.title}"></td>
             <td th:text="${todo.done}" style="text-align: left"></td>
             <td th:text="${todo.urgent}" style="text-align: left"></td>
             <td>
-                <a th:href="'/todo/' + ${todo.id} +'/delete'" style="text-align: left">delete</a>
+                <button><a th:href="'/todo/' + ${todo.id} +'/delete'" style="text-align: left">delete</a></button>
             </td>
             <td>
-                <a th:href="'/todo/' + ${todo.id} +'/edit'" style="text-align: left">edit</a>
+                <button><a th:href="'/todo/' + ${todo.id} +'/edit'" style="text-align: left">edit</a></button>
             </td>
         </tr>
         </tbody>
     </table>
+    <br>
+    <div>
+        <a href="http://localhost:8080/todo/ver2?isActive=true"
+           style="color: indianred; font-weight: bold; font-family: 'DejaVu Sans Mono', monospace">Show active tasks
+            only</a>
+    </div>
     <br>
     <div>
         <a href="http://localhost:8080/assignee/list"

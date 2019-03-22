@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignee Details</title>
+</head>
+<body>
+<h2 th:text="'List of todos for ' +${assignee.name} +':'"
+    style="color: indianred; font-family: 'DejaVu Sans Mono', monospace"></h2>
+
+<table th:border="1">
+    <thead style="color: grey; font-family: 'DejaVu Sans Mono', monospace; background-color: lightblue">
+    <tr>
+        <th th:text="'CREATION DATE'" style="text-align: left"></th>
+        <th th:text="'UPDATE DATE'" style="text-align: left"></th>
+        <th th:text="'DUE DATE'" style="text-align: left"></th>
+        <th th:text="'ID'" style="text-align: left"></th>
+        <th th:text="'ASSIGNEE'" style="text-align: left"></th>
+        <th th:text="'ACTION'" style="text-align: left"></th>
+        <th th:text="'DONE'" style="text-align: left"></th>
+        <th th:text="'URGENT'" style="text-align: left"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="todo:${todos}" th:object="${todo}">
+        <td th:text="${#temporals.format(todo.creationTime,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
+        <td th:text="${#temporals.format(todo.updateTime,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
+        <td th:text="${#temporals.format(todo.dueDate,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
+        <td th:text="*{id}" style="text-align: left"></td>
+        <td th:text="${assignee.name}" th:value="${assignee.id}" style="text-align: left"></td>
+        <td style="text-align: left" th:text="*{title}"></td>
+        <td th:text="*{done}" style="text-align: left"></td>
+        <td th:text="*{urgent}" style="text-align: left"></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a href="/todo/list">Back</a>
+</body>
+</html>

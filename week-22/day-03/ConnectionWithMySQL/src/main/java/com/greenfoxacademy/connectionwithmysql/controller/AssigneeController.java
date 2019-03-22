@@ -60,4 +60,5 @@ public class AssigneeController {
 
     return "redirect:/assignee/list";
   }
+
 }

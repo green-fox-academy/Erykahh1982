@@ -15,7 +15,7 @@ public class Todo {
   private boolean done = false;
   private LocalDateTime creationTime;
   private LocalDateTime updateTime;
-  private Date dueDate;
+  private LocalDateTime dueDate;
 
   @ManyToOne
   @JoinColumn(name = "assigneeId")
@@ -23,11 +23,13 @@ public class Todo {
 
   public Todo() {
     this.creationTime = LocalDateTime.now();
+    this.dueDate = LocalDateTime.now().plusDays(30);
   }
 
   public Todo(String title) {
     this.title = title;
     this.creationTime = LocalDateTime.now();
+    this.dueDate = LocalDateTime.now().plusDays(30);
   }
 
   public long getId() {
@@ -78,11 +80,11 @@ public class Todo {
     this.updateTime = updateTime;
   }
 
-  public Date getDueDate() {
+  public LocalDateTime getDueDate() {
     return dueDate;
   }
 
-  public void setDueDate(Date dueDate) {
+  public void setDueDate(LocalDateTime dueDate) {
     this.dueDate = dueDate;
   }
 

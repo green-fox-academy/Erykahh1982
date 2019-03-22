@@ -1,5 +1,6 @@
 package com.greenfoxacademy.connectionwithmysql.service;
 
+import com.greenfoxacademy.connectionwithmysql.model.Assignee;
 import com.greenfoxacademy.connectionwithmysql.model.Todo;
 import com.greenfoxacademy.connectionwithmysql.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,4 +58,7 @@ public class TodoService {
     return todoRepository.findTodosByTitleContaining(wordPart);
   }
 
+  public ArrayList<Todo> findTodosByAssignee(Assignee assignee) {
+    return todoRepository.findTodosByAssignee(assignee);
+  }
 }
