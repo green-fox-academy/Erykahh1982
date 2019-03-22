@@ -48,11 +48,10 @@ public class TodoService {
   }
 
   public Todo findTodoById(long id) {
-   return todoRepository.findById(id).get();
+    return todoRepository.findById(id).get();
   }
 
   public void editTodo(Todo todo, long id) {
-    Todo editableTodo = findTodoById(id);
     todo.setUpdateTime(LocalDateTime.now());
     todoRepository.save(todo);
   }
