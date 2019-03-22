@@ -12,7 +12,7 @@
 </div>
 <h2 style="color: indianred; font-weight: bold; font-family: 'DejaVu Sans Mono', monospace">List of Assignees:</h2>
 <div th:if="${assignees.isEmpty()}">
-    <p>There is no such an assignee</p>
+    <p style="color: grey">The assignee list is empty at the moment ... add one by cliking on the link above</p>
 </div>
 <div th:unless="${assignees.isEmpty()}">
     <table th:border="1">

@@ -5,14 +5,14 @@
     <title>Add new Todo</title>
 </head>
 <body>
-<h1>Add new todo</h1>
+<h2 style="color: indianred; font-family: 'DejaVu Sans Mono', monospace">Add new todo</h2>
 <div>
     <form action="/todo/add" method="post">
         <label for="title">Action</label>
         <input type="text" placeholder="New todo" name="title" id="title" required>
-        <!--<label for="dueDate">Due Date</label>-->
-        <!--<input type="datetime-local" name="dueDate" id="dueDate">-->
-        <p><input type="submit" value="Submit"></p>
+        <label for="days">How many days you need to complete the task?</label>
+        <input type="number" name="days" id="days">
+        <p><input type="submit" value="Submit" style="background-color: lightblue"></p>
     </form>
 </div>
 </body>

@@ -38,6 +38,8 @@ public class TodoService {
   }
 
   public void saveNewTodo(Todo todo) {
+    LocalDateTime timestamp = LocalDateTime.now().plusDays(todo.getDays());
+    todo.setDueDate(timestamp);
     todoRepository.save(todo);
   }
 
@@ -46,12 +48,13 @@ public class TodoService {
   }
 
   public Todo findTodoById(long id) {
-    return todoRepository.findById(id).get();
+   return todoRepository.findById(id).get();
   }
 
-  public Todo editTodo(Todo todo) {
+  public void editTodo(Todo todo, long id) {
+    Todo editableTodo = findTodoById(id);
     todo.setUpdateTime(LocalDateTime.now());
-    return todoRepository.save(todo);
+    todoRepository.save(todo);
   }
 
   public ArrayList<Todo> searchForTodo(String wordPart) {

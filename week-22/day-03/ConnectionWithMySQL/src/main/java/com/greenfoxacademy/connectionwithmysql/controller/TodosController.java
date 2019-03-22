@@ -2,7 +2,6 @@ package com.greenfoxacademy.connectionwithmysql.controller;
 
 import com.greenfoxacademy.connectionwithmysql.model.Assignee;
 import com.greenfoxacademy.connectionwithmysql.model.Todo;
-import com.greenfoxacademy.connectionwithmysql.repository.AssigneeRepository;
 import com.greenfoxacademy.connectionwithmysql.service.AssigneeService;
 import com.greenfoxacademy.connectionwithmysql.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +68,7 @@ public class TodosController {
 
   @PostMapping("/add")
   public String addNewTodo(@ModelAttribute Todo todo) {
+
     todoService.saveNewTodo(todo);
     return "redirect:/todo/list";
   }
@@ -92,9 +92,7 @@ public class TodosController {
   @PostMapping("/{id}/edit")
   public String postEdit(@PathVariable long id, @ModelAttribute Todo todo) {
 
-    Todo editableTodo = todoService.findTodoById(id);
-    editableTodo = todoService.editTodo(todo);
-
+    todoService.editTodo(todo,id);
     return "redirect:/todo/list";
   }
 

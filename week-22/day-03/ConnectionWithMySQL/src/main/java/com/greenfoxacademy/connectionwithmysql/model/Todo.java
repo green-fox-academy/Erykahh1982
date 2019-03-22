@@ -2,7 +2,6 @@ package com.greenfoxacademy.connectionwithmysql.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 public class Todo {
@@ -15,6 +14,7 @@ public class Todo {
   private boolean done = false;
   private LocalDateTime creationTime;
   private LocalDateTime updateTime;
+  private Long days;
   private LocalDateTime dueDate;
 
   @ManyToOne
@@ -23,13 +23,11 @@ public class Todo {
 
   public Todo() {
     this.creationTime = LocalDateTime.now();
-    this.dueDate = LocalDateTime.now().plusDays(30);
   }
 
   public Todo(String title) {
     this.title = title;
     this.creationTime = LocalDateTime.now();
-    this.dueDate = LocalDateTime.now().plusDays(30);
   }
 
   public long getId() {
@@ -94,5 +92,13 @@ public class Todo {
 
   public void setAssignee(Assignee assignee) {
     this.assignee = assignee;
+  }
+
+  public Long getDays() {
+    return days;
+  }
+
+  public void setDays(Long days) {
+    this.days = days;
   }
 }
