@@ -2,6 +2,7 @@ package com.greenfoxacademy.connectionwithmysql.controller;
 
 import com.greenfoxacademy.connectionwithmysql.model.Assignee;
 import com.greenfoxacademy.connectionwithmysql.service.AssigneeService;
+import com.greenfoxacademy.connectionwithmysql.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class AssigneeController {
 
   private AssigneeService assigneeService;
+  private TodoService todoService;
 
   @Autowired
-  public AssigneeController(AssigneeService assigneeService) {
+  public AssigneeController(AssigneeService assigneeService, TodoService todoService) {
     this.assigneeService = assigneeService;
+    this.todoService = todoService;
   }
 
   @GetMapping("/list")
@@ -59,6 +62,16 @@ public class AssigneeController {
     editableAssigne.setEmail(editableAssigne.getEmail());
 
     return "redirect:/assignee/list";
+  }
+
+  @GetMapping("/{id}/details")
+  public String renderDetailsPerAssignee(@PathVariable long id, Model model, @ModelAttribute Assignee assignee) {
+
+    Assignee assigneeWithDetails = assigneeService.findAssigneeById(id);
+    model.addAttribute("assignee", assigneeWithDetails);
+    model.addAttribute("todos", todoService.findTodosByAssignee(assigneeWithDetails));
+
+    return "detailsperassignee";
   }
 
 }
