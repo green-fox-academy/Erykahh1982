@@ -65,11 +65,12 @@ public class AssigneeController {
   }
 
   @GetMapping("/{id}/details")
-  public String renderDetailsPerAssignee(@PathVariable long id, Model model, @ModelAttribute Assignee assignee) {
+  public String renderDetailsPerAssignee(@PathVariable long id, Model model) {
 
     Assignee assigneeWithDetails = assigneeService.findAssigneeById(id);
     model.addAttribute("assignee", assigneeWithDetails);
     model.addAttribute("todos", todoService.findTodosByAssignee(assigneeWithDetails));
+
 
     return "detailsperassignee";
   }

@@ -36,6 +36,8 @@ public class TodosController {
     }
     model.addAttribute("models", filteredTodos);
     model.addAttribute("assignees", assigneeService.listAllAssignees());
+    model.addAttribute("duedates", todoService.listAllDueDates());
+
     return "todolist";
   }
 
@@ -92,7 +94,7 @@ public class TodosController {
   @PostMapping("/{id}/edit")
   public String postEdit(@PathVariable long id, @ModelAttribute Todo todo) {
 
-    todoService.editTodo(todo,id);
+    todoService.editTodo(todo, id);
     return "redirect:/todo/list";
   }
 

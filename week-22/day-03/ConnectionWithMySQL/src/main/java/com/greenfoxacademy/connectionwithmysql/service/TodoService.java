@@ -63,4 +63,14 @@ public class TodoService {
   public ArrayList<Todo> findTodosByAssignee(Assignee assignee) {
     return todoRepository.findTodosByAssignee(assignee);
   }
+
+  public ArrayList<LocalDateTime> listAllDueDates() {
+    ArrayList<Todo> todos = listAllItems();
+    ArrayList<LocalDateTime> duedates = new ArrayList<>();
+    for (Todo todo : todos) {
+      duedates.add(todo.getDueDate());
+    }
+    return duedates;
+  }
 }
+

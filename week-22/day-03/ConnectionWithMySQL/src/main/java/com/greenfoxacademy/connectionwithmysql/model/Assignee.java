@@ -14,9 +14,9 @@ public class Assignee {
   private String email;
   private String creationDate;
 
-  @OneToMany
-  @JoinColumn(name = "assigneeId")
-  private List<Todo>todos;
+//  @OneToMany(cascade = CascadeType.PERSIST)
+//  @JoinColumn(name = "assigneeId")
+//  private List<Todo>todos;
 
   public Assignee() {
     this.creationDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
@@ -59,4 +59,12 @@ public class Assignee {
   public void setCreationDate(String creationDate) {
     this.creationDate = creationDate;
   }
+
+//  public List<Todo> getTodos() {
+//    return todos;
+//  }
+//
+//  public void setTodos(List<Todo> todos) {
+//    this.todos = todos;
+//  }
 }
