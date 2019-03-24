@@ -21,7 +21,8 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg" style="background-color: indianred">
         <a class="navbar-brand" href="#" style="color: whitesmoke">
-            <img src="https://images-eu.ssl-images-amazon.com/images/I/31GfSzHejgL.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="https://images-eu.ssl-images-amazon.com/images/I/31GfSzHejgL.png" width="30" height="30"
+                 class="d-inline-block align-top" alt="">
             TODO APP</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,10 +30,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="http://localhost:8080/todo/list" style="color: whitesmoke">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="http://localhost:8080/todo/list" style="color: whitesmoke">Home
+                    <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="http://localhost:8080/todo/add" style="color: whitesmoke">Add New</a>
-                <a class="nav-item nav-link" href="http://localhost:8080/assignee/list" style="color: whitesmoke">List Assignees</a>
-                <a class="nav-item nav-link" href="http://localhost:8080/todo/ver2/?isActive=true" style="color: whitesmoke">Show Active Only</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/assignee/list" style="color: whitesmoke">List
+                    Assignees</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/todo/ver2/?isActive=true"
+                   style="color: whitesmoke">Show Active Only</a>
             </div>
         </div>
     </nav>
@@ -66,7 +70,8 @@
                        style="background-color: lightblue">
         </form>
     </div>
-    <h2 style="color: indianred; font-weight: bold; font-family: 'DejaVu Sans Mono', monospace; text-align: center">Todos for
+    <h2 style="color: indianred; font-weight: bold; font-family: 'DejaVu Sans Mono', monospace; text-align: center">
+        Todos for
         today:</h2>
     <div th:if="${models.isEmpty()}">
         <p>There is NOTHING to do today!!</p>
