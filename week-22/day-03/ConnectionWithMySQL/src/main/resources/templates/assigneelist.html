@@ -1,49 +1,89 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
     <title>Assignees</title>
 </head>
 <body>
-<br>
-<div>
-    <a href="http://localhost:8080/assignee/add"
-       style="color: indianred; font-weight: bold; font-family: 'DejaVu Sans Mono', monospace">Add new assignee</a>
-</div>
-<h2 style="color: indianred; font-weight: bold; font-family: 'DejaVu Sans Mono', monospace">List of Assignees:</h2>
-<div th:if="${assignees.isEmpty()}">
-    <p style="color: grey">The assignee list is empty at the moment ... add one by cliking on the link above</p>
-</div>
-<div th:unless="${assignees.isEmpty()}">
-    <table th:border="1">
-        <thead style="color: grey; font-family: 'DejaVu Sans Mono', monospace">
-        <tr>
-            <th th:text="'CREATION DATE'" style="text-align: left"></th>
-            <th th:text="'ASSIGNEE_ID'" style="text-align: left"></th>
-            <th th:text="'NAME'" style="text-align: left"></th>
-            <th th:text="'EMAIL'" style="text-align: left"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="assignee:${assignees}">
-            <td th:text="${assignee.creationDate}" style="text-align: left"></td>
-            <td th:text="${assignee.id}" style="text-align: left"></td>
-            <td>
-                <a th:href="'/assignee/' + ${assignee.id} + '/details'" style="text-align: left"
-                   th:text="${assignee.name}"></a>
-            </td>
-            <td th:text="${assignee.email}" style="text-align: left"></td>
-            <td>
-                <a th:href="'/assignee/' + ${assignee.id} +'/delete'" style="text-align: left">delete</a>
-            </td>
-            <td>
-                <a th:href="'/assignee/' + ${assignee.id} +'/edit'" style="text-align: left">edit</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <nav class="navbar navbar-expand-lg" style="background-color: indianred">
+        <a class="navbar-brand" href="#" style="color: whitesmoke">
+            <img src="https://cdn2.iconfinder.com/data/icons/education-59/128/check_up-512.png" width="30"
+                 height="30"
+                 class="d-inline-block align-top" alt="">
+            TODO APP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="http://localhost:8080/todo/list" style="color: whitesmoke">Home
+                    <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="http://localhost:8080/assignee/add" style="color: whitesmoke">Add New
+                    Assignee</a>
+            </div>
+        </div>
+    </nav>
     <br>
-    <a href="/todo/list">Back</a>
+    <h2 style="color: indianred; font-weight: bold; text-align: center; font-family: 'DejaVu Sans Mono', monospace">List
+        of Assignees:</h2>
+    <br>
+    <div th:if="${assignees.isEmpty()}">
+        <p style="color: grey">The assignee list is empty at the moment ... add one by cliking on the link above</p>
+    </div>
+    <div th:unless="${assignees.isEmpty()}">
+        <table class="table table-hover table-sm table-responsive">
+            <caption>List of Assignees</caption>
+            <thead style="color: grey; font-family: 'DejaVu Sans Mono', monospace">
+            <tr class="table-dark">
+                <th scope="col" th:text="'CREATION DATE'" style="text-align: left"></th>
+                <th scope="col" th:text="'ASSIGNEE_ID'" style="text-align: left"></th>
+                <th scope="col" th:text="'NAME'" style="text-align: left"></th>
+                <th scope="col" th:text="'EMAIL'" style="text-align: left"></th>
+                <th scope="col" th:text="'DELETE'" style="text-align: left"></th>
+                <th scope="col" th:text="'EDIT'" style="text-align: left"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="assignee:${assignees}">
+                <td th:text="${assignee.creationDate}" style="text-align: left"></td>
+                <td th:text="${assignee.id}" style="text-align: left"></td>
+                <td>
+                    <a th:href="'/assignee/' + ${assignee.id} + '/details'" style="text-align: left"
+                       th:text="${assignee.name}"></a>
+                </td>
+                <td th:text="${assignee.email}" style="text-align: left"></td>
+                <td>
+                    <a class="btn btn-outline-danger" role="button" th:href="'/assignee/' + ${assignee.id} +'/delete'" style="text-align: left">Delete</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" role="button" th:href="'/assignee/' + ${assignee.id} +'/edit'" style="text-align: left">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
+<footer class="page-footer fixed-bottom" style="background-color: indianred; color: whitesmoke">
+    <div class="container">
+        <div class="footer-copyright text-center">
+            <span class="align-middle"><small>© 2019 Copyright: Kovács-Posta Erika</small></span>
+        </div>
+    </div>
+</footer>
 </html>
