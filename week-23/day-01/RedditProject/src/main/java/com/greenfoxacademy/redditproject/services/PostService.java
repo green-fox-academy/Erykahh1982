@@ -35,7 +35,7 @@ public class PostService {
     return posts;
   }
 
-  public void saveNewPost(Post post) {
+  public void savePost(Post post) {
     postRepository.save(post);
   }
 
@@ -47,13 +47,19 @@ public class PostService {
     return postRepository.findById(id).get();
   }
 
-  public void upvotePost(long id, Post post, long sore) {
-    post.setNrOfVotes(post.getNrOfVotes() + sore);
-    postRepository.save(post);
+  public void upvotePost(long id) {
+    if (findPostById(id) != null) {
+      Post post = findPostById(id);
+      post.setNrOfVotes(post.getNrOfVotes() + 1);
+      savePost(post);
+    }
   }
 
-  public void downvotePost(long id, Post post, long sore) {
-    post.setNrOfVotes(post.getNrOfVotes() - sore);
-    postRepository.save(post);
+  public void downvotePost(long id) {
+    if (findPostById(id) != null) {
+      Post post = findPostById(id);
+      post.setNrOfVotes(post.getNrOfVotes() - 1);
+      savePost(post);
+    }
   }
 }

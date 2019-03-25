@@ -21,7 +21,7 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg" style="background-color: darkblue">
         <a class="navbar-brand" href="#" style="color: whitesmoke">
-            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c531.png" width="30" height="30"
+            <img src="../static/redditlogo.png" th:src="@{/redditlogo.png}" width="30" height="30"
                  class="d-inline-block align-top" alt="">
             REDDIT APP</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -40,42 +40,30 @@
         </div>
     </nav>
     <br>
-    <h2 style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">
-        Trending Posts:</h2>
+    <h3 style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">
+        Sign In
+    </h3>
     <br>
-    <div th:if="${posts.isEmpty()}">
-        <p>There is NOTHING to show Yet!!</p>
-    </div>
-    <div th:unless="${posts.isEmpty()}" th:object="${post}">
-        <table class="table table-hover table-sm table-responsive">
-            <thead style="color: lightblue; font-family: Verdana, monospace; background-color: ghostwhite">
-            <tr class="table-dark">
-                <th scope="col" th:text="'Scores'" style="text-align: left"></th>
-                <th scope="col" th:text="'Upvote'" style="text-align: left"></th>
-                <th scope="col" th:text="'Downvote'" style="text-align: left"></th>
-                <th scope="col" th:text="'Title'" style="text-align: left"></th>
-                <th scope="col" th:text="'Posted at'" style="text-align: left"></th>
-                <th scope="col" th:text="'Posted by'" style="text-align: left"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="post:${posts}" th:object="${post}">
-                <td th:text="*{nrOfVotes}"
-                    style="text-align: left; text-align: left; font-weight: lighter; font-family: Verdana; color: darkorange"></td>
-                <td><a th:href="'/upvote/' +*{id}" th:text="'+'"
-                       style="text-align: left; font-weight: lighter; font-family: Verdana"></a></td>
-                <td><a th:href="'/downvote/' +*{id}" th:text="'-'"
-                       style="text-align: left; font-weight: lighter; font-family: Verdana"></a></td>
-                <td><a th:href="*{url}" th:text="*{title}"
-                       style="text-align: left;font-weight: lighter; font-family: Verdana"></a></td>
-                <td th:text="${#temporals.format(post.creationDate,'yyyy-MM-dd HH:mm:SS')}"
-                    style="text-align: left; text-align: left; font-weight: lighter; font-family: Verdana; color: darkorange"></td>
-                <td th:text="*{user}"
-                    style="text-align: left; text-align: left; font-weight: lighter; font-family: Verdana; color: darkorange"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <form action="/login" method="post">
+        <div class="input-group mb-3" style="width: 400px;">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"></span>
+            </div>
+            <input type="text" name="name" id="name" placeholder="Username" required autofocus/>
+            <input type="hidden" name="email" th:field="${us}">
+            <div class="input-group mb-3" style="width: 400px;">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"></span>
+                </div>
+                <input type="password" name="password" id="password" placeholder="Password" required/>
+            </div>
+            <div>
+                <input type="submit" value="SIGN IN" class="btn btn-outline-secondary btn-sm"
+                       style="background-color: darkorange"/>
+            </div>
+        </div>
+    </form>
+    <p style="color: ghostwhite">New to Reddit? <a href="/register">SIGN UP</a></p>
 </div>
 </body>
 <footer class="page-footer fixed-bottom" style="background-color:darkblue; color: whitesmoke">

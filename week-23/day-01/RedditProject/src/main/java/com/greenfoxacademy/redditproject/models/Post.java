@@ -1,6 +1,9 @@
 package com.greenfoxacademy.redditproject.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -11,21 +14,22 @@ public class Post {
   private long id;
   private String title;
   private String url;
-  private Long nrOfVotes;
-  @Temporal(value = TemporalType.DATE)
-  private Date creationDate;
+  private long nrOfVotes;
+  private LocalDateTime creationDate;
 
   @ManyToOne
   @JoinColumn(name = "userId")
   private User user;
 
   public Post() {
+    this.creationDate = LocalDateTime.now();
   }
 
   public Post(String title, String url) {
     this.title = title;
     this.url = url;
-    this.nrOfVotes = null;
+    this.nrOfVotes = 1;
+    this.creationDate = LocalDateTime.now();
   }
 
   public long getId() {
@@ -52,19 +56,19 @@ public class Post {
     this.url = url;
   }
 
-  public Long getNrOfVotes() {
+  public long getNrOfVotes() {
     return nrOfVotes;
   }
 
-  public void setNrOfVotes(Long nrOfVotes) {
+  public void setNrOfVotes(long nrOfVotes) {
     this.nrOfVotes = nrOfVotes;
   }
 
-  public Date getCreationDate() {
+  public LocalDateTime getCreationDate() {
     return creationDate;
   }
 
-  public void setCreationDate(Date creationDate) {
+  public void setCreationDate(LocalDateTime creationDate) {
     this.creationDate = creationDate;
   }
 
