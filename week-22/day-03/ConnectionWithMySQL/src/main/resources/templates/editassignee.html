@@ -1,21 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
     <title>Edit Assignee</title>
 </head>
 <body>
-<h1>Edit Assignee</h1>
-<div>
-    <form th:action="'/assignee/'+ ${assignee.id} +'/edit'" method="post" th:object="${assignee}">
-        <input type="hidden" th:field="*{id}" name="id">
-        <label for="name">Assignee Name</label>
-        <input type="text" th:field="*{name}"  name="name" id="name" required>
-        <label for="email">Email</label>
-        <input type="email" th:field="*{email}" name="email" id="email">
-        <p><input type="submit" value="Submit"></p>
-    </form>
-    <a href="/assignee/list">Cancel</a>
+<div class="container">
+    <nav class="navbar navbar-expand-lg" style="background-color: indianred">
+        <a class="navbar-brand" href="#" style="color: whitesmoke">
+            <img src="https://cdn2.iconfinder.com/data/icons/large-svg-icons-part-3/512/tasks_scheduled_folder_google-512.png"
+                 width="30" height="30"
+                 class="d-inline-block align-top" alt="">
+            TODO APP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="http://localhost:8080/todo/list" style="color: whitesmoke">Home
+                    <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="http://localhost:8080/todo/add" style="color: whitesmoke">Add New
+                    Todo</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/assignee/list" style="color: whitesmoke">List
+                    of
+                    Assignees</a>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <h2 style="text-align: center; font-family: 'DejaVu Sans Mono', monospace; font-weight: bold; color: indianred">Edit
+        Assignee</h2>
+    <div>
+        <form th:action="'/assignee/'+ ${assignee.id} +'/edit'" method="post" th:object="${assignee}">
+            <input type="hidden" th:field="*{id}" name="id">
+            <div class="input-group mb-3" style="width: 400px;">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Assignee Name</span>
+                </div>
+                <input type="text" th:field="*{name}" name="name" class="form-control" id="name" required>
+                <div class="input-group mb-3" style="width: 400px;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Email</span>
+                    </div>
+                    <input type="email" th:field="*{email}" name="email" class="form-control" id="email">
+                    <input type="submit" value="Submit" class="btn btn-outline-secondary btn-sm" style="background-color: lightblue">
+        </form>
+    </div>
 </div>
 </body>
+<footer class="page-footer fixed-bottom" style="background-color: indianred; color: whitesmoke">
+    <div class="container">
+        <div class="footer-copyright text-center">
+            <span class="align-middle"><small>© 2019 Copyright: Kovács-Posta Erika</small></span>
+        </div>
+    </div>
+</footer>
 </html>
