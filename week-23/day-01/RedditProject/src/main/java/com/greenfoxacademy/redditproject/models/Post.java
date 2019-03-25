@@ -16,12 +16,19 @@ public class Post {
   private long id;
   private String title;
   private String url;
-  private long nrOfVotes;
+  private long nrOfVotes = 0;
   @Temporal(value = TemporalType.DATE)
   private Date creationDate;
 
   @ManyToOne
   @JoinColumn(name = "userId")
   private User user;
+
+  public Post() {
+  }
+
+  public Post(String title) {
+    this.title = title;
+  }
 
 }
