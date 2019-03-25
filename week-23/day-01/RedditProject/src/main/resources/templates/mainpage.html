@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <title>Reddit Main</title>
+</head>
+<body style="background-color: lightgrey;">
+<div class="container">
+    <nav class="navbar navbar-expand-lg" style="background-color: darkblue">
+        <a class="navbar-brand" href="#" style="color: whitesmoke">
+            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c531.png" width="30" height="30"
+                 class="d-inline-block align-top" alt="">
+            REDDIT APP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="http://localhost:8080/" style="color: whitesmoke">Home
+                    <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="http://localhost:8080/add" style="color: whitesmoke">Add New Post</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/login" style="color: whitesmoke">LogIn</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/register"
+                   style="color: whitesmoke">Register</a>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <h2 style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">
+        Trending Posts:</h2>
+    <br>
+    <div th:if="${posts.isEmpty()}">
+        <p>There is NOTHING to show Yet!!</p>
+    </div>
+    <div th:unless="${posts.isEmpty()}" th:object="${post}">
+        <table class="table table-hover table-sm table-responsive">
+            <thead style="color: lightblue; font-family: Verdana, monospace; background-color: ghostwhite">
+            <tr class="table-dark">
+                <th scope="col" th:text="'Scores'" style="text-align: left"></th>
+                <th scope="col" th:text="'Upvote'" style="text-align: left"></th>
+                <th scope="col" th:text="'Downvote'" style="text-align: left"></th>
+                <th scope="col" th:text="'Title'" style="text-align: left"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post:${posts}" th:object="${post}">
+                <td th:text="*{nrOfVotes}"
+                    style="text-align: left; text-align: left; font-weight: lighter; font-family: Verdana; color: grey"></td>
+                <td><a th:href="'#'" th:text="'+'"
+                       style="text-align: left; font-weight: lighter; font-family: Verdana"></a></td>
+                <td><a th:href="'#'" th:text="'-'"
+                       style="text-align: left; font-weight: lighter; font-family: Verdana"></a></td>
+                <td><a th:href="*{url}" th:text="*{title}"
+                       style="text-align: left;font-weight: lighter; font-family: Verdana"></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+<footer class="page-footer fixed-bottom" style="background-color:darkblue; color: whitesmoke">
+    <div class="container">
+        <div class="footer-copyright text-center">
+            <span class="align-middle"><small>© 2019 Copyright: Kovács-Posta Erika</small></span>
+        </div>
+    </div>
+</footer>
+</html>
