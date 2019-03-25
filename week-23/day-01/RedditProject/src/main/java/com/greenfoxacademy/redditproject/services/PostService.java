@@ -2,7 +2,6 @@ package com.greenfoxacademy.redditproject.services;
 
 import com.greenfoxacademy.redditproject.models.Post;
 import com.greenfoxacademy.redditproject.repositories.PostRepository;
-import org.hibernate.mapping.TableOwner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +36,6 @@ public class PostService {
   }
 
   public void saveNewPost(Post post) {
-    post.setNrOfVotes((long) 0);
     postRepository.save(post);
   }
 

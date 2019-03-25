@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <title>Reddit Main</title>
+</head>
+<body style="background-color: lightgrey;">
+<div class="container">
+    <nav class="navbar navbar-expand-lg" style="background-color: darkblue">
+        <a class="navbar-brand" href="#" style="color: whitesmoke">
+            <img src="../static/redditlogo.png" th:src="@{/redditlogo.png}"
+                 width="30" height="30"
+                 class="d-inline-block align-top" alt="">
+            REDDIT APP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="http://localhost:8080/" style="color: whitesmoke">Home
+                    <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="http://localhost:8080/login" style="color: whitesmoke">LogIn</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/register"
+                   style="color: whitesmoke">Register</a>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <h2 style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">
+        Add a New Post</h2>
+    <br>
+    <div>
+        <form action="/add" method="post">
+            <div class="input-group mb-3" style="width: 400px;">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Tile</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Title" name="title" required>
+                <div class="input-group mb-3" style="width: 400px;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">URL</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="http//news.hotofthepress.com" name="url"
+                           required>
+                </div>
+                <br>
+                <input type="submit" class="btn btn-outline-secondary btn-sm" value="Submit"
+                       style="background-color: lightblue">
+            </div>
+        </form>
+    </div>
+
+</div>
 </body>
+<footer class="page-footer fixed-bottom" style="background-color:darkblue; color: whitesmoke">
+    <div class="container">
+        <div class="footer-copyright text-center">
+            <span class="align-middle"><small>© 2019 Copyright: Kovács-Posta Erika</small></span>
+        </div>
+    </div>
+</footer>
 </html>
