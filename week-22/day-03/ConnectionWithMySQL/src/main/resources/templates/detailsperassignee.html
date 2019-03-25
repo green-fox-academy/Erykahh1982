@@ -2,39 +2,69 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
     <title>Assignee Details</title>
 </head>
 <body>
-<h2 th:text="'List of todos for ' +${assignee.name} +':'"
-    style="color: indianred; font-family: 'DejaVu Sans Mono', monospace"></h2>
-
-<table th:border="1">
-    <thead style="color: grey; font-family: 'DejaVu Sans Mono', monospace; background-color: lightblue">
-    <tr>
-        <th th:text="'CREATION DATE'" style="text-align: left"></th>
-        <th th:text="'UPDATE DATE'" style="text-align: left"></th>
-        <th th:text="'DUE DATE'" style="text-align: left"></th>
-        <th th:text="'ID'" style="text-align: left"></th>
-        <th th:text="'ASSIGNEE'" style="text-align: left"></th>
-        <th th:text="'ACTION'" style="text-align: left"></th>
-        <th th:text="'DONE'" style="text-align: left"></th>
-        <th th:text="'URGENT'" style="text-align: left"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="todo:${todos}" th:object="${todo}">
-        <td th:text="${#temporals.format(todo.creationTime,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
-        <td th:text="${#temporals.format(todo.updateTime,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
-        <td th:text="${#temporals.format(todo.dueDate,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
-        <td th:text="*{id}" style="text-align: left"></td>
-        <td th:text="${assignee.name}" th:value="${assignee.id}" style="text-align: left"></td>
-        <td style="text-align: left" th:text="*{title}"></td>
-        <td th:text="*{done}" style="text-align: left"></td>
-        <td th:text="*{urgent}" style="text-align: left"></td>
-    </tr>
-    </tbody>
-</table>
+<div class="container">
+    <nav class="navbar navbar-expand-lg" style="background-color: indianred">
+        <a class="navbar-brand" href="#" style="color: whitesmoke">
+            <img src="https://imgb.apk.tools/150/b/c/2/com.appo.apps.simcard.owner.details.png" width="30" height="30"
+                 class="d-inline-block align-top" alt="">
+            TODO APP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="http://localhost:8080/todo/list" style="color: whitesmoke">Home
+                    <span class="sr-only">(current)</span></a>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <h2 th:text="'List of todos for ' +${assignee.name} +':'"
+        style="color: indianred; font-family: 'DejaVu Sans Mono', monospace;text-align: center; font-weight: bold"></h2>
 <br>
-<a href="/todo/list">Back</a>
+    <table class="table table-hover table-sm table-responsive">
+        <caption>List of Todos per Assignee</caption>
+        <thead style="color: grey; font-family: 'DejaVu Sans Mono', monospace; background-color: lightblue">
+        <tr class="table-dark">
+            <th scope="col" th:text="'CREATION DATE'" style="text-align: left"></th>
+            <th scope="col" th:text="'UPDATE DATE'" style="text-align: left"></th>
+            <th scope="col" th:text="'DUE DATE'" style="text-align: left"></th>
+            <th scope="col" th:text="'ID'" style="text-align: left"></th>
+            <th scope="col" th:text="'ASSIGNEE'" style="text-align: left"></th>
+            <th scope="col" th:text="'ACTION'" style="text-align: left"></th>
+            <th scope="col" th:text="'DONE'" style="text-align: left"></th>
+            <th scope="col" th:text="'URGENT'" style="text-align: left"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="todo:${todos}" th:object="${todo}">
+            <td th:text="${#temporals.format(todo.creationTime,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
+            <td th:text="${#temporals.format(todo.updateTime,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
+            <td th:text="${#temporals.format(todo.dueDate,'yyyy-MM-dd HH:mm:SS')}" style="text-align: left"></td>
+            <td th:text="*{id}" style="text-align: left"></td>
+            <td th:text="${assignee.name}" th:value="${assignee.id}" style="text-align: left"></td>
+            <td style="text-align: left" th:text="*{title}"></td>
+            <td th:text="*{done}" style="text-align: left"></td>
+            <td th:text="*{urgent}" style="text-align: left"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
