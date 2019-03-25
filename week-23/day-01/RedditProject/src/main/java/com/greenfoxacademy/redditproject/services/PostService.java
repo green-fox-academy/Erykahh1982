@@ -30,9 +30,32 @@ public class PostService {
     return decrementedVotes;
   }
 
-  public ArrayList<Post> listAllPosts(){
-    ArrayList<Post>posts = new ArrayList<>();
+  public ArrayList<Post> listAllPosts() {
+    ArrayList<Post> posts = new ArrayList<>();
     postRepository.findAll().forEach(posts::add);
     return posts;
+  }
+
+  public void saveNewPost(Post post) {
+    post.setNrOfVotes((long) 0);
+    postRepository.save(post);
+  }
+
+  public void deletePost(Post post) {
+    postRepository.delete(post);
+  }
+
+  public Post findPostById(long id) {
+    return postRepository.findById(id).get();
+  }
+
+  public void upvotePost(long id, Post post, long sore) {
+    post.setNrOfVotes(post.getNrOfVotes() + sore);
+    postRepository.save(post);
+  }
+
+  public void downvotePost(long id, Post post, long sore) {
+    post.setNrOfVotes(post.getNrOfVotes() - sore);
+    postRepository.save(post);
   }
 }
