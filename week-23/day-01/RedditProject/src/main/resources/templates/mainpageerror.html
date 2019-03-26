@@ -42,10 +42,14 @@
     <h2 style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">
         Trending Posts:</h2>
     <br>
+    <div class="alert alert-danger text-center" role="alert">
+        You have to be <a href="/login" class="alert-link" style="color: grey">logged in</a> or <a href="/register" class="alert-link" style="color: grey">registered</a>
+        to be able to VOTE or ADD NEW POSTS.
+    </div>
     <div th:if="${posts.isEmpty()}">
         <p>There is NOTHING to show Yet!!</p>
     </div>
-    <div th:unless="${posts.isEmpty()}" th:object="${post}">
+    <div th:unless="${posts.isEmpty()}">
         <table class="table table-hover table-sm table-responsive">
             <thead style="color: lightblue; font-family: Verdana, monospace; background-color: ghostwhite">
             <tr class="table-dark">
@@ -61,15 +65,15 @@
             <tr th:each="post:${posts}" th:object="${post}">
                 <td th:text="*{nrOfVotes}"
                     style="text-align: left; text-align: left; font-weight: lighter; font-family: Verdana; color: darkorange"></td>
-                <td><a th:href="'http://localhost:8080/nouser'" th:text="'+'"
+                <td><a th:href="'#'" th:text="'+'"
                        style="text-align: left; font-weight: lighter; font-family: Verdana"></a></td>
-                <td><a th:href="'http://localhost:8080/nouser'" th:text="'-'"
+                <td><a th:href="'#'" th:text="'-'"
                        style="text-align: left; font-weight: lighter; font-family: Verdana"></a></td>
                 <td><a th:href="*{url}" th:text="*{title}"
                        style="text-align: left;font-weight: lighter; font-family: Verdana"></a></td>
                 <td th:text="${#temporals.format(post.creationDate,'yyyy-MM-dd HH:mm:SS')}"
                     style="text-align: left; text-align: left; font-weight: lighter; font-family: Verdana; color: darkorange"></td>
-                <td th:text="*{user}"
+                <td th:text="${post.user}"
                     style="text-align: left; text-align: left; font-weight: lighter; font-family: Verdana; color: darkorange"></td>
             </tr>
             </tbody>

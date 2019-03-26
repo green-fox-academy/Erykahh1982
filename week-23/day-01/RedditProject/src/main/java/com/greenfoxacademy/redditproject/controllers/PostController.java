@@ -3,7 +3,6 @@ package com.greenfoxacademy.redditproject.controllers;
 import com.greenfoxacademy.redditproject.models.Post;
 import com.greenfoxacademy.redditproject.services.PostService;
 import com.greenfoxacademy.redditproject.services.UserService;
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.ArrayList;
 
 @Controller
 public class PostController {
@@ -30,6 +27,19 @@ public class PostController {
   public String renderMainPage(Model model) {
     model.addAttribute("posts", postService.listAllPosts());
     return "mainpage";
+  }
+
+  @GetMapping("/nouser")
+  public String renderMainPageError(Model model) {
+    model.addAttribute("posts", postService.listAllPosts());
+    return "mainpageerror";
+  }
+
+  @GetMapping("/{id}")
+  public String renderMainPageLoggedIn(Model model, @PathVariable long userId) {
+
+    model.addAttribute("posts", postService.listAllPosts());
+    return "mainpagelogin";
   }
 
   @GetMapping("/upvote/{id}")

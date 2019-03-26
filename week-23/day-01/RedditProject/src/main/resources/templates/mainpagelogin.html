@@ -32,9 +32,8 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="http://localhost:8080/" style="color: whitesmoke">Home
                     <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="http://localhost:8080/login" style="color: whitesmoke">LogIn</a>
-                <a class="nav-item nav-link" href="http://localhost:8080/register"
-                   style="color: whitesmoke">Register</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/add" style="color: whitesmoke">Add New Post</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/" style="color: whitesmoke">LogOut</a>
             </div>
         </div>
     </nav>
@@ -61,9 +60,9 @@
             <tr th:each="post:${posts}" th:object="${post}">
                 <td th:text="*{nrOfVotes}"
                     style="text-align: left; text-align: left; font-weight: lighter; font-family: Verdana; color: darkorange"></td>
-                <td><a th:href="'http://localhost:8080/nouser'" th:text="'+'"
+                <td><a th:href="'/upvote/' +*{id}" th:text="'+'"
                        style="text-align: left; font-weight: lighter; font-family: Verdana"></a></td>
-                <td><a th:href="'http://localhost:8080/nouser'" th:text="'-'"
+                <td><a th:href="'/downvote/' +*{id}" th:text="'-'"
                        style="text-align: left; font-weight: lighter; font-family: Verdana"></a></td>
                 <td><a th:href="*{url}" th:text="*{title}"
                        style="text-align: left;font-weight: lighter; font-family: Verdana"></a></td>

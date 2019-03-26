@@ -34,7 +34,7 @@ public class UserController {
   @PostMapping("/login")
   public String loginAUser(@ModelAttribute User user){
 
-    return "redirect:/";
+    return "redirect:/{id}";
   }
 
   @PostMapping("/register")
