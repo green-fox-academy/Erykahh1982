@@ -45,24 +45,26 @@
     </h3>
     <br>
     <form action="/login" method="post">
-        <div class="input-group mb-3" style="width: 400px;">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"></span>
-            </div>
-            <input type="text" name="name" id="name" placeholder="Username" required autofocus/>
-            <input type="hidden" name="email" th:field="${us}">
-            <div class="input-group mb-3" style="width: 400px;">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"></span>
-                </div>
-                <input type="password" name="password" id="password" placeholder="Password" required/>
-            </div>
-            <div>
-                <input type="submit" value="SIGN IN" class="btn btn-outline-secondary btn-sm"
-                       style="background-color: darkorange"/>
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">User Name</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="name" name="name" placeholder="User" required>
             </div>
         </div>
+
+        <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" id="password" name="password"
+                       placeholder="Your Password" required>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="SIGN IN" class="btn btn-outline-secondary btn-sm"
+                   style="background-color: darkorange; margin-left: 190px"/>
+        </div>
     </form>
+    <br>
     <p style="color: ghostwhite">New to Reddit? <a href="/register">SIGN UP</a></p>
 </div>
 </body>

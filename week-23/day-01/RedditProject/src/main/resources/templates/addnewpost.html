@@ -45,24 +45,27 @@
     <br>
     <div>
         <form action="/add" method="post">
-            <div class="input-group mb-3" style="width: 400px;">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Tile</span>
-                </div>
-                <input type="text" class="form-control" placeholder="Title" name="title" required>
-                <div class="input-group mb-3" style="width: 400px;">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">URL</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="http//news.hotofthepress.com" name="url"
+            <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label">Title</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Banner headline"
                            required>
                 </div>
-                <br>
-                <input type="submit" class="btn btn-outline-secondary btn-sm" value="Submit"
-                       style="background-color: lightblue">
             </div>
+            <div class="form-group row">
+                <label for="url" class="col-sm-2 col-form-label">URL</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="url" id="url" placeholder="https//hotofthepress.news"
+                           required>
+                </div>
+            </div>
+            <br>
+            <input type="submit" class="btn btn-outline-secondary btn-sm" value="Submit"
+                   style="background-color: darkorange; margin-left: 190px">
         </form>
     </div>
+
+</div>
 
 </div>
 </body>
