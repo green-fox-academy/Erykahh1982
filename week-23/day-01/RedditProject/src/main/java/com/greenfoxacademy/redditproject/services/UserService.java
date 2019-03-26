@@ -31,4 +31,17 @@ public class UserService {
     userRepository.delete(user);
   }
 
+  public User findUserById(long id) {
+    return userRepository.findById(id).get();
+  }
+
+  public User findUserByName(String name) {
+    return userRepository.findUserByName(name);
+  }
+
+  public boolean checkIfUserIsAlreadyRegistered(String name) {
+    return userRepository.existsByNameEquals(name);
+  }
 }
+
+

@@ -44,7 +44,10 @@
         Add a New Post</h2>
     <br>
     <div>
-        <form action="/add" method="post">
+        <form th:action="'/' + ${user.id} + '/add'" method="post">
+            <div>
+                <input type="hidden" th:value="${user.id}" name="user">
+            </div>
             <div class="form-group row">
                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-9">

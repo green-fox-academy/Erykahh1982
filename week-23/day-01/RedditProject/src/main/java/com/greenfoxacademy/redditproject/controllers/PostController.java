@@ -1,6 +1,7 @@
 package com.greenfoxacademy.redditproject.controllers;
 
 import com.greenfoxacademy.redditproject.models.Post;
+import com.greenfoxacademy.redditproject.models.User;
 import com.greenfoxacademy.redditproject.services.PostService;
 import com.greenfoxacademy.redditproject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,34 +36,47 @@ public class PostController {
     return "mainpageerror";
   }
 
-  @GetMapping("/{id}")
-  public String renderMainPageLoggedIn(Model model, @PathVariable long userId) {
-
+  @GetMapping("/{userid}")
+  public String renderMainPageLoggedIn(Model model, @PathVariable long userid) {
+    model.addAttribute("user", userService.findUserById(userid));
     model.addAttribute("posts", postService.listAllPosts());
     return "mainpagelogin";
   }
 
-  @GetMapping("/upvote/{id}")
-  public String upvotePost(@PathVariable long id) {
+  @GetMapping("/{userid}/upvote/{id}")
+  public String upvotePost(@PathVariable long id, @PathVariable long userid) {
     postService.upvotePost(id);
-    return "redirect:/";
+    return "redirect:/" + userid;
   }
 
-  @GetMapping("/downvote/{id}")
-  public String downvotePost(@PathVariable long id) {
+  @GetMapping("/{userid}/downvote/{id}")
+  public String downvotePost(@PathVariable long id, @PathVariable long userid) {
     postService.downvotePost(id);
-    return "redirect:/";
+    return "redirect:/" + userid;
   }
 
 
-  @GetMapping("/add")
-  public String renderAddNewPostPage() {
+  @GetMapping("/{userid}/add")
+  public String renderAddNewPostPage(@PathVariable long userid, Model model) {
+    User user = userService.findUserById(userid);
+    model.addAttribute("user", user);
     return "addnewpost";
   }
 
-  @PostMapping("/add")
-  public String submitANewPost(@ModelAttribute Post post) {
+  @PostMapping("/{userid}/add")
+  public String submitANewPost(@ModelAttribute Post post, @PathVariable long userid, Model model) {
+    User user = userService.findUserById(userid);
+    model.addAttribute("user", user);
     postService.savePost(post);
-    return "redirect:/";
+    return "redirect:/{userid}";
+  }
+
+  @PostMapping("/{userid}/delete/{id}")
+  public String deletePostCreatedByUser(Model model, @PathVariable long userid, @PathVariable long id) {
+    User user = userService.findUserById(userid);
+    Post post = postService.findPostById(id);
+    postService.deletePost(post);
+    model.addAttribute("user", user);
+    return "redirect:/{userid}";
   }
 }
