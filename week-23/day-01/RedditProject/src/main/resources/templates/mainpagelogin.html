@@ -54,17 +54,6 @@
 <div th:unless="${posts.isEmpty()}">
     <div class="container">
         <table class="table table-hover table-sm table-responsive" style="background-color: white; border-radius: 5px">
-            <!--<thead style="color: lightblue; font-family: Verdana, monospace; background-color: ghostwhite">-->
-            <!--<tr class="table-dark">-->
-            <!--<th scope="col" th:text="'Scores'" style="text-align: left"></th>-->
-            <!--<th scope="col" th:text="'Upvote'" style="text-align: left"></th>-->
-            <!--<th scope="col" th:text="'Downvote'" style="text-align: left"></th>-->
-            <!--<th scope="col" th:text="'Title'" style="text-align: left"></th>-->
-            <!--<th scope="col" th:text="'Posted at'" style="text-align: left"></th>-->
-            <!--<th scope="col" th:text="'Posted by'" style="text-align: left"></th>-->
-            <!--<th scope="col" th:text="'Delete'" style="text-align: left"></th>-->
-            <!--</tr>-->
-            <!--</thead>-->
             <tbody>
             <tr th:each="post:${posts}" th:object="${post}">
                 <td th:text="*{nrOfVotes}"

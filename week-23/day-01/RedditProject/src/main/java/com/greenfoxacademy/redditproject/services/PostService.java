@@ -69,7 +69,7 @@ public class PostService {
   }
 
   public ArrayList<Post> listPostsByUser(User user) {
-    return postRepository.findAllByUser(user);
+    return postRepository.findAllByUserOrderByNrOfVotesDesc(user);
   }
 
   public ArrayList<Post> listAllOrderByScore(){

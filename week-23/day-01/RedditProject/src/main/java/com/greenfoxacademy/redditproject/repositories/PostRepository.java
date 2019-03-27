@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
-  ArrayList<Post> findAllByUser(User user);
+  ArrayList<Post> findAllByUserOrderByNrOfVotesDesc(User user);
+
   ArrayList<Post> findAllByOrderByNrOfVotesDesc();
 }
