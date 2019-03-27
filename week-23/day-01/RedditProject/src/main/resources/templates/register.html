@@ -18,12 +18,11 @@
     <title>Reddit Main</title>
 </head>
 <body style="background-color: lightgrey;">
-<div class="container">
-    <nav class="navbar navbar-expand-lg" style="background-color: darkblue">
-        <a class="navbar-brand" href="#" style="color: whitesmoke">
-            <img src="../static/redditlogo.png" th:src="@{/redditlogo.png}" width="30" height="30"
-                 class="d-inline-block align-top" alt="">
-            REDDIT APP</a>
+
+<nav class="navbar navbar-expand-lg" style="background-color: darkblue">
+    <div class="container">
+        <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c531.png" style="width: 30px; height: auto">
+        <a class="navbar-brand" href="#" style="color: whitesmoke; font-weight: bolder">Reddit</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,31 +31,31 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="http://localhost:8080/" style="color: whitesmoke">Home
                     <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="http://localhost:8080/add" style="color: whitesmoke">Add New Post</a>
-                <a class="nav-item nav-link" href="http://localhost:8080/login" style="color: whitesmoke">LogIn</a>
-                <a class="nav-item nav-link" href="http://localhost:8080/register"
-                   style="color: whitesmoke">Register</a>
             </div>
         </div>
-    </nav>
-    <br>
+    </div>
+</nav>
+<br>
+<div class="container">
     <h3 style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">
         Join the worldwide conversation.
     </h3>
     <h5 style="color: ghostwhite; font-family: Verdana, monospace; text-align: center">By having a Reddit account, you
         can subscribe, vote, and comment on all your favorite Reddit content.
         Sign up in just seconds.</h5>
-    <br>
+</div>
+<br>
+<div class="container">
     <form action="/register" method="post">
         <div class="form-group row">
-            <label for="username" class="col-sm-2 col-form-label">User Name</label>
+            <label style="color: grey" for="username" class="col-sm-2 col-form-label">User Name</label>
             <div class="col-sm-9">
                 <input type="text" class="form-control" id="username" name="name"
                        placeholder="Your User Name" required>
             </div>
         </div>
         <div class="form-group row">
-            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <label style="color: grey" for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-9">
                 <input type="text" class="form-control" id="email" name="email"
                        placeholder="Your Email Address" required>
@@ -64,7 +63,7 @@
         </div>
 
         <div class="form-group row">
-            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <label style="color: grey" for="password" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-9">
                 <input type="password" class="form-control" id="password" name="password"
                        placeholder="Add a Password" required>
@@ -72,12 +71,12 @@
         </div>
         <div>
             <input type="submit" value="REGISTER" class="btn btn-outline-secondary btn-sm"
-                   style="background-color: darkorange; margin-left: 190px"/>
+                   style="background-color: lightsalmon; margin-left: 190px"/>
         </div>
     </form>
-    <br>
-    <p style="color: ghostwhite">Already a Redditor? <a href="/login">LOG IN</a></p>
 </div>
+<br>
+<p style="color: ghostwhite; margin-left: 260px">Already a Redditor? <a href="/login">LOG IN</a></p>
 </body>
 <footer class="page-footer fixed-bottom" style="background-color:darkblue; color: whitesmoke">
     <div class="container">

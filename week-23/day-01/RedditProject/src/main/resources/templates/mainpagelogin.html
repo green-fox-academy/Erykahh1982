@@ -18,12 +18,13 @@
     <title>Reddit Main</title>
 </head>
 <body style="background-color: lightgrey;">
-<div class="container">
-    <nav class="navbar navbar-expand-lg" style="background-color: darkblue">
-        <a class="navbar-brand" href="#" style="color: whitesmoke">
-            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c531.png" width="30" height="30"
-                 class="d-inline-block align-top" alt="">
-            REDDIT APP</a>
+
+<nav class="navbar navbar-expand-lg" style="background-color: darkblue">
+    <div class="container">
+        <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c531.png"
+             style="width: 30px; height: auto">
+        <a class="navbar-brand" href="#" style="color: whitesmoke">Reddit</a>
+        <a class="navbar-brand" href="#" style="color: orangered" th:text="'Logged in as ' + ${user.name}"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,47 +36,55 @@
                     <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" th:href="'/' + ${user.id}+'/add'"
                    style="color: whitesmoke">Add New Post</a>
+                <a class="nav-item nav-link" th:href="'/' + ${user.id}+'/myposts'"
+                   style="color: whitesmoke">MyPosts</a>
                 <a class="nav-item nav-link" href="http://localhost:8080/" style="color: whitesmoke">LogOut</a>
             </div>
         </div>
-    </nav>
-    <br>
-    <h2 style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">
-        Trending Posts:</h2>
-    <br>
-    <div th:if="${posts.isEmpty()}">
-        <p>There is NOTHING to show Yet!!</p>
     </div>
-    <div th:unless="${posts.isEmpty()}">
-        <table class="table table-hover table-sm table-responsive">
-            <thead style="color: lightblue; font-family: Verdana, monospace; background-color: ghostwhite">
-            <tr class="table-dark">
-                <th scope="col" th:text="'Scores'" style="text-align: left"></th>
-                <th scope="col" th:text="'Upvote'" style="text-align: left"></th>
-                <th scope="col" th:text="'Downvote'" style="text-align: left"></th>
-                <th scope="col" th:text="'Title'" style="text-align: left"></th>
-                <th scope="col" th:text="'Posted at'" style="text-align: left"></th>
-                <th scope="col" th:text="'Posted by'" style="text-align: left"></th>
-                <th scope="col" th:text="'Delete'" style="text-align: left"></th>
-            </tr>
-            </thead>
+</nav>
+<br>
+<h2 style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">
+    Trending Posts:</h2>
+<br>
+<div th:if="${posts.isEmpty()}">
+    <p style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">There is
+        NOTHING to show Yet!!</p>
+</div>
+<div th:unless="${posts.isEmpty()}">
+    <div class="container">
+        <table class="table table-hover table-sm table-responsive" style="background-color: white; border-radius: 5px">
+            <!--<thead style="color: lightblue; font-family: Verdana, monospace; background-color: ghostwhite">-->
+            <!--<tr class="table-dark">-->
+            <!--<th scope="col" th:text="'Scores'" style="text-align: left"></th>-->
+            <!--<th scope="col" th:text="'Upvote'" style="text-align: left"></th>-->
+            <!--<th scope="col" th:text="'Downvote'" style="text-align: left"></th>-->
+            <!--<th scope="col" th:text="'Title'" style="text-align: left"></th>-->
+            <!--<th scope="col" th:text="'Posted at'" style="text-align: left"></th>-->
+            <!--<th scope="col" th:text="'Posted by'" style="text-align: left"></th>-->
+            <!--<th scope="col" th:text="'Delete'" style="text-align: left"></th>-->
+            <!--</tr>-->
+            <!--</thead>-->
             <tbody>
             <tr th:each="post:${posts}" th:object="${post}">
                 <td th:text="*{nrOfVotes}"
-                    style="text-align: left; text-align: left; font-weight: lighter; font-family: Verdana; color: darkorange"></td>
-                <td><a th:href="'/'+${user.id} + '/upvote/' +*{id}" th:text="'+'"
-                       style="text-align: left; font-weight: lighter; font-family: Verdana"></a></td>
-                <td><a th:href="'/' + ${user.id}+ '/downvote/' +*{id}" th:text="'-'"
-                       style="text-align: left; font-weight: lighter; font-family: Verdana"></a></td>
+                    style="text-align: center; font-family: Verdana; color: grey"></td>
+                <td><a th:href="'/'+${user.id} + '/upvote/' +*{id}" class="btn btn-outline-secondary"
+                       role="button">+</a></td>
+                <td><a th:href="'/' + ${user.id}+ '/downvote/' +*{id}" class="btn btn-outline-danger"
+                       role="button">-</a></td>
                 <td><a th:href="*{url}" th:text="*{title}"
-                       style="text-align: left;font-weight: lighter; font-family: Verdana"></a></td>
-                <td th:text="${#temporals.format(post.creationDate,'yyyy-MM-dd HH:mm:SS')}"
-                    style="text-align: left; text-align: left; font-weight: lighter; font-family: Verdana; color: darkorange"></td>
-                <td th:text="'Posted by' + ${user.name}"
-                    style="text-align: left; text-align: left; font-weight: lighter; font-family: Verdana; color: darkorange"></td>
+                       style="text-align: center;font-weight: lighter; font-family: Verdana"></a></td>
+                <td th:text="'Posted on ' + ${#temporals.format(post.creationDate,'yyyy-MM-dd HH:mm:SS')}"
+                    style="text-align: center; font-size: small; font-family: Verdana; color: grey"></td>
+                <td th:text="' by ' + ${post.user.name}"
+                    style="text-align: center; font-size: small; font-family: Verdana; color: dodgerblue"></td>
+                <td><img src="https://png.pngtree.com/svg/20161008/share_40628.png" style="width: 20px; height: auto">
+                </td>
                 <td>
-                    <a th:href="'/'+${user.id} + '/delete/' +*{id}" th:text="'Delete'"
-                       style="text-align: left; font-weight: lighter; font-family: Verdana"></a>
+                    <form th:action="'/' + *{user.id} + '/delete/' + *{id}" method="post">
+                        <button class="btn btn-outline-danger"  type="submit">Delete</button>
+                    </form>
                 </td>
             </tr>
             </tbody>
