@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+
 @Controller
 public class PostController {
 
@@ -77,6 +79,32 @@ public class PostController {
     Post post = postService.findPostById(id);
     postService.deletePost(post);
     model.addAttribute("user", user);
-    return "redirect:/{userid}";
+    return "redirect:/{userid}/myposts";
+  }
+
+  @GetMapping("/{userid}/edit/{id}")
+  public String renderEditPostPage(@PathVariable long userid,
+                                   @PathVariable long id,
+                                   Model model) {
+    User user = userService.findUserById(userid);
+    model.addAttribute("user", user);
+    Post editablePost = postService.findPostById(id);
+    model.addAttribute("editablepost", editablePost);
+    return "editpost";
+  }
+
+  @PostMapping("/{userid}/edit/{id}")
+  public String editPostCreatedByUser(@PathVariable long userid, @PathVariable long id, @ModelAttribute Post post) {
+    postService.editPost(post, id);
+    return "redirect:/{userid}/myposts";
+  }
+
+  @GetMapping("/{userid}/myposts")
+  public String renderMyPostsPage(@PathVariable long userid, Model model) {
+    User userDetail = userService.findUserById(userid);
+    model.addAttribute("user", userDetail);
+    ArrayList<Post> filteredPosts = postService.listPostsByUser(userDetail);
+    model.addAttribute("filteredposts", filteredPosts);
+    return "myposts";
   }
 }

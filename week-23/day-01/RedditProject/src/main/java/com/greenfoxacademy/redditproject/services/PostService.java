@@ -1,6 +1,7 @@
 package com.greenfoxacademy.redditproject.services;
 
 import com.greenfoxacademy.redditproject.models.Post;
+import com.greenfoxacademy.redditproject.models.User;
 import com.greenfoxacademy.redditproject.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,10 @@ public class PostService {
     postRepository.delete(post);
   }
 
+  public void editPost(Post post, long id) {
+    postRepository.save(post);
+  }
+
   public Post findPostById(long id) {
     return postRepository.findById(id).get();
   }
@@ -61,5 +66,9 @@ public class PostService {
       post.setNrOfVotes(post.getNrOfVotes() - 1);
       savePost(post);
     }
+  }
+
+  public ArrayList<Post> listPostsByUser(User user) {
+    return postRepository.findAllByUser(user);
   }
 }

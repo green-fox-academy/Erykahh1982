@@ -72,7 +72,7 @@
                        style="text-align: center;font-weight: lighter; font-family: Verdana"></a></td>
                 <td th:text="'Posted on ' + ${#temporals.format(post.creationDate,'yyyy-MM-dd HH:mm:SS')}"
                     style="text-align: center; font-size: small; font-family: Verdana; color: grey"></td>
-                <td th:text="' by ' + *{user.name}"
+                <td th:text="' by ' + *{user?.name}"
                     style="text-align: center; font-size: small; font-family: Verdana; color: dodgerblue"></td>
                 <td><img src="https://png.pngtree.com/svg/20161008/share_40628.png" style="width: 20px; height: auto">
                 </td>

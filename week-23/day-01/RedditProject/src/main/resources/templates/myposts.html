@@ -36,8 +36,6 @@
                     <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" th:href="'/' + ${user.id}+'/add'"
                    style="color: whitesmoke">Add New Post</a>
-                <a class="nav-item nav-link" th:href="'/' + ${user.id}+'/myposts'"
-                   style="color: whitesmoke">MyPosts</a>
                 <a class="nav-item nav-link" href="http://localhost:8080/" style="color: whitesmoke">LogOut</a>
             </div>
         </div>
@@ -45,13 +43,13 @@
 </nav>
 <br>
 <h2 style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">
-    Trending Posts:</h2>
+    My Posts:</h2>
 <br>
-<div th:if="${posts.isEmpty()}">
+<div th:if="${filteredposts.isEmpty()}">
     <p style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">There is
         NOTHING to show Yet!!</p>
 </div>
-<div th:unless="${posts.isEmpty()}">
+<div th:unless="${filteredposts.isEmpty()}">
     <div class="container">
         <table class="table table-hover table-sm table-responsive" style="background-color: white; border-radius: 5px">
             <!--<thead style="color: lightblue; font-family: Verdana, monospace; background-color: ghostwhite">-->
@@ -66,7 +64,7 @@
             <!--</tr>-->
             <!--</thead>-->
             <tbody>
-            <tr th:each="post:${posts}" th:object="${post}">
+            <tr th:each="post:${filteredposts}" th:object="${post}">
                 <td th:text="*{nrOfVotes}"
                     style="text-align: center; font-family: Verdana; color: grey"></td>
                 <td><a th:href="'/'+${user.id} + '/upvote/' +*{id}" class="btn btn-outline-secondary"
@@ -81,7 +79,14 @@
                     style="text-align: center; font-size: small; font-family: Verdana; color: dodgerblue"></td>
                 <td><img src="https://png.pngtree.com/svg/20161008/share_40628.png" style="width: 20px; height: auto">
                 </td>
-
+                <td>
+                    <a th:href="'/' + *{user.id} + '/edit/' + *{id}" class="btn btn-outline-secondary">Edit</a>
+                </td>
+                <td>
+                    <form th:action="'/' + *{user.id} + '/delete/' + *{id}" method="post">
+                        <button class="btn btn-outline-danger" type="submit">Delete</button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>
