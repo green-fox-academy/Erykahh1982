@@ -40,7 +40,9 @@ public class UserController {
   }
 
   @PostMapping("/register")
-  public String saveRegistration(@ModelAttribute User user, @RequestParam String name) {
+  public String saveRegistration(@ModelAttribute User user,
+                                 @RequestParam String name) {
+
     if (userService.checkIfUserIsAlreadyRegistered(name)) {
       return "login";
     } else {

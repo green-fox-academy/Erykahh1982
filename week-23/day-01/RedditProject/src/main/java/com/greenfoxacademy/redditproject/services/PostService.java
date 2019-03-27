@@ -71,4 +71,9 @@ public class PostService {
   public ArrayList<Post> listPostsByUser(User user) {
     return postRepository.findAllByUser(user);
   }
+
+  public ArrayList<Post> listAllOrderByScore(){
+    ArrayList<Post> orderedList = postRepository.findAllByOrderByNrOfVotesDesc();
+    return orderedList;
+  }
 }
