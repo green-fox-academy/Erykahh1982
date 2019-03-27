@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @Service
 public class PostService {
@@ -72,8 +73,23 @@ public class PostService {
     return postRepository.findAllByUserOrderByNrOfVotesDesc(user);
   }
 
-  public ArrayList<Post> listAllOrderByScore(){
+  public ArrayList<Post> listAllOrderByScore() {
     ArrayList<Post> orderedList = postRepository.findAllByOrderByNrOfVotesDesc();
     return orderedList;
+  }
+
+  public ArrayList<Post> listTop10Posts() {
+    ArrayList<Post> topTenPosts = new ArrayList<>();
+    ArrayList<Post> allPosts = listAllOrderByScore();
+    int fullListSize = allPosts.size();
+
+    if (fullListSize >= 10) {
+      for (int i = 10; i > 0; i--) {
+        topTenPosts.add(allPosts.get(fullListSize - i));
+      }
+    } else {
+      topTenPosts = allPosts;
+    }
+    return topTenPosts;
   }
 }

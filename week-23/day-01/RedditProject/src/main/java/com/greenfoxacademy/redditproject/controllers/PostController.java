@@ -28,7 +28,7 @@ public class PostController {
 
   @GetMapping("/")
   public String renderMainPage(Model model) {
-    model.addAttribute("posts", postService.listAllOrderByScore());
+    model.addAttribute("posts", postService.listTop10Posts());
     return "mainpage";
   }
 
