@@ -48,28 +48,39 @@
 </div>
 <div th:unless="${posts.isEmpty()}">
     <div class="container">
-        <table class="table table-hover table-sm table-responsive" style="background-color: white; border-radius: 5px;">
-            <tbody>
+        <table class="table table-hover table-sm table-responsive text-center"
+               style="background-color: white; border-radius: 5px">
             <tr th:each="post:${posts}" th:object="${post}">
-                <td th:text="*{nrOfVotes}"
-                    style="text-align: center; font-family: Verdana; color: grey"></td>
-                <td><a th:href="'http://localhost:8080/nouser'" class="btn btn-outline-secondary"
-                       role="button">+</a>
+                <td class="justifly-content-center" th:text="*{nrOfVotes}"
+                    style="text-align: center; font-family: Verdana, Arial, sans-serif; color: grey; font-size: small"></td>
+                <td class="justifly-content-center"><a th:href="'http://localhost:8080/nouser'"
+                                                       class="btn btn-outline-secondary"
+                                                       style="font-size: small" role="button">+</a>
                 </td>
-                <td><a th:href="'http://localhost:8080/nouser'" class="btn btn-outline-danger" role="button">-</a>
+                <td class="justifly-content-center"><a th:href="'http://localhost:8080/nouser'" style="font-size: small"
+                                                       class="btn btn-outline-danger"
+                                                       role="button">-</a>
                 </td>
-                <td><a th:href="*{url}" th:text="*{title}"
-                       style="text-align: center;font-weight: lighter; font-family: Verdana"></a></td>
-                <td th:text="'Posted on ' + ${#temporals.format(post.creationDate,'yyyy-MM-dd HH:mm:SS')}"
-                    style="text-align: center; font-size: small; font-family: Verdana; color: grey"></td>
-                <td th:text="' by ' + *{user?.name}"
-                    style="text-align: center; font-size: small; font-family: Verdana; color: dodgerblue"></td>
-                <td><img src="https://png.pngtree.com/svg/20161008/share_40628.png" style="width: 20px; height: auto">
+                <td class="justifly-content-center"><a th:href="*{url}" th:text="*{title}"
+                                                       style="text-align: center;font-weight: lighter;font-family: Verdana, Arial, sans-serif; font-size: small"></a>
                 </td>
+                <td class="justifly-content-center"
+                    th:text="'Posted on ' + ${#temporals.format(post.creationDate,'yyyy-MM-dd HH:mm:SS')}+ ' by ' + *{user?.name}"
+                    style="text-align: center; font-size: x-small;font-family: Verdana, Arial, sans-serif; color: grey"></td>
             </tr>
-            </tbody>
         </table>
     </div>
+</div>
+<div class="container">
+    <nav aria-label="Page navigation">
+        <div class="d-flex justify-content-center">
+            <ul class="pagination">
+                <li th:each="page:${possiblepagenumber}" class="page-item">
+                    <a class="page-link" th:href="'/?pagenumber=' + ${page}" th:text="${page}"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>
 </body>
 <footer class="page-footer fixed-bottom" style="background-color:darkblue; color: whitesmoke">

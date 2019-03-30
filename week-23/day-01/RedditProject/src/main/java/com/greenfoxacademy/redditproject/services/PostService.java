@@ -3,11 +3,11 @@ package com.greenfoxacademy.redditproject.services;
 import com.greenfoxacademy.redditproject.models.Post;
 import com.greenfoxacademy.redditproject.models.User;
 import com.greenfoxacademy.redditproject.repositories.PostRepository;
+import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 @Service
 public class PostService {
@@ -17,18 +17,6 @@ public class PostService {
   @Autowired
   public PostService(PostRepository postRepository) {
     this.postRepository = postRepository;
-  }
-
-  public long incrementVotes(long id) {
-    long incrementedVotes = postRepository.findById(id).get().getNrOfVotes();
-    incrementedVotes++;
-    return incrementedVotes;
-  }
-
-  public long decrementVotes(long id) {
-    long decrementedVotes = postRepository.findById(id).get().getNrOfVotes();
-    decrementedVotes--;
-    return decrementedVotes;
   }
 
   public ArrayList<Post> listAllPosts() {
@@ -73,23 +61,62 @@ public class PostService {
     return postRepository.findAllByUserOrderByNrOfVotesDesc(user);
   }
 
-  public ArrayList<Post> listAllOrderByScore() {
-    ArrayList<Post> orderedList = postRepository.findAllByOrderByNrOfVotesDesc();
+  public ArrayList<Post> listAllPostsByPopularity() {
+    return postRepository.findAllByOrderByNrOfVotesDesc();
+  }
+
+  public ArrayList<Post> listTop10OrderByScore() {
+    ArrayList<Post> orderedList = postRepository.findTop10ByOrderByNrOfVotesDesc();
     return orderedList;
   }
 
-  public ArrayList<Post> listTop10Posts() {
-    ArrayList<Post> topTenPosts = new ArrayList<>();
-    ArrayList<Post> allPosts = listAllOrderByScore();
-    int fullListSize = allPosts.size();
+  public int calculateNumberOfPagesForPagination() {
+    int numberOfPages = 0;
+    ArrayList<Post> posts = postRepository.findAllByOrderByNrOfVotesDesc();
 
-    if (fullListSize >= 10) {
-      for (int i = 10; i > 0; i--) {
-        topTenPosts.add(allPosts.get(fullListSize - i));
-      }
+    if (posts.isEmpty()) {
+      numberOfPages = 1;
+    } else if ((posts.size() % 10) > 0) {
+      numberOfPages = (posts.size() / 10) + 1;
     } else {
-      topTenPosts = allPosts;
+      numberOfPages = posts.size() / 10;
     }
-    return topTenPosts;
+    return numberOfPages;
   }
+
+  public ArrayList createArrayListForPossiblePageNumbers() {
+    int pageNumber = calculateNumberOfPagesForPagination();
+
+    ArrayList<Integer> howmanypagestocreate = new ArrayList<>();
+    for (int i = 1; i <= pageNumber; i++) {
+      howmanypagestocreate.add(i);
+    }
+    return howmanypagestocreate;
+  }
+
+  public ArrayList<Post> listPostsForPagination(Integer pagenumber) {
+    ArrayList<Post> orderedList = listAllPostsByPopularity();
+    ArrayList<Post> listOf10Bunch = new ArrayList<>();
+    int numberOfPosts = orderedList.size();
+    int from = (pagenumber - 1) * 10;
+    int to = 0;
+
+    if ((pagenumber < calculateNumberOfPagesForPagination()) || ((numberOfPosts % 10) == 0)) {
+      to = from + 9;
+      for (int i = from; i <= to; i++) {
+        listOf10Bunch.add(orderedList.get(i));
+      }
+    }
+
+    if ((pagenumber == calculateNumberOfPagesForPagination()) && ((numberOfPosts % 10) > 0)) {
+      to = from + (numberOfPosts % 10);
+      for (int i = from; i < to; i++) {
+        listOf10Bunch.add(orderedList.get(i));
+      }
+    }
+
+    return listOf10Bunch;
+  }
+
+
 }
