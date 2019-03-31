@@ -17,67 +17,84 @@
             crossorigin="anonymous"></script>
     <title>Reddit Main</title>
 </head>
-<body style="background-color: lightgrey;">
-
-<nav class="navbar navbar-expand-lg" style="background-color: darkblue">
+<body style="background-color: lightgrey; margin-bottom: 50px">
+<nav class="navbar navbar-expand-md" style="background-color: darkblue">
     <div class="container">
-        <a class="navbar-brand" href="#" style="color: whitesmoke">
-            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c531.png"
-                 style="width: 30px;height: auto">
-            Reddit</a>
+        <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c531.png" style="width: 30px; height: auto">
+        <a class="navbar-brand" href="#" style="color: whitesmoke; font-weight: bolder">Reddit</a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="http://localhost:8080/" style="color: whitesmoke">Home
-                    <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="http://localhost:8080/login" style="color: whitesmoke">LogIn</a>
-                <a class="nav-item nav-link" href="http://localhost:8080/register"
-                   style="color: whitesmoke">Register</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-item nav-link active" href="http://localhost:8080/" style="color: whitesmoke">Home
+                        <span class="sr-only">(current)</span></a></li>
+            </ul>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://localhost:8080/login" style="color: whitesmoke">LogIn</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:8080/register"
+                                            style="color: whitesmoke">Register</a></li>
+                </ul>
             </div>
         </div>
     </div>
+    </div>
 </nav>
-<br>
-<h2 style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">
-    Trending Posts:</h2>
-<br>
+<h3 style="color: white; font-weight: bold; font-family: Verdana, Arial, sans-serif; text-align: center; padding: 20px">
+    Trending Posts:</h3>
+<div th:if="${posts.isEmpty()}">
+    <p style="color: ghostwhite; font-weight: bold; font-family: Verdana, Arial, sans-serif; text-align: center">There
+        is
+        NOTHING to show Yet!!</p>
+</div>
 <div class="alert alert-danger text-center" role="alert" style="width: 1000px; margin-left: 90px">
     You have to be <a href="/login" class="alert-link" style="color: grey">logged in</a> or <a href="/register"
                                                                                                class="alert-link"
                                                                                                style="color: grey">registered</a>
     to be able to VOTE or ADD NEW POSTS.
 </div>
-<br>
-<div th:if="${posts.isEmpty()}">
-    <p style="color: ghostwhite; font-weight: bold; font-family: Verdana, monospace; text-align: center">There is
-        NOTHING to show Yet!!</p>
-</div>
 <div th:unless="${posts.isEmpty()}">
     <div class="container">
-        <table class="table table-hover table-sm table-responsive" style="background-color: white; border-radius: 5px;">
-            <tbody>
-            <tr th:each="post:${posts}" th:object="${post}">
+        <table class="table table-hover table-sm table-responsive d-flex justify-content-center">
+
+            <tr th:each="post:${posts}" th:object="${post}" style="background-color: white">
                 <td th:text="*{nrOfVotes}"
-                    style="text-align: center; font-family: Verdana; color: grey"></td>
-                <td><a th:href="'#'" class="btn btn-outline-secondary"
-                       role="button">+</a></td>
-                <td><a th:href="'#'" class="btn btn-outline-danger"
-                       role="button">-</a></td>
-                <td><a th:href="*{url}" th:text="*{title}"
-                       style="text-align: center;font-weight: lighter; font-family: Verdana"></a></td>
-                <td th:text="'Posted on ' + ${#temporals.format(post.creationDate,'yyyy-MM-dd HH:mm:SS')}"
-                    style="text-align: center; font-size: small; font-family: Verdana; color: grey"></td>
-                <td th:text="' by ' + ${post.user.name}"
-                    style="text-align: center; font-size: small; font-family: Verdana; color: dodgerblue"></td>
-                <td><img src="https://png.pngtree.com/svg/20161008/share_40628.png" style="width: 20px; height: auto">
+                    style="text-align: center; font-family: Verdana, Arial, sans-serif; color: grey; font-size: small"></td>
+                <td><a th:href="'http://localhost:8080/nouser'"
+                       class="btn btn-outline-secondary"
+                       style="font-size: small" role="button">+</a>
                 </td>
+                <td><a th:href="'http://localhost:8080/nouser'"
+                       style="font-size: small"
+                       class="btn btn-outline-danger"
+                       role="button">-</a>
+                </td>
+                <td><a th:href="*{url}" th:text="*{title}"
+                       style="text-align: center;font-weight: lighter;font-family: Verdana, Arial, sans-serif; font-size: small"></a>
+                </td>
+                <td th:text="'Posted on ' + ${#temporals.format(post.creationDate,'yyyy-MM-dd HH:mm:SS')}+ ' by ' + *{user?.name}"
+                    style="font-size: x-small;font-family: Verdana, Arial, sans-serif; color: grey"></td>
             </tr>
-            </tbody>
         </table>
     </div>
+</div>
+<div class="container">
+    <nav aria-label="Page navigation">
+        <div class="d-flex justify-content-center">
+            <ul class="pagination">
+                <li th:each="page:${possiblepagenumber}" class="page-item">
+                    <a class="page-link" th:href="'/nouser/?pagenumber=' + ${page}" th:text="${page}"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>
 </body>
 <footer class="page-footer fixed-bottom" style="background-color:darkblue; color: whitesmoke">

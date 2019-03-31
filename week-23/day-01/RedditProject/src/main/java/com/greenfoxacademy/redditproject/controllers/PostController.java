@@ -33,22 +33,33 @@ public class PostController {
       pagenumber = 1;
     }
     model.addAttribute("possiblepagenumber", postService.createArrayListForPossiblePageNumbers());
-    model.addAttribute("posts",postService.listPostsForPagination(pagenumber));
+    model.addAttribute("posts", postService.listPostsForPagination(pagenumber));
     return "mainpage";
   }
 
   @GetMapping("/nouser")
-  public String renderMainPageError(Model model) {
-    model.addAttribute("posts", postService.listAllPostsByPopularity());
+  public String renderMainPageError(Model model,
+                                    @RequestParam(required = false) Integer pagenumber) {
+
+    if(pagenumber == null){
+      pagenumber = 1;
+    }
+    model.addAttribute("possiblepagenumber", postService.createArrayListForPossiblePageNumbers());
+    model.addAttribute("posts", postService.listPostsForPagination(pagenumber));
     return "mainpageerror";
   }
 
   @GetMapping("/{userid}")
   public String renderMainPageLoggedIn(Model model,
-                                       @PathVariable long userid) {
+                                       @PathVariable long userid,
+                                       @RequestParam(required = false) Integer pagenumber) {
 
+    if (pagenumber == null) {
+      pagenumber = 1;
+    }
     model.addAttribute("user", userService.findUserById(userid));
-    model.addAttribute("posts", postService.listAllPostsByPopularity());
+    model.addAttribute("posts", postService.listPostsForPagination(pagenumber));
+    model.addAttribute("possiblepagenumber", postService.createArrayListForPossiblePageNumbers());
     return "mainpagelogin";
   }
 
