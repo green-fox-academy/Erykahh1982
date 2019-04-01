@@ -1,10 +1,9 @@
 package com.greenfoxacademy.resttasks.controllers;
 
 
-import com.greenfoxacademy.resttasks.models.AppendA;
-import com.greenfoxacademy.resttasks.models.Doubling;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.greenfoxacademy.resttasks.models.*;
 import com.greenfoxacademy.resttasks.models.Error;
-import com.greenfoxacademy.resttasks.models.Greeter;
 import com.greenfoxacademy.resttasks.services.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -58,4 +57,15 @@ public class AnotherController {
   public String renderError() {
     return "404";
   }
+
+@PostMapping("/dountil/{action}")
+  public Object dountil(@PathVariable (required = false) String action, @RequestBody Until until){
+
+    if(action == null){
+      return new Error("Please provide a number!");
+    }else {
+      return new Dountil(action, until.getUntil());
+    }
+
+}
 }
