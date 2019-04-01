@@ -1,15 +1,13 @@
 package com.greenfoxacademy.resttasks.controllers;
 
 
+import com.greenfoxacademy.resttasks.models.AppendA;
 import com.greenfoxacademy.resttasks.models.Doubling;
 import com.greenfoxacademy.resttasks.models.Error;
 import com.greenfoxacademy.resttasks.models.Greeter;
 import com.greenfoxacademy.resttasks.services.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AnotherController {
@@ -44,5 +42,20 @@ public class AnotherController {
     } else {
       return new Greeter(name, title);
     }
+  }
+
+  @GetMapping("/appenda/{appendable}")
+  public Object renderAppenda(@PathVariable String appendable) {
+
+    if (appendable == null) {
+      return "redirect:/error";
+    } else {
+      return new AppendA(appendable);
+    }
+  }
+
+  @GetMapping("/error")
+  public String renderError() {
+    return "404";
   }
 }
