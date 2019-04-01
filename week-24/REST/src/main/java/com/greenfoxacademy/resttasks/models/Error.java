@@ -5,11 +5,10 @@ public class Error {
   private String error;
 
   public Error(){
-    this.error = "Please provide an input";
-  };
+  }
 
   public Error(String error){
-    this.error = "Please provide an input";
+    this.error = error;
   }
 
   public String getError() {
