@@ -1,5 +1,7 @@
 package com.greenfoxacademy.resttasks.models;
 
+import java.util.Arrays;
+
 public class ArrayHandler {
 
   private int[] numbers;
@@ -26,5 +28,13 @@ public class ArrayHandler {
 
   public void setWhat(String what) {
     this.what = what;
+  }
+
+  @Override
+  public String toString() {
+    return "ArrayHandler{" +
+        "numbers=" + Arrays.toString(numbers) +
+        ", what='" + what + '\'' +
+        '}';
   }
 }
