@@ -118,6 +118,17 @@ public class AnotherController {
   public ResponseEntity<Object> renderJSONs(@RequestParam(required = false, name = "count") Integer count,
                                             @RequestParam(required = false, name = "page") Integer page) {
 
+    if ((count == null) && (page == null)) {
+      logService.saveLog(new Log("/log", "Input count : " + count + " & Input page : " + page));
+    }
+    if ((count != null) && (page == null)) {
+      logService.saveLog(new Log("/log", "Input count : " + count + " & Input page : " + page));
+    }
+    if ((count == null) && (page != null)) {
+      logService.saveLog(new Log("/log", "Input count : " + count + " & Input page : " + page));
+    }
+
+
     if (count != null) {
       return ResponseEntity.status(HttpStatus.OK).body(new ToString(logService.statusToPrintLatestX(count)));
     }

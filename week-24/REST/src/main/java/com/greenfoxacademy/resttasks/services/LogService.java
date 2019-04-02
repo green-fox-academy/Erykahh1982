@@ -87,6 +87,20 @@ public class LogService {
     return toPrint;
   }
 
+  public int calculateNumberOfPossible10Bunches() {
+    int maxpagenumber = 0;
+    ArrayList<Log> logs = logRepository.findAllByOrderByCreatedAtDesc();
+
+    if (logs.isEmpty()) {
+      maxpagenumber = 1;
+    } else if ((logs.size() % 10) > 0) {
+      maxpagenumber = (logs.size() / 10) + 1;
+    } else {
+      maxpagenumber = logs.size() / 10;
+    }
+    return maxpagenumber;
+  }
+
   public ArrayList<Log> listLogsPerPage(Integer page) {
     ArrayList<Log> orderedFullList = logRepository.findAllByOrderByCreatedAtDesc();
     ArrayList<Log> listOf10Bunch = new ArrayList<>();
@@ -94,18 +108,21 @@ public class LogService {
     int listLogsFrom = (page - 1) * 10;
     int listLogsTill = 0;
 
-    if ((fullListSize % 10) == 0) {
+    if ((page < calculateNumberOfPossible10Bunches()) || ((fullListSize % 10) == 0)) {
       listLogsTill = listLogsFrom + 9;
       for (int i = listLogsFrom; i <= listLogsTill; i++) {
         listOf10Bunch.add(orderedFullList.get(i));
       }
     }
 
-    if ((fullListSize % 10) > 0) {
+    if ((page == calculateNumberOfPossible10Bunches()) && ((fullListSize % 10) > 0)) {
       listLogsTill = listLogsFrom + (fullListSize % 10);
       for (int i = listLogsFrom; i < listLogsTill; i++) {
         listOf10Bunch.add(orderedFullList.get(i));
       }
+    }
+    if (page > calculateNumberOfPossible10Bunches()) {
+      return listOf10Bunch;
     }
     return listOf10Bunch;
   }
