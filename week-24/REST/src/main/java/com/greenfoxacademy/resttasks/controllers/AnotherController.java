@@ -3,6 +3,7 @@ package com.greenfoxacademy.resttasks.controllers;
 
 import com.greenfoxacademy.resttasks.models.*;
 import com.greenfoxacademy.resttasks.models.Error;
+import com.greenfoxacademy.resttasks.services.LogService;
 import com.greenfoxacademy.resttasks.services.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,14 +14,18 @@ import org.springframework.web.bind.annotation.*;
 public class AnotherController {
 
   private RestService restService;
+  private LogService logService;
 
   @Autowired
-  public AnotherController(RestService restService) {
+  public AnotherController(RestService restService, LogService logService) {
     this.restService = restService;
+    this.logService = logService;
   }
 
   @RequestMapping("/doubling")
   public Object renderDoubling(@RequestParam(required = false) Integer input) {
+
+    logService.saveLog(new Log("/doubling", "input=" + input));
 
     if (input == null) {
       return new Error("Please provide an input!");
@@ -32,6 +37,8 @@ public class AnotherController {
   @GetMapping("/greeter")
   public Object renderGreeter(@RequestParam(required = false, value = "name") String name,
                               @RequestParam(required = false, value = "title") String title) {
+
+    logService.saveLog(new Log("/greeter", "name " + name + " | title " + title ));
 
     if ((name == null) && (title == null)) {
       return new Error("Please provide a name and a title!");
@@ -46,6 +53,8 @@ public class AnotherController {
 
   @GetMapping("/appenda/{appendable}")
   public Object renderAppenda(@PathVariable String appendable) {
+
+    logService.saveLog(new Log("/appenda/{appendable}", "appendable : " + appendable));
 
     if (appendable == null) {
       return "redirect:/error";
@@ -64,6 +73,8 @@ public class AnotherController {
   public ResponseEntity<Object> dountil(@PathVariable(name = "action") String action,
                                         @RequestBody(required = false) Until until) {
 
+    logService.saveLog(new Log("/dountil/{action}", "action : " + action + " | " + until.toString()));
+
     if (until == null) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Please provide a number!"));
     } else {
@@ -73,6 +84,8 @@ public class AnotherController {
 
   @PostMapping("/arrays")
   public ResponseEntity<Object> arrayHandler(@RequestBody(required = false) ArrayHandler arrayHandler) {
+
+    logService.saveLog(new Log("/arrays", "ArrayHandler : " + arrayHandler.toString()));
 
     if ((arrayHandler != null)) {
       if (arrayHandler.getWhat().equalsIgnoreCase("sum")) {

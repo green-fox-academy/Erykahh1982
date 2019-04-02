@@ -1,7 +1,6 @@
 package com.greenfoxacademy.resttasks.models;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -19,9 +18,10 @@ public class Log {
     this.createdAt = new Date();
   }
 
-  public Log(String endpoint) {
+  public Log(String endpoint, String data) {
     this.createdAt = new Date();
     this.endpoint = endpoint;
+    this.data = data;
   }
 
   public long getId() {

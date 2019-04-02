@@ -13,4 +13,11 @@ public class Until {
   public void setUntil(int until) {
     this.until = until;
   }
+
+  @Override
+  public String toString() {
+    return "Until{" +
+        "until=" + until +
+        '}';
+  }
 }
