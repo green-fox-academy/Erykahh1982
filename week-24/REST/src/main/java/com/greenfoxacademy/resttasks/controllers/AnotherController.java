@@ -115,9 +115,17 @@ public class AnotherController {
   }
 
   @GetMapping("/log")
-  public ResponseEntity<Object> renderJSONs(@RequestParam(required = false, name = "count") Integer count) {
+  public ResponseEntity<Object> renderJSONs(@RequestParam(required = false, name = "count") Integer count,
+                                            @RequestParam(required = false, name = "page") Integer page) {
 
-    return ResponseEntity.status(HttpStatus.OK).body(new ToString(logService.statusToPrintLatestX(count)));
+    if (count != null) {
+      return ResponseEntity.status(HttpStatus.OK).body(new ToString(logService.statusToPrintLatestX(count)));
+    }
+    if (page != null) {
+      return ResponseEntity.status(HttpStatus.OK).body(new ToString(logService.statusToPrintPerPage(page)));
+    } else {
+      return ResponseEntity.status(HttpStatus.OK).body(new ToString(logService.statusToPrint()));
+    }
   }
 
   @PostMapping("/sith")

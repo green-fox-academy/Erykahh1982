@@ -1,6 +1,5 @@
 package com.greenfoxacademy.resttasks.services;
 
-import ch.qos.logback.classic.pattern.LineOfCallerConverter;
 import com.greenfoxacademy.resttasks.models.Log;
 import com.greenfoxacademy.resttasks.repositories.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +37,11 @@ public class LogService {
     }
 
     String toPrint = "entries : ";
-
     for (Log log : listAllLogs()) {
       toPrint += log.toString() + ",";
     }
-
     toPrint += "entry_count : " + calculateNumberOfLogs();
+
     return toPrint;
   }
 
@@ -57,19 +55,17 @@ public class LogService {
     }
 
     String toPrint = "entries : ";
-
     for (Log log : listLatest10LogsOnly()) {
       toPrint += log.toString() + ",";
     }
-
     toPrint += "entry_count : " + listLatest10LogsOnly().size();
+
     return toPrint;
   }
 
-  public ArrayList<Log> logsOrderedByCreatedAtDesc(Integer count) {
+  public ArrayList<Log> listLogsPerCount(Integer count) {
     ArrayList<Log> orderedFullList = logRepository.findAllByOrderByCreatedAtDesc();
     ArrayList<Log> listOnlyLatestX = new ArrayList<>();
-    int fullListSize = orderedFullList.size();
 
     for (int i = 0; i < count; i++) {
       listOnlyLatestX.add(orderedFullList.get(i));
@@ -78,19 +74,54 @@ public class LogService {
   }
 
   public String statusToPrintLatestX(Integer count) {
-    if (logsOrderedByCreatedAtDesc(count).isEmpty()) {
+    if (listLogsPerCount(count).isEmpty()) {
       return "No logs have been created so far!!";
     }
 
     String toPrint = "entries : ";
-
-    for (Log log : logsOrderedByCreatedAtDesc(count)) {
+    for (Log log : listLogsPerCount(count)) {
       toPrint += log.toString() + ",";
     }
+    toPrint += "entry_count : " + listLogsPerCount(count).size();
 
-    toPrint += "entry_count : " + logsOrderedByCreatedAtDesc(count).size();
     return toPrint;
   }
 
+  public ArrayList<Log> listLogsPerPage(Integer page) {
+    ArrayList<Log> orderedFullList = logRepository.findAllByOrderByCreatedAtDesc();
+    ArrayList<Log> listOf10Bunch = new ArrayList<>();
+    int fullListSize = orderedFullList.size();
+    int listLogsFrom = (page - 1) * 10;
+    int listLogsTill = 0;
 
+    if ((fullListSize % 10) == 0) {
+      listLogsTill = listLogsFrom + 9;
+      for (int i = listLogsFrom; i <= listLogsTill; i++) {
+        listOf10Bunch.add(orderedFullList.get(i));
+      }
+    }
+
+    if ((fullListSize % 10) > 0) {
+      listLogsTill = listLogsFrom + (fullListSize % 10);
+      for (int i = listLogsFrom; i < listLogsTill; i++) {
+        listOf10Bunch.add(orderedFullList.get(i));
+      }
+    }
+    return listOf10Bunch;
+  }
+
+  public String statusToPrintPerPage(Integer page) {
+
+    if (listLogsPerPage(page).isEmpty()) {
+      return "No logs have been created so far!!";
+    }
+
+    String toPrint = "entries : ";
+    for (Log log : listLogsPerPage(page)) {
+      toPrint += log.toString() + ",";
+    }
+    toPrint += "entry_count : " + listLogsPerPage(page).size();
+
+    return toPrint;
+  }
 }
