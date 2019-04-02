@@ -27,7 +27,22 @@ public class LogService {
     return logs;
   }
 
-  public int calculateNumberOfLogs(ArrayList<Log> logs) {
-    return logs.size();
+  public int calculateNumberOfLogs() {
+    return listAllLogs().size();
+  }
+
+  public String statusToPrint() {
+    if (listAllLogs().isEmpty()) {
+      return "No logs have been created so far!!";
+    }
+
+    String toPrint = "entries : ";
+
+    for (Log log : listAllLogs()) {
+      toPrint += log.toString() + ",";
+    }
+
+    toPrint += "entry_count : " + calculateNumberOfLogs();
+    return toPrint;
   }
 }

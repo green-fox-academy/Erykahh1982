@@ -113,6 +113,11 @@ public class AnotherController {
     }
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Please provide NUMBERS to do something with them!"));
   }
+
+  @GetMapping("/log")
+  public ResponseEntity<Object> renderJSONs() {
+    return ResponseEntity.status(HttpStatus.OK).body(new ToString(logService.statusToPrint()));
+  }
 }
 
 
