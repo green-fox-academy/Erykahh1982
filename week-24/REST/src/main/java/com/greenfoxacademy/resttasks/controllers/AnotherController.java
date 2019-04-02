@@ -115,8 +115,19 @@ public class AnotherController {
   }
 
   @GetMapping("/log")
-  public ResponseEntity<Object> renderJSONs() {
-    return ResponseEntity.status(HttpStatus.OK).body(new ToString(logService.statusToPrint()));
+  public ResponseEntity<Object> renderJSONs(@RequestParam(required = false, name = "count") Integer count) {
+
+    return ResponseEntity.status(HttpStatus.OK).body(new ToString(logService.statusToPrintLatestX(count)));
+  }
+
+  @PostMapping("/sith")
+  public ResponseEntity<Object> reverserOfTheSith(@RequestBody(required = false) SithInputText sithInputText) {
+
+    if (sithInputText.getText() == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Feed me some text you have to, padawan young you are. Hmmm."));
+    } else {
+      return ResponseEntity.status(HttpStatus.OK).body(new Sith());
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 package com.greenfoxacademy.resttasks.services;
 
+import ch.qos.logback.classic.pattern.LineOfCallerConverter;
 import com.greenfoxacademy.resttasks.models.Log;
 import com.greenfoxacademy.resttasks.repositories.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,51 @@ public class LogService {
     toPrint += "entry_count : " + calculateNumberOfLogs();
     return toPrint;
   }
+
+  public ArrayList<Log> listLatest10LogsOnly() {
+    return logRepository.findTop10ByOrderByCreatedAtDesc();
+  }
+
+  public String statusToPrintLatest10() {
+    if (listLatest10LogsOnly().isEmpty()) {
+      return "No logs have been created so far!!";
+    }
+
+    String toPrint = "entries : ";
+
+    for (Log log : listLatest10LogsOnly()) {
+      toPrint += log.toString() + ",";
+    }
+
+    toPrint += "entry_count : " + listLatest10LogsOnly().size();
+    return toPrint;
+  }
+
+  public ArrayList<Log> logsOrderedByCreatedAtDesc(Integer count) {
+    ArrayList<Log> orderedFullList = logRepository.findAllByOrderByCreatedAtDesc();
+    ArrayList<Log> listOnlyLatestX = new ArrayList<>();
+    int fullListSize = orderedFullList.size();
+
+    for (int i = 0; i < count; i++) {
+      listOnlyLatestX.add(orderedFullList.get(i));
+    }
+    return listOnlyLatestX;
+  }
+
+  public String statusToPrintLatestX(Integer count) {
+    if (logsOrderedByCreatedAtDesc(count).isEmpty()) {
+      return "No logs have been created so far!!";
+    }
+
+    String toPrint = "entries : ";
+
+    for (Log log : logsOrderedByCreatedAtDesc(count)) {
+      toPrint += log.toString() + ",";
+    }
+
+    toPrint += "entry_count : " + logsOrderedByCreatedAtDesc(count).size();
+    return toPrint;
+  }
+
+
 }
