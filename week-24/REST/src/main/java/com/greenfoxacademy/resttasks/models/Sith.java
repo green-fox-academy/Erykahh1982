@@ -7,6 +7,10 @@ public class Sith {
   public Sith() {
   }
 
+  public Sith(String sith_text){
+    this.sith_text = sith_text;
+  }
+
   public String getSith_text() {
     return sith_text;
   }

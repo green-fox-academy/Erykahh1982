@@ -5,21 +5,26 @@ import com.greenfoxacademy.resttasks.models.*;
 import com.greenfoxacademy.resttasks.models.Error;
 import com.greenfoxacademy.resttasks.services.LogService;
 import com.greenfoxacademy.resttasks.services.RestService;
+import com.greenfoxacademy.resttasks.services.SithService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 public class AnotherController {
 
   private RestService restService;
   private LogService logService;
+  private SithService sithService;
 
   @Autowired
-  public AnotherController(RestService restService, LogService logService) {
+  public AnotherController(RestService restService, LogService logService, SithService sithService) {
     this.restService = restService;
     this.logService = logService;
+    this.sithService = sithService;
   }
 
   @RequestMapping("/doubling")
@@ -147,6 +152,26 @@ public class AnotherController {
     } else {
       return ResponseEntity.status(HttpStatus.OK).body(new Sith());
     }
+  }
+
+  @GetMapping("/randomword")
+  public String showRandomWord() {
+    return sithService.dropARandomWord(sithService.getYodaWords());
+  }
+
+  @GetMapping("/sentence")
+  public String[] showSentenceArray() {
+    return sithService.splitInputSentenceByFullstop("This is my first example sentence. And this is my second");
+  }
+
+  @GetMapping("/numberofwords")
+  public int calculateNumberOfWords(String[] wordArray) {
+    return sithService.calculateNumberOfWords(sithService.sentenceToArray("This is my first example sentence"));
+  }
+
+  @GetMapping("/convert")
+  public ArrayList<String> convertArrayToAL(){
+    return sithService.convertArrayToArrayList(sithService.sentenceToArray("This is my first example sentence"));
   }
 }
 
