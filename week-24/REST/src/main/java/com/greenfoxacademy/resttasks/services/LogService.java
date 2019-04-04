@@ -27,6 +27,12 @@ public class LogService {
     return logs;
   }
 
+  public ArrayList<Log> listAllLogsOrdered() {
+    ArrayList<Log> logs = new ArrayList<>();
+    logRepository.findAllByOrderByCreatedAtDesc().forEach(logs::add);
+    return logs;
+  }
+
   public int calculateNumberOfLogs() {
     return listAllLogs().size();
   }

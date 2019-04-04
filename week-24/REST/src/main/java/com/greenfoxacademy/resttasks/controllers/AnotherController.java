@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class AnotherController {
@@ -152,6 +153,17 @@ public class AnotherController {
     } else {
       String sith_text = sithService.theYodaTranslator(sithInputText.getText());
       return ResponseEntity.status(HttpStatus.OK).body(new Sith(sith_text));
+    }
+  }
+
+  @GetMapping("/log2")
+  public ResponseEntity<Object> renderLogs() {
+    List<Log> logs = logService.listAllLogsOrdered();
+
+    if (logs.size() == 0) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("The log list is currently empty"));
+    } else {
+      return ResponseEntity.status(HttpStatus.OK).body(new LogEntries(logs, logs.size()));
     }
   }
 

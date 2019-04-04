@@ -1,6 +1,7 @@
 package com.greenfoxacademy.resttasks.models;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -9,17 +10,16 @@ public class Log {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-  @Temporal(value = TemporalType.TIMESTAMP)
-  private Date createdAt;
+  private LocalDateTime createdAt;
   private String endpoint;
   private String data;
 
   public Log() {
-    this.createdAt = new Date();
+    this.createdAt = LocalDateTime.now();
   }
 
   public Log(String endpoint, String data) {
-    this.createdAt = new Date();
+    this.createdAt = LocalDateTime.now();
     this.endpoint = endpoint;
     this.data = data;
   }
@@ -48,11 +48,11 @@ public class Log {
     this.data = data;
   }
 
-  public Date getCreatedAt() {
+  public LocalDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(Date createdAt) {
+  public void setCreatedAt(LocalDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
