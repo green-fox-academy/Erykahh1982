@@ -4,10 +4,7 @@ public class SithInputText {
 
   private String text;
 
-  public SithInputText(){}
-
-  public SithInputText(String text){
-    this.text = text;
+  public SithInputText() {
   }
 
   public String getText() {

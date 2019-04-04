@@ -147,32 +147,14 @@ public class AnotherController {
   @PostMapping("/sith")
   public ResponseEntity<Object> reverserOfTheSith(@RequestBody(required = false) SithInputText sithInputText) {
 
-    if (sithInputText.getText() == null) {
+    if (sithInputText.getText().equals("") || (sithInputText == null)) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("Feed me some text you have to, padawan young you are. Hmmm."));
     } else {
-      return ResponseEntity.status(HttpStatus.OK).body(new Sith());
+      String sith_text = sithService.theYodaTranslator(sithInputText.getText());
+      return ResponseEntity.status(HttpStatus.OK).body(new Sith(sith_text));
     }
   }
 
-  @GetMapping("/randomword")
-  public String showRandomWord() {
-    return sithService.dropARandomWord(sithService.getYodaWords());
-  }
-
-  @GetMapping("/sentence")
-  public String[] showSentenceArray() {
-    return sithService.splitInputSentenceByFullstop("This is my first example sentence. And this is my second");
-  }
-
-  @GetMapping("/numberofwords")
-  public int calculateNumberOfWords(String[] wordArray) {
-    return sithService.calculateNumberOfWords(sithService.sentenceToArray("This is my first example sentence"));
-  }
-
-  @GetMapping("/convert")
-  public ArrayList<String> convertArrayToAL(){
-    return sithService.convertArrayToArrayList(sithService.sentenceToArray("This is my first example sentence"));
-  }
 }
 
 
