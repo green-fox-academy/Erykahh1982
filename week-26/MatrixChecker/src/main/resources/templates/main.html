@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <title>Matrix Checker</title>
+</head>
+<body style="margin-bottom: 50px">
+
+<nav class="navbar navbar-expand-md" style="background-color: black">
+    <div class="container">
+        <a class="navbar-brand" href="#" style="color: white; font-weight: bolder">Matrix Checker</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-item nav-link active" href="http://localhost:8080/" style="color: white">Home
+                        <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/matrices"
+                                        style="color: whitesmoke">List Of Matrices</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="justifly-content-center">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3 style="color: grey">Matrix Checker</h3>
+                <h5 style="color: grey">Check if your martix is increasing!</h5>
+                <h5 style="color: grey">Add a matrix and sit back while evaluation happens.</h5>
+                <br>
+
+                <div>
+                    <form action="/matrix" method="post">
+                        <div class="form-group row">
+                            <label style="color: grey" for="matrixNumbers" class="col-sm-2 col-form-label">Enter your
+                                matrix</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="matrixNumbers" name="matrixNumbers"></textarea>
+                            </div>
+                        </div>
+
+                        <div>
+                            <input type="submit" value="Submit" class="btn btn-outline-secondary btn-sm"
+                                   style="background-color: lightgrey; margin-left: 190px"/>
+                        </div>
+                        <h4 style="color: grey">Result:</h4>
+                        <br>
+                        <div th:if="${notSquareMatrix}" th:text="${notSquareMatrix}" style="color: red"></div>
+                        <div th:if="${error}" th:text="${error}" style="color: red"></div>
+                        <div th:if="${success}" th:text="${success}" style="color: lightgreen"></div>
+                        <div th:if="${notIncreasing}" th:text="${notIncreasing}" style="color: red"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<footer class="page-footer fixed-bottom" style="background-color:black; color: white">
+    <div class="container">
+        <div class="footer-copyright text-center">
+            <span class="align-middle"><small>© 2019 Copyright: Kovács-Posta Erika</small></span>
+        </div>
+    </div>
+</footer>
+</html>
