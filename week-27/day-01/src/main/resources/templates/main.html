@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <title>GFA Takeout Welcome</title>
+</head>
+<body style="margin-bottom: 50px">
+<nav class="navbar navbar-expand-md" style="background-color: #3CB878">
+    <div class="container">
+        <img src="https://avatars1.githubusercontent.com/u/14247612?s=200&v=4" style="width: 50px; height: auto">
+        <a class="navbar-brand" href="#" style="color: white; font-weight: bolder">GFA Canteen</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto"></ul>
+        </div>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="justifly-content-center">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3 style="color: grey; text-align: center">Welcome to the Green Fox Takeout!</h3>
+                <h5 style="color: grey; text-align: center">Please enter your info and choose your meal!</h5>
+                <br>
+                <div>
+                    <form action="/order" method="post">
+                        <div class="form-group row">
+                            <label style="color: #3CB878" for="name" class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9" style="padding: 1px">
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <label style="color: #3CB878" for="address" class="col-sm-3 col-form-label">Address</label>
+                            <div class="col-sm-9" style="padding: 1px">
+                                <input type="text" class="form-control" id="address" name="address" required>
+                            </div>
+                            <label style="color: #3CB878" for="base" class="col-sm-3 col-form-label">Base</label>
+                            <div class="col-sm-9" style="padding: 1px; color: grey">
+                                <input type="radio" name="base" value="rice noodles" id="rice noodles"><label
+                                    for="rice noodles">Rice noodles</label>
+                                <br>
+                                <input type="radio" name="base" value="egg noodles" id="egg noodles"><label
+                                    for="egg noodles">Egg Noodles</label>
+                                <br>
+                                <input type="radio" name="base" value="white rice" id="white rice"><label
+                                    for="white rice">White rice</label>
+                                <br>
+                            </div>
+                            <label style="color: #3CB878" for="topping" class="col-sm-3 col-form-label">Topping</label>
+                            <div class="col-sm-9" style="padding: 1px; color: grey">
+                                <select class="form-control" name="topping" id="topping" required>
+                                    <option th:each="topping : ${toppings}" th:selected="${topping}"
+                                            th:text="${topping}" th:value="${topping}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="submit" value="Order" class="btn btn-outline-secondary btn-sm"
+                                   style="background-color: rgb(0,115,53); margin-left: 190px; color: white"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer class="page-footer fixed-bottom" style="background-color : #3CB878; color: white">
+    <div class="container">
+        <div class="footer-copyright text-center">
+            <span class="align-middle"><small>© 2019 Copyright: Kovács-Posta Erika</small></span>
+        </div>
+    </div>
+</footer>
+</html>
