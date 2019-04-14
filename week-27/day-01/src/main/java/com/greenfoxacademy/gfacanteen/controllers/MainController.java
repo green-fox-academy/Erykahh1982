@@ -23,6 +23,7 @@ public class MainController {
   @GetMapping("/")
   public String renderWelcomePage(Model model) {
     model.addAttribute("toppings", takeoutService.listOfToppings());
+    model.addAttribute("bases", takeoutService.listOfBases());
     return "main";
   }
 

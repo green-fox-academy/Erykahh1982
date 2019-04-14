@@ -24,7 +24,7 @@ public class TakeoutService {
   }
 
   public ArrayList<String> listOfBases() {
-    ArrayList<String> bases = new ArrayList<>(Arrays.asList("rice noodles", "edd noodles", "white rice"));
+    ArrayList<String> bases = new ArrayList<>(Arrays.asList("rice noodles", "egg noodles", "white rice"));
     return bases;
   }
 

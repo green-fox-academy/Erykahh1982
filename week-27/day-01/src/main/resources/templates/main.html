@@ -41,28 +41,49 @@
                 <div>
                     <form action="/order" method="post">
                         <div class="form-group row">
+
                             <label style="color: #3CB878" for="name" class="col-sm-3 col-form-label">Name</label>
                             <div class="col-sm-9" style="padding: 1px">
                                 <input type="text" class="form-control" id="name" name="name" required>
                             </div>
+
                             <label style="color: #3CB878" for="address" class="col-sm-3 col-form-label">Address</label>
                             <div class="col-sm-9" style="padding: 1px">
                                 <input type="text" class="form-control" id="address" name="address" required>
                             </div>
-                            <label style="color: #3CB878" for="base" class="col-sm-3 col-form-label">Base</label>
-                            <div class="col-sm-9" style="padding: 1px; color: grey">
-                                <input type="radio" name="base" value="rice noodles" id="rice noodles"><label
-                                    for="rice noodles">Rice noodles</label>
-                                <br>
-                                <input type="radio" name="base" value="egg noodles" id="egg noodles"><label
-                                    for="egg noodles">Egg Noodles</label>
-                                <br>
-                                <input type="radio" name="base" value="white rice" id="white rice"><label
-                                    for="white rice">White rice</label>
-                                <br>
+
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-sm-2 col-form-label" style="color: #3CB878;margin-left: 15px">
+                                        Bases
+                                    </legend>
+                                    <div class="col-sm-12">
+                                        <div class="form-check" th:each="base:${bases}">
+                                            <input class="form-check-input" type="radio" name="base" th:id="${base}"
+                                                   th:value="${base}" style="margin-left: 130px">
+                                            <label class="form-check-label" th:for="${base}" th:text="${base}"
+                                                   style="color: grey; margin-left: 150px"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!--<label style="color: #3CB878" for="base" class="col-sm-3 col-form-label">Base</label>-->
+                            <!--<div class="col-sm-9" style="padding: 1px; color: grey">-->
+                            <!--<input type="radio" name="base" value="rice noodles" id="rice noodles"><label-->
+                            <!--for="rice noodles">Rice noodles</label>-->
+                            <!--<br>-->
+                            <!--<input type="radio" name="base" value="egg noodles" id="egg noodles"><label-->
+                            <!--for="egg noodles">Egg Noodles</label>-->
+                            <!--<br>-->
+                            <!--<input type="radio" name="base" value="white rice" id="white rice"><label-->
+                            <!--for="white rice">White rice</label>-->
+
+                            <div>
+                                <label style="color: #3CB878;margin-right: 200px" for="topping"
+                                       class="col-sm-3 col-form-label">Topping</label>
                             </div>
-                            <label style="color: #3CB878" for="topping" class="col-sm-3 col-form-label">Topping</label>
-                            <div class="col-sm-9" style="padding: 1px; color: grey">
+                            <div class="col-sm-9" style="padding: 1px; color: grey;margin-left: 140px;">
                                 <select class="form-control" name="topping" id="topping" required>
                                     <option th:each="topping : ${toppings}" th:selected="${topping}"
                                             th:text="${topping}" th:value="${topping}"></option>
@@ -71,7 +92,7 @@
                         </div>
                         <div>
                             <input type="submit" value="Order" class="btn btn-outline-secondary btn-sm"
-                                   style="background-color: rgb(0,115,53); margin-left: 190px; color: white"/>
+                                   style="background-color: rgb(0,115,53);margin-left: 500px; color: white"/>
                         </div>
                     </form>
                 </div>
