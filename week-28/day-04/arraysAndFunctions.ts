@@ -102,13 +102,213 @@ console.log("");
 //    with the following content: `[4, 5]`
 // -  Log "p2 is longer" to the console if `secondList` has more elements than `firstList`
 
+var firstList : number[] = [1, 2, 3];
+var secondList : number[] = [4, 5, 6, 7, 8];
+if(firstList.length < secondList.length){
+    console.log('p2 is longer');
+}else{
+    console.log('p2 is shorter');
+}
 
+console.log("");
+// -  Create a variable named `r` with the following content: `[54, 23, 66, 12]`
+// -  Print the sum of the second and the third element
 
+let r = [54, 23, 66, 12];
+let sumElements : number = r[1] + r[2];
+console.log(sumElements);
 
+console.log("");
+// -  Create a variable named `abc` with the following content: `["Arthur", "Boe", "Chloe"]`
+// -  Swap the first and the third element of `abc`
 
+let abc : string[] = ["Artur", "Boe", "Chloe"];
+console.log(abc.reverse());
 
+console.log("");
+// -  Create a variable named `integers` with the following content: `[4, 5, 6, 7]`
+// -  Log each the element of `integers` to the console*
+// *hint: use a loop, console.log(integers) won't cut it
+// -  bonus for using the correct built in array method
 
+let integers : number[] = [4, 5, 6, 7];
+integers.forEach(function(item){
+    console.log(item);
+});
+console.log("OR");
+for(let i = 0; i < integers.length; i++){
+    console.log(integers[i]);
+}
+console.log("OR");
+console.log(integers.join());
+console.log("OR");
+console.log(integers.toString());
 
+console.log("");
+// -  Create an array named `numList` with the following content: `[1, 2, 3, 8, 5, 6]`
+// -  Change the 8 to 4 with the `.map` method 
+// -  Print the fourth element as a test
 
+let numList : number[] = [1, 2, 3, 8, 5, 6];
+console.log(numList.toString());
+numList.map(function(item){
+    if(item === 3){
+        numList[item] = 4;
+    }
+});
+console.log(numList[3]);
+console.log(numList.toString());
 
+console.log("");
+// -  Create a variable named `numList` with the following content: `[1, 2, 3, 4, 5]`
+// -  Increment the third element simply by accessing it
+// -  Log the third element to the console
 
+let numList2: number[] = [1, 2, 3, 4, 5];
+numList2.map(function(element){
+    if(element == 2){
+        numList2[element]++;
+    }
+});
+console.log(numList2.toString());
+
+console.log("");
+// -  Create an array variable named `animals`
+//    with the following content: `["koal", "pand", "zebr"]`
+// -  Add all elements an `"a"` at the end
+
+let animals : string[] = ["koal", "pand", "zebr"];
+animals.forEach(function(k){
+    console.log(k);
+})
+animals.forEach(function(item){
+    let modifiedAnimals = item + 'a';
+    console.log(modifiedAnimals.toString());
+});
+
+console.log("");
+// -  Create an array variable named `drinks` with the following content: `['Gin', 'Whiskey', 'Wine', 'Beer']`
+// -  Double all the strings in the array, use a built in array method instead of a loop
+// It should print: ['GinGin', 'WhiskeyWhiskey', 'WineWine', 'BeerBeer']`
+
+let drinks : string[] = ['Gin', 'Whiskey', 'Wine', 'Beer'];
+drinks.forEach(function(y){
+    let modifiedDrinks = (y + y);
+    console.log(modifiedDrinks.toString());
+});
+
+console.log("");
+// -  Create a two dimensional list
+//    which can contain the different shades of specified colors
+// -  In `colors[0]` store the shades of green:
+//    `"lime", "forest green", "olive", "pale green", "spring green"`
+// -  In `colors[1]` store the shades of red:
+//    `"orange red", "red", "tomato"`
+// -  In `colors[2]` store the shades of pink:
+//    `"orchid", "violet", "pink", "hot pink"`
+
+let colors : string [][] = [
+    ['lime', 'forest green', 'olive', 'pale green', 'spring green'],
+    ['orange red', 'red','tomato'],
+    ['orchid', 'violet', 'pink','hot pink']
+];
+
+console.log(colors[0]);
+console.log(colors[1]);
+console.log(colors[2]);
+
+console.log("");
+// -  Create a variable named `ai` with the following content: `[3, 4, 5, 6, 7]`
+// -  Log the sum of the elements in `ai` to the console
+
+let ai: number[] = [3, 4, 5, 6, 7];
+console.log(ai.pop());  // cuts off the last element of an array and returns it --> 7
+console.log(ai.shift());    // cuts off the first element of an array and returns it --> 3
+console.log(ai.toString()); // remaining array elemenet list --> [4, 5, 6]
+
+let ai2: number [] = [3, 4, 5, 6, 7];
+let newItemSum : number = 0;
+function getSum(total, num){
+    return total + num;
+}
+newItemSum = ai2.reduce(getSum);
+ai2.push(newItemSum);
+console.log(ai2.toString());    // [3, 4, 5, 6, 7, 25]
+
+console.log("");
+// -  Create (dynamically*) a two dimensional list
+//    with the following matrix**. Use a loop!
+//
+//    0 0 0 1
+//    0 0 1 0
+//    0 1 0 0
+//    1 0 0 0
+//
+// -  Print this two dimensional list to the console
+//
+// * size should depend on a variable
+// ** Relax, a matrix is just like an array
+
+let matrix : number [][] = [
+    [0, 0, 0, 1],
+    [0, 0, 1, 0],
+    [0, 1, 0, 0],
+    [1, 0, 0, 0]
+]
+var eachArray = "";
+
+for(var m in matrix){
+    console.log("row "  + m);
+    for(var n in matrix[m]){
+        console.log(" " + matrix[m][n]);
+    }
+}
+console.log("");
+
+for(let l = 0; l < matrix.length; l++){
+    console.log("\n");
+    for(let o = 0; o < matrix[l].length; o++){
+        console.log(matrix[l][o]);
+    }
+}
+
+console.log("");
+for(let q = 0; q < matrix.length; q++){
+    eachArray += matrix[q]+ "\n";
+}
+console.log(eachArray);
+
+console.log("");
+// -  Create a variable named `numList`
+//    with the following content: `[3, 4, 5, 6, 7]`
+// -  Reverse the order of the elements in `numList`
+// 	   -  do it with the built in method
+//	   -  do it with creating a new temp array and a loop
+// -  Print the elements of the reversed `numList`
+
+let numList3 : number[] = [3, 4, 5, 6, 7];
+console.log(numList3.reverse());
+
+console.log("");
+
+function reverseArrayElements(originalArray: number[]): number[]{
+var tempArray = [];
+for(var v = originalArray.length - 1; v >= 0; v--){
+    tempArray.push(originalArray[v]);
+    }
+    return tempArray;
+}
+
+console.log(reverseArrayElements(numList3));
+console.log("");
+
+function reverseArrayInPlace(originalArray) {
+    for (var i = 0; i <= Math.floor((originalArray.length - 1) / 2); i++) {
+        let temp = originalArray[i];
+        originalArray[i] = originalArray[originalArray.length - 1 - i];
+        originalArray[originalArray.length - 1 - i] = temp;
+    }
+    return originalArray;
+  }
+
+  console.log(reverseArrayInPlace(numList3))
