@@ -278,6 +278,42 @@ for(let q = 0; q < matrix.length; q++){
 }
 console.log(eachArray);
 
+console.log("filling up the 2d matrix");
+//filling up an empty 2dimensional arry
+
+let matrix2 : number [][] = [];
+let newMatrix2 = '';
+let size = 4;
+
+for(let a = 0; a < size; a++){
+matrix2[a] = [];
+for(let b = 0; b < size; b++){
+    if(b == size - a -1){
+        matrix2 [a][b] = 1;
+    }else{
+        matrix2 [a][b] = 0;
+    }
+}
+newMatrix2 += matrix2[a] + "\n";
+}
+
+console.log(newMatrix2);
+
+
+
+function print2Dmatrix(matris: number [][]){
+    for(let x = 0; x < matris.length; x++){
+        for(let g = 0; g < matris[x].length; g++){
+            console.log(matris[x][g]);
+        }
+    }
+}
+
+
+
+
+
+
 console.log("");
 // -  Create a variable named `numList`
 //    with the following content: `[3, 4, 5, 6, 7]`
