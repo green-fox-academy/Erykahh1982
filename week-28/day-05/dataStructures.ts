@@ -132,3 +132,38 @@ for(let p = 0; p < notSoCrypticMessage.length; p++){
     out = out + hashmap[notSoCrypticMessage[p]];
 }
 console.log(out);
+
+console.log("");
+//TASK 7
+//List introduction 1
+
+let nameList : string[] = [];
+console.log(nameList.length);
+nameList.push("William");
+console.log("The nameList is empty or not? : " + (nameList.length === 0));
+nameList.push("John");
+nameList.push("Amanda");
+console.log("The number of elements of my lis is : " + nameList.length);
+console.log("The third element of my list is : " + nameList[2]);
+for(var h = 0; h < nameList.length; h++){
+    console.log(nameList[h]);
+}
+console.log("");
+for(var j = 0; j < nameList.length; j++){
+    console.log((j + 1) + ". " + nameList[j]);
+}
+console.log("removing the 2nd item from my list");
+nameList.splice(1,1);
+for(var j = 0; j < nameList.length; j++){
+    console.log((j + 1) + ". " + nameList[j]);
+}
+console.log("iterating throught the list in a reversed order");
+for(var j = nameList.length - 1; j >= 0; j--){
+    console.log((j + 1) + ". " + nameList[j]);
+}
+nameList.splice(0,nameList.length);
+console.log(nameList.length);
+
+
+
+
