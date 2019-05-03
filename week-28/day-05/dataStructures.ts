@@ -164,6 +164,31 @@ for(var j = nameList.length - 1; j >= 0; j--){
 nameList.splice(0,nameList.length);
 console.log(nameList.length);
 
+console.log("");
+//TASK 8
+let myMap : {[key : number] : string;} = {};
+console.log(Object.keys(myMap).length);
+myMap = {
+    97 : 'a',
+    98 : 'b',
+    99 : 'c',
+    65 : 'A',
+    66 : 'B',
+    67 : 'C'
+}
+console.log(Object.keys(myMap));
+console.log("");
+var value
+Object.keys(myMap).forEach(function(key){
+    value = myMap[key];
+    console.log(value);
+});
+
+
+
+
+
+
 
 
 
