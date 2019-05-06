@@ -1,0 +1,14 @@
+
+<ul class="tiles">
+  <li *ngFor="let tile of tiles"
+    [class.selected]="tile === selectedTile"
+    (click)="onSelect(tile)">
+    <div class="city-name">{{tile.city}}</div>
+    <br>
+    <div class="country-name">{{tile.country}}</div>
+    <br>
+    <div class="celsius-name">{{tile.celsius}} </div> 
+    <div class="icon"><img src={{tile.icon}}></div>
+  </li>
+</ul>
+ 
