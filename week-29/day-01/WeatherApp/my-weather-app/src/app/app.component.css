@@ -1,9 +1,31 @@
+html{
+    background-color: white;
+    margin-bottom: 50px;
+}
+
 app-tiles{
     align-content: center;
     color:rgb(65, 62, 62);
     font-family: 'Lato', sans-serif;
     text-align: left;
+    background-color: whitesmoke;
+}
+app-forecast5days{
+    align-content: center;
+    color:rgb(65, 62, 62);
+    font-family: 'Lato', sans-serif;
+    text-align: left;
+    background-color: whitesmoke; 
 }
 body{
     background-color:white;
+}
+h1{
+    background-color: white;
+    align-content: center;
+    color:rgb(65, 62, 62);
+    font-family: 'Lato', sans-serif;
+}
+h3{
+    background-color: white;
 }

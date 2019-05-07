@@ -1,0 +1,9 @@
+<ul class="forecast">{{city}}
+  <li *ngFor="let item of forecast">
+    <div class="icon"><img src={{item.icon}}></div>
+    <br>
+    <div class="celsius-name">{{item.celsius}}</div>
+    <br>
+    <div class="text">{{item.text}}</div>
+  </li>
+</ul>

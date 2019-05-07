@@ -3,4 +3,6 @@ export class Tile {
     country : string;
     celsius : any;
     icon : any;
+    text : string;
+    id : number;
 }
